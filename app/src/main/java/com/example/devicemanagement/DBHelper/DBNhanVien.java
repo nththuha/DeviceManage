@@ -28,7 +28,7 @@ public class DBNhanVien extends SQLiteOpenHelper {
     public void themNhanVien(NhanVien nhanVien){
         String sql = "Insert into nhanvien values (?,?,?,?,?)";
         SQLiteDatabase database = getWritableDatabase();
-        database.execSQL(sql, new String[]{nhanVien.getMaNhanVien()});
+        database.execSQL(sql, new String[]{nhanVien.getTenDangNhap(), nhanVien.getHoTen(), nhanVien.getMatKhau(), nhanVien.getMail(), nhanVien.getHinhAnh()});
         database.close();
     }
 }
