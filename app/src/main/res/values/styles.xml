@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="style_login_txtdangnhap">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:background">@drawable/round_border_purple60</item>
+        <item name="android:drawableStart">@drawable/ic_person_login</item>
+        <item name="android:drawablePadding">16dp</item>
+        <item name="android:ems">10</item>
+        <item name="android:inputType">text</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:textColor">@color/purple_200</item>
+        <item name="android:textColorHint">@color/purple_200</item>
+    </style>
+</resources>

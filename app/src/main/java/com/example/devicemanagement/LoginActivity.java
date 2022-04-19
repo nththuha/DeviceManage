@@ -10,7 +10,7 @@ import com.example.devicemanagement.DBHelper.DBNhanVien;
 import com.example.devicemanagement.DBHelper.DBPhongHoc;
 import com.example.devicemanagement.DBHelper.DBThietBi;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private DBNhanVien dbNhanVien;
     private DBLoaiThietBi dbLoaiThietBi;
     private DBThietBi dbThietBi;
@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         getControl();
     }
 
