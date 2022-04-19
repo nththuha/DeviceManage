@@ -7,8 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class DBPhongHoc extends SQLiteOpenHelper {
-    public DBPhongHoc(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public DBPhongHoc(@Nullable Context context) {
+        super(context, "DBPhongHoc", null, 1);
     }
 
     @Override

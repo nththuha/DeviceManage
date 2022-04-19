@@ -9,8 +9,8 @@ import androidx.annotation.Nullable;
 import com.example.devicemanagement.Entity.NhanVien;
 
 public class DBNhanVien extends SQLiteOpenHelper {
-    public DBNhanVien(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public DBNhanVien(@Nullable Context context) {
+        super(context, "DBNhanVien", null, 1);
     }
 
     @Override

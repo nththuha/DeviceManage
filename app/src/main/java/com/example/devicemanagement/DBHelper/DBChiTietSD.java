@@ -7,8 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class DBChiTietSD extends SQLiteOpenHelper {
-    public DBChiTietSD(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public DBChiTietSD(@Nullable Context context) {
+        super(context, "DBChiTietSD", null, 1);
     }
 
     @Override

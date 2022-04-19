@@ -7,8 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class DBThietBi extends SQLiteOpenHelper {
-    public DBThietBi(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public DBThietBi(@Nullable Context context) {
+        super(context, "DBThietBi", null, 1);
     }
 
     @Override

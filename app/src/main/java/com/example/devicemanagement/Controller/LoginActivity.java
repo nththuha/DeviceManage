@@ -3,6 +3,7 @@ package com.example.devicemanagement.Controller;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import com.example.devicemanagement.DBHelper.DBLoaiThietBi;
 import com.example.devicemanagement.DBHelper.DBNhanVien;
 import com.example.devicemanagement.DBHelper.DBPhongHoc;
 import com.example.devicemanagement.DBHelper.DBThietBi;
+import com.example.devicemanagement.Entity.NhanVien;
 import com.example.devicemanagement.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -29,8 +31,12 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        dbNhanVien = new DBNhanVien(this);
         getDataBase();
         getControl();
+        NhanVien nhanVien = new NhanVien("NV01", "Ngô Thu Hà", "02042000", "thuhango0204@gmail.com", "123");
+        dbNhanVien.themNhanVien(nhanVien);
+
     }
 
     private void getControl() {
@@ -41,15 +47,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void getDataBase() {
-        dbNhanVien = new DBNhanVien(getApplicationContext(),"nhanvien",null,1);
-        dbNhanVien.getReadableDatabase();
-        dbLoaiThietBi = new DBLoaiThietBi(getApplicationContext(),"loaithietbi",null,1);
-        dbLoaiThietBi.getReadableDatabase();
-        dbThietBi = new DBThietBi(this,"thietbi",null,1);
-        dbThietBi.getReadableDatabase();
-        dbPhongHoc = new DBPhongHoc(this,"phonghoc",null,1);
-        dbPhongHoc.getReadableDatabase();
-        dbChiTietSD = new DBChiTietSD(this,"chitietsudung",null,1);
-        dbChiTietSD.getReadableDatabase();
+//        dbNhanVien = new DBNhanVien(getApplicationContext(),"nhanvien",null,1);
+//        dbNhanVien.getReadableDatabase();
+//        dbLoaiThietBi = new DBLoaiThietBi(getApplicationContext(),"loaithietbi",null,1);
+//        dbLoaiThietBi.getReadableDatabase();
+//        dbThietBi = new DBThietBi(this,"thietbi",null,1);
+//        dbThietBi.getReadableDatabase();
+//        dbPhongHoc = new DBPhongHoc(this,"phonghoc",null,1);
+//        dbPhongHoc.getReadableDatabase();
+//        dbChiTietSD = new DBChiTietSD(this,"chitietsudung",null,1);
+//        dbChiTietSD.getReadableDatabase();
     }
 }
