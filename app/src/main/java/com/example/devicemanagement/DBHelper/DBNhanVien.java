@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.devicemanagement.Entity.NhanVien;
+
 public class DBNhanVien extends SQLiteOpenHelper {
     public DBNhanVien(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -13,7 +15,7 @@ public class DBNhanVien extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql="CREATE TABLE nhanvien (tendangnhap TEXT PRIMARY KEY, hoten TEXT, matkhau TEXT,hinhanh TEXT)";
+        String sql="CREATE TABLE nhanvien (tendangnhap TEXT PRIMARY KEY, hoten TEXT, matkhau TEXT, mail TEXT, hinhanh TEXT)";
         db.execSQL(sql);
     }
 
@@ -23,4 +25,10 @@ public class DBNhanVien extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public void themNhanVien(NhanVien nhanVien){
+        String sql = "Insert into nhanvien values (?,?,?,?,?)";
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sql, new String[]{nhanVien.getMaNhanVien()});
+        database.close();
+    }
 }

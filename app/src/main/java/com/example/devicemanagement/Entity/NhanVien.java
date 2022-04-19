@@ -1,10 +1,10 @@
 package com.example.devicemanagement.Entity;
 
 public class NhanVien {
-    String maNhanVien, hoTen, matKhau, mail, hinhAnh;
+    String tenDangNhap, hoTen, matKhau, mail, hinhAnh;
 
-    public NhanVien(String maNhanVien, String hoTen, String matKhau, String mail, String hinhAnh) {
-        this.maNhanVien = maNhanVien;
+    public NhanVien(String tenDangNhap, String hoTen, String matKhau, String mail, String hinhAnh) {
+        this.tenDangNhap = tenDangNhap;
         this.hoTen = hoTen;
         this.matKhau = matKhau;
         this.mail = mail;
@@ -14,12 +14,12 @@ public class NhanVien {
     public NhanVien() {
     }
 
-    public String getMaNhanVien() {
-        return maNhanVien;
+    public String getTenDangNhap() {
+        return tenDangNhap;
     }
 
-    public void setMaNhanVien(String maNhanVien) {
-        this.maNhanVien = maNhanVien;
+    public void setMaNhanVien(String tenDangNhap) {
+        this.tenDangNhap = tenDangNhap;
     }
 
     public String getHoTen() {
