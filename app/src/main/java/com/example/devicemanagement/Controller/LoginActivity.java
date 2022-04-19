@@ -48,15 +48,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void getDataBase() { // ai chưa tạo CSDL ban đầu thì bỏ cmt nha!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//        dbNhanVien = new DBNhanVien(getApplicationContext(),"nhanvien",null,1);
+//        dbNhanVien = new DBNhanVien(this);
 //        dbNhanVien.getReadableDatabase();
-//        dbLoaiThietBi = new DBLoaiThietBi(getApplicationContext(),"loaithietbi",null,1);
+//        dbLoaiThietBi = new DBLoaiThietBi(this);
 //        dbLoaiThietBi.getReadableDatabase();
-//        dbThietBi = new DBThietBi(this,"thietbi",null,1);
+//        dbThietBi = new DBThietBi(this);
 //        dbThietBi.getReadableDatabase();
-//        dbPhongHoc = new DBPhongHoc(this,"phonghoc",null,1);
+//        dbPhongHoc = new DBPhongHoc(this);
 //        dbPhongHoc.getReadableDatabase();
-//        dbChiTietSD = new DBChiTietSD(this,"chitietsudung",null,1);
+//        dbChiTietSD = new DBChiTietSD(this);
 //        dbChiTietSD.getReadableDatabase();
     }
 }
