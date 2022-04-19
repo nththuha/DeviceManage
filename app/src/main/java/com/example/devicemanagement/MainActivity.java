@@ -20,6 +20,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getControl();
+    }
+
+    private void getControl() {
         dbNhanVien = new DBNhanVien(getApplicationContext(),"nhanvien",null,1);
         dbNhanVien.getReadableDatabase();
         dbLoaiThietBi = new DBLoaiThietBi(getApplicationContext(),"loaithietbi",null,1);
