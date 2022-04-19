@@ -3,6 +3,9 @@ package com.example.devicemanagement;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.devicemanagement.DBHelper.DBChiTietSD;
 import com.example.devicemanagement.DBHelper.DBLoaiThietBi;
@@ -16,14 +19,27 @@ public class LoginActivity extends AppCompatActivity {
     private DBThietBi dbThietBi;
     private DBPhongHoc dbPhongHoc;
     private DBChiTietSD dbChiTietSD;
+
+    EditText txtUser, txtPass;
+    Button btnLogin;
+    TextView tvForgotPass;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getDataBase();
         getControl();
     }
 
     private void getControl() {
+        txtUser = findViewById(R.id.txtUser);
+        txtPass = findViewById(R.id.txtPass);
+        btnLogin = findViewById(R.id.btnLogin);
+        tvForgotPass = findViewById(R.id.tvForgotPass);
+    }
+
+    private void getDataBase() {
         dbNhanVien = new DBNhanVien(getApplicationContext(),"nhanvien",null,1);
         dbNhanVien.getReadableDatabase();
         dbLoaiThietBi = new DBLoaiThietBi(getApplicationContext(),"loaithietbi",null,1);

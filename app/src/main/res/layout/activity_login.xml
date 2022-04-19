@@ -37,13 +37,13 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/txtUserLogin"
+            android:id="@+id/txtUser"
             android:layout_marginTop="48dp"
             android:hint="Tên đăng nhập"
             style="@style/style_login_txtdangnhap" />
 
         <EditText
-            android:id="@+id/txtPassLogin"
+            android:id="@+id/txtPass"
             android:layout_marginTop="16dp"
             android:hint="Mật khẩu"
             android:inputType="textPassword"
