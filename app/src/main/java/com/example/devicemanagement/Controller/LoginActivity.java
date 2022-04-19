@@ -16,6 +16,8 @@ import com.example.devicemanagement.DBHelper.DBThietBi;
 import com.example.devicemanagement.Entity.NhanVien;
 import com.example.devicemanagement.R;
 
+import java.util.ArrayList;
+
 public class LoginActivity extends AppCompatActivity {
     private DBNhanVien dbNhanVien;
     private DBLoaiThietBi dbLoaiThietBi;
@@ -27,6 +29,8 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     TextView tvForgotPass;
 
+    ArrayList<NhanVien> DSNV = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,9 +38,6 @@ public class LoginActivity extends AppCompatActivity {
         dbNhanVien = new DBNhanVien(this);
         getDataBase();
         getControl();
-        NhanVien nhanVien = new NhanVien("NV01", "Ngô Thu Hà", "02042000", "thuhango0204@gmail.com", "123");
-        dbNhanVien.themNhanVien(nhanVien);
-
     }
 
     private void getControl() {
@@ -46,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         tvForgotPass = findViewById(R.id.tvForgotPass);
     }
 
-    private void getDataBase() {
+    private void getDataBase() { // ai chưa tạo CSDL ban đầu thì bỏ cmt nha!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //        dbNhanVien = new DBNhanVien(getApplicationContext(),"nhanvien",null,1);
 //        dbNhanVien.getReadableDatabase();
 //        dbLoaiThietBi = new DBLoaiThietBi(getApplicationContext(),"loaithietbi",null,1);
