@@ -1,4 +1,4 @@
-package com.example.devicemanagement;
+package com.example.devicemanagement.Controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,7 @@ import com.example.devicemanagement.DBHelper.DBLoaiThietBi;
 import com.example.devicemanagement.DBHelper.DBNhanVien;
 import com.example.devicemanagement.DBHelper.DBPhongHoc;
 import com.example.devicemanagement.DBHelper.DBThietBi;
+import com.example.devicemanagement.R;
 
 public class LoginActivity extends AppCompatActivity {
     private DBNhanVien dbNhanVien;

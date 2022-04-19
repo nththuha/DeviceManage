@@ -22,4 +22,5 @@ public class DBNhanVien extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS nhanvien");
         onCreate(db);
     }
+
 }
