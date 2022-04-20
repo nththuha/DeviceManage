@@ -13,7 +13,7 @@ public class DBPhongHoc extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql="CREATE TABLE phonghoc (maphonghoc TEXT PRIMARY KEY, loaiphong TEXT, tang INTEGER, trangthai NUMERIC)";
+        String sql="CREATE TABLE phonghoc (maphonghoc TEXT PRIMARY KEY, loaiphong TEXT, tang INTEGER)";
         db.execSQL(sql);
     }
 

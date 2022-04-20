@@ -40,6 +40,7 @@
             android:id="@+id/txtUser"
             android:layout_marginTop="48dp"
             android:hint="Tên đăng nhập"
+            android:text="NV01"
             style="@style/style_login_txtdangnhap" />
 
         <EditText
@@ -47,6 +48,7 @@
             android:layout_marginTop="16dp"
             android:hint="Mật khẩu"
             android:inputType="textPassword"
+            android:text="02042000"
             style="@style/style_login_txtdangnhap"/>
 
         <androidx.appcompat.widget.AppCompatButton
