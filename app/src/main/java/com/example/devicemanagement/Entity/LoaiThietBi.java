@@ -1,6 +1,8 @@
 package com.example.devicemanagement.Entity;
 
-public class LoaiThietBi {
+import java.io.Serializable;
+
+public class LoaiThietBi implements Serializable {
     String maLoai, tenLoai;
 
     public LoaiThietBi(String maLoai, String tenLoai) {

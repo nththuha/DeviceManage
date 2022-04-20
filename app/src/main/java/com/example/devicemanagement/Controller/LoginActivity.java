@@ -1,5 +1,6 @@
 package com.example.devicemanagement.Controller;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -79,6 +80,12 @@ public class LoginActivity extends AppCompatActivity {
                 nhanVienDangNhap = dbNhanVien.xetDangNhap(tenDangNhap, matKhau);
                 if (nhanVienDangNhap != null) {
                     Toast.makeText(LoginActivity.this, "ĐĂNG NHẬP THÀNH CÔNG!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+                    //sử dụng bundle gửi dữ liệu của object nhân viên
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("thong_tin_nv", nhanVienDangNhap);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
                 } else {
                     Toast.makeText(LoginActivity.this, "XEM LẠI TÊN ĐĂNG NHẬP VÀ MẬT KHẨU", Toast.LENGTH_SHORT).show();
                 }
@@ -97,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (nhanVien != null) {
                     String matKhauMoi = taoMatKhau();
-                    dbNhanVien.suaMatKhau(nhanVien.getTenDangNhap(), matKhauMoi);
+                    //dbNhanVien.suaMatKhau(nhanVien.getTenDangNhap(), matKhauMoi);
                     tvForgotPass.setEnabled(false);
                     Toast.makeText(LoginActivity.this, "VUI LÒNG ĐỢI, HỆ THỐNG ĐANG XỬ LÝ", Toast.LENGTH_SHORT).show();
                     guiMail(nhanVien.getMail(), matKhauMoi);

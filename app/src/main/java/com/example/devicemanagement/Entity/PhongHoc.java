@@ -1,6 +1,8 @@
 package com.example.devicemanagement.Entity;
 
-public class PhongHoc {
+import java.io.Serializable;
+
+public class PhongHoc implements Serializable {
     String maPhong, loaiPhong;
     int tang;
 

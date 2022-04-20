@@ -10,7 +10,7 @@ import com.example.devicemanagement.R;
 
 public class ChiTietSuDungActivity extends AppCompatActivity {
 
-    ImageButton imvBack;
+    ImageButton imbBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +20,7 @@ public class ChiTietSuDungActivity extends AppCompatActivity {
     }
 
     private void setEvent() {
-        imvBack.setOnClickListener(new View.OnClickListener() {
+        imbBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
@@ -29,6 +29,6 @@ public class ChiTietSuDungActivity extends AppCompatActivity {
     }
 
     private void setControl() {
-        imvBack = findViewById(R.id.imvBack);
+        imbBack = findViewById(R.id.imbBack);
     }
 }

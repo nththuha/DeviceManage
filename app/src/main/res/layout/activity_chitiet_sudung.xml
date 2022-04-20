@@ -4,33 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_bg"
+    android:orientation="vertical"
     tools:context=".Controller.ChiTietSuDungActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tb_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/blue_100">
+        android:background="?android:selectableItemBackground">
 
         <ImageButton
-            android:id="@+id/imvBack"
+            android:id="@+id/imbBack"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_centerVertical="true"
-            android:layout_marginStart="5dp"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/ic_arrow_back" />
+            android:src="@drawable/ic_arrow_back"/>
+        <!--android:background="@color/blue_100"-->
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
             android:gravity="center"
             android:layout_centerInParent="true"
             android:text="CHI TIẾT SỬ DỤNG"
-            android:textColor="@color/purple_300"
-            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:textSize="28sp"
             android:textStyle="bold" />
     </androidx.appcompat.widget.Toolbar>
     <RelativeLayout
+        android:id="@+id/lvCTSD"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class LoaiThietBiActivity extends AppCompatActivity {
     ListView lvLTB;
-    ImageButton imbThemLTB;
+    ImageButton imbThemLTB, imbBack;
     SearchView svLTB;
     AdapterLoaiThietBi adapterLoaiThietBi;
     ArrayList<LoaiThietBi> DSLTB;
@@ -43,11 +43,18 @@ public class LoaiThietBiActivity extends AppCompatActivity {
 
             }
         });
+        imbBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     private void setControl() {
         lvLTB = findViewById(R.id.lvLTB);
         imbThemLTB = findViewById(R.id.imbThemLTB);
         svLTB = findViewById(R.id.svLTB);
+        imbBack = findViewById(R.id.imbBack);
     }
 }

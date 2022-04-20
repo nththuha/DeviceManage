@@ -1,8 +1,9 @@
 package com.example.devicemanagement.Entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ChiTietSD {
+public class ChiTietSD implements Serializable {
     String maPhong, maThietBi;
     Date ngaySuDung;
     int soLuong;

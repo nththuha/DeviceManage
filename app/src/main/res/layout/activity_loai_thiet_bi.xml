@@ -5,27 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/ic_bg"
     tools:context=".Controller.LoaiThietBiActivity">
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="?android:selectableItemBackground">
 
-        <Button
+        <ImageButton
+            android:id="@+id/imbBack"
             android:layout_width="30dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/ic_arrow_back"/>
+            <!--android:background="@color/blue_100"-->
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="20dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="center"
+            android:layout_centerInParent="true"
             android:text="QUẢN LÝ LOẠI THIẾT BỊ"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="28sp"
             android:textStyle="bold" />
-    </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
 
     <SearchView
         android:id="@+id/svLTB"

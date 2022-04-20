@@ -20,9 +20,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.devicemanagement.Entity.NhanVien;
 import com.example.devicemanagement.R;
 
 public class HomeFragmentActivity extends Fragment {
+    NhanVien nhanVienLogin;
     TextView tvName;
     ImageButton imvLogout;
     Button btnY, btnN;
@@ -42,11 +44,17 @@ public class HomeFragmentActivity extends Fragment {
         llNhanVien = view.findViewById(R.id.llNhanVien);
         llThongKe = view.findViewById(R.id.llThongKe);
         llCTSuDung = view.findViewById(R.id.llCTSuDung);
+
+        //nhận data từ login
+        Bundle bundle = getActivity().getIntent().getExtras();
+        nhanVienLogin = (NhanVien) bundle.getSerializable("thong_tin_nv");
+
         getEvent();
         return view;
     }
 
     private void getEvent() {
+        tvName.setText("Xin chào, " + nhanVienLogin.getHoTen());
         llPhongHoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,6 +77,9 @@ public class HomeFragmentActivity extends Fragment {
                 llNhanVien.setBackgroundResource(R.drawable.round_border_while30);
                 llThongKe.setBackgroundResource(R.drawable.round_border_while30);
                 llCTSuDung.setBackgroundResource(R.drawable.round_border_while30);
+
+                Toast.makeText(getContext(), "Quản lý loại thiết bị", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getContext(),LoaiThietBiActivity.class));
             }
         });
         llThietBi.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +92,8 @@ public class HomeFragmentActivity extends Fragment {
                 llNhanVien.setBackgroundResource(R.drawable.round_border_while30);
                 llThongKe.setBackgroundResource(R.drawable.round_border_while30);
                 llCTSuDung.setBackgroundResource(R.drawable.round_border_while30);
+
+
             }
         });
         llNhanVien.setOnClickListener(new View.OnClickListener() {
