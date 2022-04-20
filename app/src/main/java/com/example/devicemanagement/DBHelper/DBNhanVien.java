@@ -4,9 +4,19 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
+import android.os.Build;
+
+import javax.crypto.spec.SecretKeySpec;
+import javax.crypto.Cipher;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import java.util.Base64;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import com.example.devicemanagement.Entity.NhanVien;
 
@@ -36,6 +46,13 @@ public class DBNhanVien extends SQLiteOpenHelper {
         database.close();
     }
 
+    public void xoaNhanVien(String tenDangNhap){
+        String sql = "Delete from nhanvien where tendangnhap = ?";
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sql, new String[]{tenDangNhap});
+        database.close();
+    }
+
     public ArrayList<NhanVien> layDSNhanVien(){
         ArrayList<NhanVien> data = new ArrayList<>();
         String sql = "SELECT * FROM nhanvien";
@@ -55,7 +72,21 @@ public class DBNhanVien extends SQLiteOpenHelper {
         return data;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public NhanVien xetDangNhap(String tenDangNhap, String matKhau){
+        try {
+            matKhau = maHoa(matKhau);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (NoSuchPaddingException e) {
+            e.printStackTrace();
+        } catch (IllegalBlockSizeException e) {
+            e.printStackTrace();
+        } catch (BadPaddingException e) {
+            e.printStackTrace();
+        } catch (InvalidKeyException e) {
+            e.printStackTrace();
+        }
         String sql = "select * from nhanvien where tendangnhap = ? and matkhau = ?";
         SQLiteDatabase database = getReadableDatabase();
         Cursor cursor = database.rawQuery(sql, new String[]{tenDangNhap, matKhau});
@@ -69,5 +100,17 @@ public class DBNhanVien extends SQLiteOpenHelper {
             return nhanVien;
         }
         return null;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public static String maHoa(String original) throws NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
+        String SECRET_KEY = "12345678";
+        SecretKeySpec skeySpec = new SecretKeySpec(SECRET_KEY.getBytes(), "DES");
+        Cipher cipher = Cipher.getInstance("DES/ECB/PKCS5PADDING");
+        cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
+        byte[] byteEncrypted = cipher.doFinal(original.getBytes());
+        String encrypted = null;
+        encrypted = Base64.getEncoder().encodeToString(byteEncrypted);
+        return encrypted;
     }
 }

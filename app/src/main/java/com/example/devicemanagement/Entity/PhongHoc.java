@@ -3,13 +3,11 @@ package com.example.devicemanagement.Entity;
 public class PhongHoc {
     String maPhong, loaiPhong;
     int tang;
-    boolean trangThai;
 
-    public PhongHoc(String maPhong, String loaiPhong, int tang, boolean trangThai) {
+    public PhongHoc(String maPhong, String loaiPhong, int tang) {
         this.maPhong = maPhong;
         this.loaiPhong = loaiPhong;
         this.tang = tang;
-        this.trangThai = trangThai;
     }
 
     public PhongHoc() {
@@ -37,13 +35,5 @@ public class PhongHoc {
 
     public void setTang(int tang) {
         this.tang = tang;
-    }
-
-    public boolean isTrangThai() {
-        return trangThai;
-    }
-
-    public void setTrangThai(boolean trangThai) {
-        this.trangThai = trangThai;
     }
 }
