@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -29,7 +30,7 @@ public class DBNhanVien extends SQLiteOpenHelper {
     }
 
     public void themNhanVien(NhanVien nhanVien){
-        String sql = "Insert into nhanvien values (?,?,?,?,?)";
+        String sql = "INSERT INTO nhanvien VALUES (?,?,?,?,?)";
         SQLiteDatabase database = getWritableDatabase();
         database.execSQL(sql, new String[]{nhanVien.getTenDangNhap(), nhanVien.getHoTen(), nhanVien.getMatKhau(), nhanVien.getMail(), nhanVien.getHinhAnh()});
         database.close();
@@ -37,7 +38,7 @@ public class DBNhanVien extends SQLiteOpenHelper {
 
     public ArrayList<NhanVien> layDSNhanVien(){
         ArrayList<NhanVien> data = new ArrayList<>();
-        String sql = "select * from nhanvien";
+        String sql = "SELECT * FROM nhanvien";
         SQLiteDatabase database = getReadableDatabase();
         Cursor cursor = database.rawQuery(sql, null);
         if(cursor.moveToFirst()){
@@ -52,5 +53,22 @@ public class DBNhanVien extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         return data;
+    }
+
+    public NhanVien xetDangNhap(String tenDangNhap, String matKhau){
+        String sql = "SELECT * FROM nhanvien WHERE tendangnhap = ? and matkhau = ?";
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery(sql, new String[]{tenDangNhap, matKhau});
+        if(cursor.moveToFirst()){
+            NhanVien nhanVien = new NhanVien();
+            nhanVien.setMaNhanVien(cursor.getString(0));
+            nhanVien.setHoTen(cursor.getString(1));
+            nhanVien.setMatKhau(cursor.getString(2));
+            nhanVien.setMail(cursor.getString(3));
+            nhanVien.setHinhAnh(cursor.getString(4));
+
+            return nhanVien;
+        }
+        return null;
     }
 }
