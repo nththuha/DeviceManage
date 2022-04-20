@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -36,27 +37,37 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         dbNhanVien = new DBNhanVien(this);
-        getDataBase();
-        getControl();
+//        getDataBase();
+        setControl();
+        setEvent();
     }
 
-    private void getControl() {
+    private void setEvent() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
+    }
+
+    private void setControl() {
         txtUser = findViewById(R.id.txtUser);
         txtPass = findViewById(R.id.txtPass);
         btnLogin = findViewById(R.id.btnLogin);
         tvForgotPass = findViewById(R.id.tvForgotPass);
     }
 
-    private void getDataBase() { // ai chưa tạo CSDL ban đầu thì bỏ cmt nha!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//        dbNhanVien = new DBNhanVien(this);
-//        dbNhanVien.getReadableDatabase();
-//        dbLoaiThietBi = new DBLoaiThietBi(this);
-//        dbLoaiThietBi.getReadableDatabase();
-//        dbThietBi = new DBThietBi(this);
-//        dbThietBi.getReadableDatabase();
-//        dbPhongHoc = new DBPhongHoc(this);
-//        dbPhongHoc.getReadableDatabase();
-//        dbChiTietSD = new DBChiTietSD(this);
-//        dbChiTietSD.getReadableDatabase();
+    private void getDataBase() {
+        dbNhanVien = new DBNhanVien(this);
+        dbNhanVien.getReadableDatabase();
+        dbLoaiThietBi = new DBLoaiThietBi(this);
+        dbLoaiThietBi.getReadableDatabase();
+        dbThietBi = new DBThietBi(this);
+        dbThietBi.getReadableDatabase();
+        dbPhongHoc = new DBPhongHoc(this);
+        dbPhongHoc.getReadableDatabase();
+        dbChiTietSD = new DBChiTietSD(this);
+        dbChiTietSD.getReadableDatabase();
     }
 }
