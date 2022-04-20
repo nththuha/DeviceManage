@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <Button
             android:layout_width="30dp"
             android:layout_height="wrap_content" />
@@ -18,8 +19,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
             android:layout_gravity="center"
+            android:layout_marginStart="20dp"
             android:text="QUẢN LÝ LOẠI THIẾT BỊ"
             android:textColor="@color/black"
             android:textSize="30sp"
@@ -27,32 +28,35 @@
     </LinearLayout>
 
     <SearchView
-        android:layout_marginTop="25dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
+        android:id="@+id/svLTB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_border_search"/>
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/round_border_search" />
+
     <TextView
-        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
         android:text="DANH SÁCH LOẠI THIẾT BỊ"
         android:textColor="@color/black"
-        android:layout_gravity="center"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
+
     <ListView
         android:id="@+id/lvLTB"
         android:layout_width="wrap_content"
-        android:layout_height="400dp"/>
+        android:layout_height="400dp" />
 
     <ImageButton
-        android:id="@+id/imvThemLTB"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
+        android:id="@+id/imbThemLTB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_circle_add"
         android:layout_gravity="right"
-        android:background="?android:selectableItemBackground"/>
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:background="?android:selectableItemBackground"
+        android:src="@drawable/ic_circle_add" />
 </LinearLayout>
