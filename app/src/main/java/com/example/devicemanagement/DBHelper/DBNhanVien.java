@@ -129,4 +129,25 @@ public class DBNhanVien extends SQLiteOpenHelper {
         }
         return null;
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void suaMatKhau(String tenDangNhap, String matKhau){
+        try {
+            matKhau = maHoa(matKhau);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (NoSuchPaddingException e) {
+            e.printStackTrace();
+        } catch (IllegalBlockSizeException e) {
+            e.printStackTrace();
+        } catch (BadPaddingException e) {
+            e.printStackTrace();
+        } catch (InvalidKeyException e) {
+            e.printStackTrace();
+        }
+        String sql = "Update nhanvien set matkhau = ? where tendangnhap = ?";
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sql, new String[]{matKhau, tenDangNhap});
+        database.close();
+    }
 }
