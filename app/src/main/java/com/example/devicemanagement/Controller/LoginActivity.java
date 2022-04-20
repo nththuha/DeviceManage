@@ -4,6 +4,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -33,6 +34,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
+import java.util.Random;
 
 public class LoginActivity extends AppCompatActivity {
     private DBNhanVien dbNhanVien;
@@ -91,34 +93,53 @@ public class LoginActivity extends AppCompatActivity {
         tvForgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String messagetosend = "12345";
-                Properties pros = new Properties();
-                pros.put("mail.smtp.auth", "true");
-                pros.put("mail.smtp.starttls.enable", "true");
-                pros.put("mail.smtp.host", "smtp.gmail.com");
-                pros.put("mail.smtp.port", "587");
-                Session session = Session.getInstance(pros, new javax.mail.Authenticator(){
-                    @Override
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(mail, password);
-                    }
-                });
-                try {
-                    Message message = new MimeMessage(session);
-                    message.setFrom(new InternetAddress(mail));
-                    message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("thuhango0204@gmail.com"));
-                    message.setSubject("123");
-                    message.setText("12345");
-                    Transport.send(message);
-                    Toast.makeText(LoginActivity.this, "Gửi mật khẩu rồi!", Toast.LENGTH_SHORT).show();
-                }
-                catch (MessagingException e){
+                String tenDangNhap = txtUser.getText().toString();
+                NhanVien nhanVien = dbNhanVien.xetGuiMail(tenDangNhap);
 
+                if(nhanVien != null){
+                    tvForgotPass.setEnabled(false);
+                    Toast.makeText(LoginActivity.this, "VUI LÒNG ĐỢI, HỆ THỐNG ĐANG XỬ LÝ", Toast.LENGTH_SHORT).show();
+                    String matKhauMoi = taoMatKhau();
+                    guiMail("thuhango0204@gmail.com", matKhauMoi);
                 }
             }
         });
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+    }
+
+    public String taoMatKhau() {
+        Random generator = new Random();
+        int value = generator.nextInt((999999 - 100000) + 1) + 100000;
+        return value + "";
+    }
+
+    private void guiMail(String mailToSend, String matKhauMoi){
+        Properties pros = new Properties();
+        pros.put("mail.smtp.auth", "true");
+        pros.put("mail.smtp.starttls.enable", "true");
+        pros.put("mail.smtp.host", "smtp.gmail.com");
+        pros.put("mail.smtp.port", "587");
+        Session session = Session.getInstance(pros, new javax.mail.Authenticator(){
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(mail, password);
+            }
+        });
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(mail));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(mailToSend));
+            message.setSubject("LẤY LẠI MẬT KHẨU");
+            message.setText(matKhauMoi);
+            Transport.send(message);
+            Toast.makeText(LoginActivity.this, "Mật khẩu mới đã được gửi vào mail!", Toast.LENGTH_SHORT).show();
+
+        }
+        catch (MessagingException e){
+            Log.e("Lỗi", e.getMessage());
+        }
+        tvForgotPass.setEnabled(true);
     }
 
     private void setControl() {

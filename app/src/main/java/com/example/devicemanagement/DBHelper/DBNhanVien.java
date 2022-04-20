@@ -113,4 +113,20 @@ public class DBNhanVien extends SQLiteOpenHelper {
         encrypted = Base64.getEncoder().encodeToString(byteEncrypted);
         return encrypted;
     }
+
+    public NhanVien xetGuiMail(String tenDangNhap){
+        String sql = "select * from nhanvien where tendangnhap = ?";
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery(sql, new String[]{tenDangNhap});
+        if(cursor.moveToFirst()){
+            NhanVien nhanVien = new NhanVien();
+            nhanVien.setMaNhanVien(cursor.getString(0));
+            nhanVien.setHoTen(cursor.getString(1));
+            nhanVien.setMatKhau(cursor.getString(2));
+            nhanVien.setMail(cursor.getString(3));
+            nhanVien.setHinhAnh(cursor.getString(4));
+            return nhanVien;
+        }
+        return null;
+    }
 }
