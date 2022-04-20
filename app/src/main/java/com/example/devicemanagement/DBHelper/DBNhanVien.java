@@ -52,11 +52,12 @@ public class DBNhanVien extends SQLiteOpenHelper {
                 data.add(nhanVien);
             } while (cursor.moveToNext());
         }
+        database.close();
         return data;
     }
 
     public NhanVien xetDangNhap(String tenDangNhap, String matKhau){
-        String sql = "SELECT * FROM nhanvien WHERE tendangnhap = ? and matkhau = ?";
+        String sql = "select * from nhanvien where tendangnhap = ? and matkhau = ?";
         SQLiteDatabase database = getReadableDatabase();
         Cursor cursor = database.rawQuery(sql, new String[]{tenDangNhap, matKhau});
         if(cursor.moveToFirst()){
@@ -66,7 +67,6 @@ public class DBNhanVien extends SQLiteOpenHelper {
             nhanVien.setMatKhau(cursor.getString(2));
             nhanVien.setMail(cursor.getString(3));
             nhanVien.setHinhAnh(cursor.getString(4));
-
             return nhanVien;
         }
         return null;
