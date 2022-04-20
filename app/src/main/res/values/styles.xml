@@ -7,7 +7,6 @@
         <item name="android:layout_marginStart">32dp</item>
         <item name="android:layout_marginEnd">32dp</item>
         <item name="android:background">@drawable/round_border_purple60</item>
-        <item name="android:drawableStart">@drawable/ic_person_login</item>
         <item name="android:drawablePadding">16dp</item>
         <item name="android:ems">10</item>
         <item name="android:inputType">text</item>

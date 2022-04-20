@@ -41,6 +41,7 @@
             android:layout_marginTop="48dp"
             android:hint="Tên đăng nhập"
             android:text="NV01"
+            android:drawableStart="@drawable/ic_person_login"
             style="@style/style_login_txtdangnhap" />
 
         <EditText
@@ -49,6 +50,7 @@
             android:hint="Mật khẩu"
             android:inputType="textPassword"
             android:text="02042000"
+            android:drawableStart="@drawable/ic_lock_login"
             style="@style/style_login_txtdangnhap"/>
 
         <androidx.appcompat.widget.AppCompatButton

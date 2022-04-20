@@ -64,7 +64,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void setEvent(){
         dbNhanVien = new DBNhanVien(this);
-//        dbNhanVien.themNhanVien(new NhanVien("NV01", "ngothuha", "4n/0+VVr3Mj+uVm31GQvyw==", "thuhango0204@gmail.com", "123"));
+ //       dbNhanVien.themNhanVien(new NhanVien("NV01", "ngothuha", "4n/0+VVr3Mj+uVm31GQvyw==", "1", "123"));
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -82,6 +83,9 @@ public class LoginActivity extends AppCompatActivity {
                 nhanVienDangNhap = dbNhanVien.xetDangNhap(tenDangNhap, matKhau);
                 if(nhanVienDangNhap != null){
                     Toast.makeText(LoginActivity.this, "ĐĂNG NHẬP THÀNH CÔNG!", Toast.LENGTH_SHORT).show();
+
+                    //chuyển màn hình
+                    startActivity(new Intent(LoginActivity.this,HomeActivity.class));
                 }
                 else{
                     Toast.makeText(LoginActivity.this, "XEM LẠI TÊN ĐĂNG NHẬP VÀ MẬT KHẨU", Toast.LENGTH_SHORT).show();
@@ -92,20 +96,15 @@ public class LoginActivity extends AppCompatActivity {
         tvForgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String tenDangNhap = txtUser.getText().toString().trim();
-                if(tenDangNhap.equals("")){
-                    Toast.makeText(LoginActivity.this, "Bạn cần nhập tên đăng nhập!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+                String tenDangNhap = txtUser.getText().toString();
                 NhanVien nhanVien = dbNhanVien.xetGuiMail(tenDangNhap);
 
                 if(nhanVien != null){
                     tvForgotPass.setEnabled(false);
                     Toast.makeText(LoginActivity.this, "VUI LÒNG ĐỢI, HỆ THỐNG ĐANG XỬ LÝ", Toast.LENGTH_SHORT).show();
                     String matKhauMoi = taoMatKhau();
-                    guiMail(nhanVien.getMail(), matKhauMoi);
+                    guiMail("thuhango0204@gmail.com", matKhauMoi);
                 }
-                else Toast.makeText(LoginActivity.this, "TÊN ĐĂNG NHẬP KHÔNG TỒN TẠI!", Toast.LENGTH_SHORT).show();
             }
         });
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
