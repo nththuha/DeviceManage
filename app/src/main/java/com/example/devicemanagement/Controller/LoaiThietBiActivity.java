@@ -3,6 +3,7 @@ package com.example.devicemanagement.Controller;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -35,6 +36,13 @@ public class LoaiThietBiActivity extends AppCompatActivity {
         DSLTB = dbLoaiThietBi.layDanhSachLTB();
         adapterLoaiThietBi = new AdapterLoaiThietBi(this, R.layout.layout_loai_thiet_bi, DSLTB);
         lvLTB.setAdapter(adapterLoaiThietBi);
+
+        imbThemLTB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     private void setControl() {
