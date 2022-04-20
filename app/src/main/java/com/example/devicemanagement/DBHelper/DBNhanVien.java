@@ -129,4 +129,11 @@ public class DBNhanVien extends SQLiteOpenHelper {
         }
         return null;
     }
+
+    public void suaMatKhau(String tenDangNhap, String matKhau){
+        String sql = "Update nhanvien set matkhau = ? where tendangnhap = ?";
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sql, new String[]{matKhau, tenDangNhap});
+        database.close();
+    }
 }

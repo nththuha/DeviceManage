@@ -1,11 +1,5 @@
 package com.example.devicemanagement.Controller;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -16,6 +10,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.devicemanagement.DBHelper.DBChiTietSD;
 import com.example.devicemanagement.DBHelper.DBLoaiThietBi;
 import com.example.devicemanagement.DBHelper.DBNhanVien;
@@ -25,6 +22,8 @@ import com.example.devicemanagement.Entity.NhanVien;
 import com.example.devicemanagement.R;
 
 import java.util.ArrayList;
+import java.util.Properties;
+import java.util.Random;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -33,8 +32,6 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.util.Properties;
-import java.util.Random;
 
 public class LoginActivity extends AppCompatActivity {
     private DBNhanVien dbNhanVien;
@@ -62,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         setEvent();
     }
 
-    private void setEvent(){
+    private void setEvent() {
         dbNhanVien = new DBNhanVien(this);
 //        dbNhanVien.themNhanVien(new NhanVien("NV01", "ngothuha", "4n/0+VVr3Mj+uVm31GQvyw==", "thuhango0204@gmail.com", "123"));
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -71,19 +68,18 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String tenDangNhap = txtUser.getText().toString().trim();
                 String matKhau = txtPass.getText().toString().trim();
-                if(tenDangNhap.equals("")){
+                if (tenDangNhap.equals("")) {
                     Toast.makeText(LoginActivity.this, "Tên đăng nhập không được để trống!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(matKhau.equals("")){
+                if (matKhau.equals("")) {
                     Toast.makeText(LoginActivity.this, "Mật khẩu không được để trống!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 nhanVienDangNhap = dbNhanVien.xetDangNhap(tenDangNhap, matKhau);
-                if(nhanVienDangNhap != null){
+                if (nhanVienDangNhap != null) {
                     Toast.makeText(LoginActivity.this, "ĐĂNG NHẬP THÀNH CÔNG!", Toast.LENGTH_SHORT).show();
-                }
-                else{
+                } else {
                     Toast.makeText(LoginActivity.this, "XEM LẠI TÊN ĐĂNG NHẬP VÀ MẬT KHẨU", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -93,19 +89,20 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String tenDangNhap = txtUser.getText().toString().trim();
-                if(tenDangNhap.equals("")){
+                if (tenDangNhap.equals("")) {
                     Toast.makeText(LoginActivity.this, "Bạn cần nhập tên đăng nhập!", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 NhanVien nhanVien = dbNhanVien.xetGuiMail(tenDangNhap);
 
-                if(nhanVien != null){
+                if (nhanVien != null) {
+                    String matKhauMoi = taoMatKhau();
+                    dbNhanVien.suaMatKhau(nhanVien.getTenDangNhap(), matKhauMoi);
                     tvForgotPass.setEnabled(false);
                     Toast.makeText(LoginActivity.this, "VUI LÒNG ĐỢI, HỆ THỐNG ĐANG XỬ LÝ", Toast.LENGTH_SHORT).show();
-                    String matKhauMoi = taoMatKhau();
                     guiMail(nhanVien.getMail(), matKhauMoi);
-                }
-                else Toast.makeText(LoginActivity.this, "TÊN ĐĂNG NHẬP KHÔNG TỒN TẠI!", Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(LoginActivity.this, "TÊN ĐĂNG NHẬP KHÔNG TỒN TẠI!", Toast.LENGTH_SHORT).show();
             }
         });
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -118,13 +115,13 @@ public class LoginActivity extends AppCompatActivity {
         return value + "";
     }
 
-    private void guiMail(String mailToSend, String matKhauMoi){
+    private void guiMail(String mailToSend, String matKhauMoi) {
         Properties pros = new Properties();
         pros.put("mail.smtp.auth", "true");
         pros.put("mail.smtp.starttls.enable", "true");
         pros.put("mail.smtp.host", "smtp.gmail.com");
         pros.put("mail.smtp.port", "587");
-        Session session = Session.getInstance(pros, new javax.mail.Authenticator(){
+        Session session = Session.getInstance(pros, new javax.mail.Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(mail, password);
@@ -139,8 +136,7 @@ public class LoginActivity extends AppCompatActivity {
             Transport.send(message);
             Toast.makeText(LoginActivity.this, "Mật khẩu mới đã được gửi vào mail!", Toast.LENGTH_SHORT).show();
 
-        }
-        catch (MessagingException e){
+        } catch (MessagingException e) {
             Log.e("Lỗi", e.getMessage());
         }
         tvForgotPass.setEnabled(true);
