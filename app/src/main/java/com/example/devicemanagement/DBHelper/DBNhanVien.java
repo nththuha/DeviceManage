@@ -19,14 +19,14 @@ public class DBNhanVien extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql="CREATE TABLE nhanvien (tendangnhap TEXT PRIMARY KEY, hoten TEXT, matkhau TEXT, mail TEXT, hinhanh TEXT)";
+        String sql="CREATE TABLE nhanvien (tendangnhap text PRIMARY KEY, hoten TEXT, matkhau TEXT, mail TEXT, hinhanh TEXT)";
         db.execSQL(sql);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP TABLE IF EXISTS nhanvien");
-        onCreate(db);
+//        db.execSQL("DROP TABLE IF EXISTS nhanvien");
+//        onCreate(db);
     }
 
     public void themNhanVien(NhanVien nhanVien){
@@ -52,7 +52,6 @@ public class DBNhanVien extends SQLiteOpenHelper {
                 data.add(nhanVien);
             } while (cursor.moveToNext());
         }
-        database.close();
         return data;
     }
 

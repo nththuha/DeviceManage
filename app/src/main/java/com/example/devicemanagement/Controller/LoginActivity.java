@@ -45,14 +45,17 @@ public class LoginActivity extends AppCompatActivity {
 
     private void setEvent() {
         dbNhanVien = new DBNhanVien(this);
+//        dbNhanVien.themNhanVien(new NhanVien("NV04", "ngothuha", "02042000", "1", "123"));
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String tenDangNhap = txtUser.getText().toString();
-                String matKhau = txtUser.getText().toString();
+                String matKhau = txtPass.getText().toString();
                 nhanVienDangNhap = dbNhanVien.xetDangNhap(tenDangNhap, matKhau);
-                if(nhanVienDangNhap != null)
-                    Toast.makeText(LoginActivity.this, nhanVienDangNhap.getTenDangNhap(), Toast.LENGTH_SHORT).show();
+                if(nhanVienDangNhap != null){
+                    Toast.makeText(LoginActivity.this, nhanVienDangNhap.getMatKhau() + "", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
