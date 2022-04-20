@@ -3,8 +3,11 @@ package com.example.devicemanagement.Controller;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,14 +23,16 @@ import com.example.devicemanagement.DBHelper.DBThietBi;
 import com.example.devicemanagement.Entity.NhanVien;
 import com.example.devicemanagement.R;
 
-import java.io.IOException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Properties;
 
 public class LoginActivity extends AppCompatActivity {
     private DBNhanVien dbNhanVien;
@@ -42,6 +47,9 @@ public class LoginActivity extends AppCompatActivity {
 
     ArrayList<NhanVien> DSNV = new ArrayList<>();
     NhanVien nhanVienDangNhap = new NhanVien();
+
+    final String mail = "thuhango0204@gmail.com";
+    final String password = "tvchhnsxhegolohs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,9 +91,34 @@ public class LoginActivity extends AppCompatActivity {
         tvForgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String messagetosend = "12345";
+                Properties pros = new Properties();
+                pros.put("mail.smtp.auth", "true");
+                pros.put("mail.smtp.starttls.enable", "true");
+                pros.put("mail.smtp.host", "smtp.gmail.com");
+                pros.put("mail.smtp.port", "587");
+                Session session = Session.getInstance(pros, new javax.mail.Authenticator(){
+                    @Override
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(mail, password);
+                    }
+                });
+                try {
+                    Message message = new MimeMessage(session);
+                    message.setFrom(new InternetAddress(mail));
+                    message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("thuhango0204@gmail.com"));
+                    message.setSubject("123");
+                    message.setText("12345");
+                    Transport.send(message);
+                    Toast.makeText(LoginActivity.this, "Gửi mật khẩu rồi!", Toast.LENGTH_SHORT).show();
+                }
+                catch (MessagingException e){
 
+                }
             }
         });
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
     }
 
     private void setControl() {
