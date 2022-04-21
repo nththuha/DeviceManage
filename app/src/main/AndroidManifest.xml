@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DeviceManagement">
         <activity
+            android:name=".Controller.PhongHocActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Controller.NhanVienActivity"
+            android:exported="false" />
+        <activity
             android:name=".Controller.ChiTietSuDungActivity"
             android:exported="false" />
         <activity

@@ -3,10 +3,9 @@ package com.example.devicemanagement.Entity;
 import java.io.Serializable;
 
 public class PhongHoc implements Serializable {
-    String maPhong, loaiPhong;
-    int tang;
+    String maPhong, loaiPhong, tang;
 
-    public PhongHoc(String maPhong, String loaiPhong, int tang) {
+    public PhongHoc(String maPhong, String loaiPhong, String tang) {
         this.maPhong = maPhong;
         this.loaiPhong = loaiPhong;
         this.tang = tang;
@@ -31,11 +30,11 @@ public class PhongHoc implements Serializable {
         this.loaiPhong = loaiPhong;
     }
 
-    public int getTang() {
+    public String getTang() {
         return tang;
     }
 
-    public void setTang(int tang) {
+    public void setTang(String tang) {
         this.tang = tang;
     }
 }
