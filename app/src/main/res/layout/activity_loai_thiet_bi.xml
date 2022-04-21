@@ -35,7 +35,6 @@
             android:textStyle="bold" />
     </androidx.appcompat.widget.Toolbar>
 
-
     <SearchView
         android:id="@+id/svLTB"
         android:layout_width="match_parent"
@@ -68,4 +67,5 @@
         android:layout_marginRight="20dp"
         android:background="?android:selectableItemBackground"
         android:src="@drawable/ic_circle_add" />
+
 </LinearLayout>
