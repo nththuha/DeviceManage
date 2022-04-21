@@ -36,6 +36,13 @@ public class DBPhongHoc extends SQLiteOpenHelper {
         database.close();
     }
 
+    public void suaPhongHoc(PhongHoc phongHoc){
+        String sql = "update phonghoc set loaiphong=?, tang=? where maphonghoc=?";
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sql, new String[]{phongHoc.getLoaiPhong(), phongHoc.getTang(), phongHoc.getMaPhong()});
+        database.close();
+    }
+
     public void xoaPhongHoc(String maPhongHoc){
         String sql = "Delete from phonghoc where maphonghoc = ?";
         SQLiteDatabase database = getWritableDatabase();

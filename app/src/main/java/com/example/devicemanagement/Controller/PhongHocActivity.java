@@ -30,14 +30,14 @@ public class PhongHocActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phong_hoc);
-        setEvent();
         setControl();
+        setEvent();
     }
 
     private void setEvent() {
         dbPhongHoc = new DBPhongHoc(this);
         DSPH = dbPhongHoc.layDSPhongHoc();
-        adapterPhongHoc = new AdapterPhongHoc(this, R.layout.layout_nhan_vien, DSPH);
+        adapterPhongHoc = new AdapterPhongHoc(this, R.layout.layout_phong_hoc, DSPH);
         lvPH.setAdapter(adapterPhongHoc);
 
         imbBack.setOnClickListener(new View.OnClickListener() {

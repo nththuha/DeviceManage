@@ -2,11 +2,20 @@ package com.example.devicemanagement.Controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.devicemanagement.Adapter.AdapterLoaiThietBi;
 import com.example.devicemanagement.Adapter.AdapterNhanVien;
@@ -53,4 +62,6 @@ public class NhanVienActivity extends AppCompatActivity {
         imbBack = findViewById(R.id.imbBack);
         svNV = findViewById(R.id.svNV);
     }
+
+
 }
