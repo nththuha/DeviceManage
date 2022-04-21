@@ -1,10 +1,15 @@
 package com.example.devicemanagement.DBHelper;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import com.example.devicemanagement.Entity.ThietBi;
+
+import java.util.ArrayList;
 
 public class DBThietBi extends SQLiteOpenHelper {
     public DBThietBi(@Nullable Context context) {
@@ -23,4 +28,42 @@ public class DBThietBi extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS thietbi");
         onCreate(db);
     }
+    public ArrayList<ThietBi> layDSThietBi(){
+        ArrayList<ThietBi> data = new ArrayList<>();
+        String sql = "SELECT * FROM thietbi";
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery(sql, null);
+        if(cursor.moveToFirst()){
+            do{
+                ThietBi thietBi = new ThietBi();
+                thietBi.setMaThietBi(cursor.getString(0));
+                thietBi.setTenThietBi(cursor.getString(1));
+                thietBi.setSoLuong(cursor.getString(2));
+                thietBi.setXuatXu(cursor.getString(3));
+                data.add(thietBi);
+            } while (cursor.moveToNext());
+        }
+        return data;
+    }
+    public void themThietBi(ThietBi thietBi){
+        String sql = "INSERT INTO thietbi VALUES (?,?,?,?,?)";
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sql, new String[]{thietBi.getMaThietBi(), thietBi.getTenThietBi(), thietBi.getSoLuong(), thietBi.getXuatXu(), thietBi.getMaLoai()});
+        database.close();
+    }
+
+    public void suaThietBi(ThietBi thietBi){
+        String sql = "update thietbi set tenthietbi=?, soluong=?, xuatxu=? where mathietbi=?";
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sql, new String[]{thietBi.getTenThietBi(), thietBi.getSoLuong(), thietBi.getXuatXu()});
+        database.close();
+    }
+
+    public void xoaThietBi(String maThietBi){
+        String sql = "Delete from thietbi where mathietbi = ?";
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sql, new String[]{maThietBi});
+        database.close();
+    }
+
 }

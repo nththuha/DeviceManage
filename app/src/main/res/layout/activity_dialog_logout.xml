@@ -11,96 +11,26 @@
         android:layout_gravity="center"
         android:padding="5dp"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:gravity="center"
-        android:textStyle="bold"
-        android:text="Mượn thiết bị theo phòng"/>
+        android:text="Thông báo"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:orientation="vertical">
 
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:text="@string/maPhong"/>
-            <Spinner
-                android:id="@+id/spMaPhong"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="24dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:text="@string/maThietBi"/>
-
-            <TextView
-                android:id="@+id/tvMaTB"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="20dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:text="@string/soLuong"/>
-            <EditText
-                android:id="@+id/tvSoLuong"
-                android:layout_marginStart="30dp"
-                android:layout_width="match_parent"
-                android:inputType="number"
-                android:layout_height="40dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:text="@string/ngayMuon"/>
-
-            <EditText
-                android:id="@+id/tvNgay"
-                android:layout_width="210dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="15dp"
-                android:inputType="date" />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="10dp"
-                android:src="@drawable/ic_date"/>
-        </LinearLayout>
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:text="Bạn thật sự muốn Đăng xuất!"
+            android:layout_gravity="center"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -109,18 +39,18 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="5dp">
             <Button
-                android:id="@+id/btnMuon"
+                android:id="@+id/btnYes"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/round_border_green20"
-                android:text="Mượn"
+                android:text="Yes"
                 android:textColor="@color/black"
                 android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
                 android:textSize="14sp"/>
             <Button
-                android:id="@+id/btnHuy"
+                android:id="@+id/btnNo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -128,7 +58,7 @@
                 android:layout_marginEnd="20dp"
                 android:textColor="@color/black"
                 android:background="@drawable/round_border_green20"
-                android:text="Hủy"
+                android:text="No"
                 android:textSize="14sp"/>
         </LinearLayout>
     </LinearLayout>

@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DeviceManagement">
         <activity
+            android:name=".Controller.ThietBiActivity"
+            android:exported="false" />
+        <activity
             android:name=".Controller.PhongHocActivity"
             android:exported="false" />
         <activity

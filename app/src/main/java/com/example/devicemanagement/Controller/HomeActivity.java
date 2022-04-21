@@ -6,6 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.devicemanagement.DBHelper.DBLoaiThietBi;
+import com.example.devicemanagement.DBHelper.DBThietBi;
+import com.example.devicemanagement.Entity.LoaiThietBi;
+import com.example.devicemanagement.Entity.ThietBi;
 import com.example.devicemanagement.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -13,6 +17,8 @@ import com.google.android.material.navigation.NavigationBarView;
 
 public class HomeActivity extends AppCompatActivity {
 
+    private DBThietBi dbThietBi;
+    private DBLoaiThietBi dbLoaiThietBi;
     BottomNavigationView bottomNavigationView;
 
     HomeFragmentActivity homeFragmentActivity = new HomeFragmentActivity();
@@ -23,6 +29,11 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         setControl();
+        //thêm dữ liệu
+//        dbThietBi = new DBThietBi(this);
+//        dbThietBi.themThietBi(new ThietBi("HDMI","Cổng HDMI","2","China","CS"));
+//        dbLoaiThietBi = new DBLoaiThietBi(this);
+//        dbLoaiThietBi.themLTB(new LoaiThietBi("CS", "Chiếu sáng"));
 
         setEvent();
     }

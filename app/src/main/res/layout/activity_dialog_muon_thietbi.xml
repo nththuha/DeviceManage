@@ -1,49 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/round_border_while30"
     android:layout_margin="28dp"
     android:orientation="vertical">
     <TextView
+        android:id="@+id/tvTitleMuonTB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:padding="5dp"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:gravity="center"
         android:textStyle="bold"
-        android:text="Mượn thiết bị"/>
+        android:text="Mượn thiết bị theo phòng"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/tv"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="@string/maPhong"/>
+
+            <Spinner
+                android:id="@+id/spMaPhong"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="@string/maThietBi"/>
+
+            <TextView
+                android:id="@+id/tvMaTB"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="20dp" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="@string/soLuong"/>
+
+            <EditText
+                android:id="@+id/tvSoLuong"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="30dp"
+                android:inputType="number"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="@string/ngayMuon"/>
+
+            <EditText
+                android:id="@+id/tvNgay"
+                android:layout_width="210dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="15dp"
+                android:inputType="date"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_date"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="5dp">
             <Button
-                android:id="@+id/btnYes"
+                android:id="@+id/btnMuon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/round_border_green20"
-                android:text="Yes"
+                android:text="Mượn"
                 android:textColor="@color/black"
                 android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
                 android:textSize="14sp"/>
             <Button
-                android:id="@+id/btnNo"
+                android:id="@+id/btnHuy"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -51,7 +135,7 @@
                 android:layout_marginEnd="20dp"
                 android:textColor="@color/black"
                 android:background="@drawable/round_border_green20"
-                android:text="No"
+                android:text="Hủy"
                 android:textSize="14sp"/>
         </LinearLayout>
     </LinearLayout>

@@ -24,4 +24,6 @@ public class DBChiTietSD extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS chitietsudung");
         onCreate(db);
     }
+
+
 }

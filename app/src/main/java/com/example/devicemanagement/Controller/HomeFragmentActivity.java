@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.devicemanagement.Entity.NhanVien;
+import com.example.devicemanagement.Entity.ThietBi;
 import com.example.devicemanagement.R;
 
 public class HomeFragmentActivity extends Fragment {
@@ -96,6 +97,8 @@ public class HomeFragmentActivity extends Fragment {
                 llThongKe.setBackgroundResource(R.drawable.round_border_while30);
                 llCTSuDung.setBackgroundResource(R.drawable.round_border_while30);
 
+                Toast.makeText(getContext(), "Quản lý thiết bị", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getContext(),ThietBiActivity.class));
 
             }
         });

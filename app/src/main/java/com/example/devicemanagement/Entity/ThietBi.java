@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class ThietBi implements Serializable {
     String maThietBi, tenThietBi, xuatXu, maLoai, soLuong;
 
-    public ThietBi(String maThietBi, String tenThietBi, String xuatXu, String maLoai, String soLuong) {
+    public ThietBi(String maThietBi, String tenThietBi, String xuatXu, String soLuong, String maLoai) {
         this.maThietBi = maThietBi;
         this.tenThietBi = tenThietBi;
         this.xuatXu = xuatXu;

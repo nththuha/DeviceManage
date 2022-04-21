@@ -6,10 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.devicemanagement.Adapter.AdapterChiTietSuDung;
+import com.example.devicemanagement.Entity.ThietBi;
 import com.example.devicemanagement.R;
 
-public class ChiTietSuDungActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
 
+public class ChiTietSuDungActivity extends AppCompatActivity {
     ImageButton imbBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
