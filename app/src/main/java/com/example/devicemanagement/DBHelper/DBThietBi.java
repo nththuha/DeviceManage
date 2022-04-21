@@ -13,7 +13,7 @@ public class DBThietBi extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql="CREATE TABLE thietbi (matb TEXT PRIMARY KEY, tentb TEXT, xuatxu TEXT, soluong INTEGER, " +
+        String sql="CREATE TABLE thietbi (matb TEXT PRIMARY KEY, tentb TEXT, xuatxu TEXT, soluong TEXT, " +
                 "maloai TEXT, FOREIGN KEY(maloai) REFERENCES Loaithietbi(maloai) ON DELETE CASCADE ON UPDATE NO ACTION)";
         db.execSQL(sql);
     }
