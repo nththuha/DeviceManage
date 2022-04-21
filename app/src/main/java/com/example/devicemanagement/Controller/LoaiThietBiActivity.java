@@ -33,6 +33,12 @@ public class LoaiThietBiActivity extends AppCompatActivity {
 
     private void setEvent() {
         dbLoaiThietBi = new DBLoaiThietBi(this);
+
+//        dbLoaiThietBi.themLTB(new LoaiThietBi("CS", "Chiếu sáng"));
+//        dbLoaiThietBi.themLTB(new LoaiThietBi("DC", "Dụng cụ dạy học"));
+//        dbLoaiThietBi.themLTB(new LoaiThietBi("DH", "Điều hòa"));
+//        dbLoaiThietBi.themLTB(new LoaiThietBi("DT", "Điện tử"));
+
         DSLTB = dbLoaiThietBi.layDanhSachLTB();
         adapterLoaiThietBi = new AdapterLoaiThietBi(this, R.layout.layout_loai_thiet_bi, DSLTB);
         lvLTB.setAdapter(adapterLoaiThietBi);

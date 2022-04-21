@@ -29,9 +29,12 @@
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/drawable/round_border_onclick.xml" value="0.148" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/drawable/round_border_purple10.xml" value="0.148" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/drawable/round_border_purple60.xml" value="0.148" />
+        <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/drawable/round_border_search.xml" value="0.161" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/drawable/wave.xml" value="0.148" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/activity_login.xml" value="0.12158054711246201" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/fragment_home_activity.xml" value="0.264" />
+        <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/layout_loai_thiet_bi.xml" value="0.12158054711246201" />
       </map>
     </option>
   </component>
