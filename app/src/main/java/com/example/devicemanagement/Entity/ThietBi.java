@@ -3,10 +3,9 @@ package com.example.devicemanagement.Entity;
 import java.io.Serializable;
 
 public class ThietBi implements Serializable {
-    String maThietBi, tenThietBi, xuatXu, maLoai;
-    int soLuong;
+    String maThietBi, tenThietBi, xuatXu, maLoai, soLuong;
 
-    public ThietBi(String maThietBi, String tenThietBi, String xuatXu, String maLoai, int soLuong) {
+    public ThietBi(String maThietBi, String tenThietBi, String xuatXu, String maLoai, String soLuong) {
         this.maThietBi = maThietBi;
         this.tenThietBi = tenThietBi;
         this.xuatXu = xuatXu;
@@ -49,11 +48,11 @@ public class ThietBi implements Serializable {
         this.maLoai = maLoai;
     }
 
-    public int getSoLuong() {
+    public String getSoLuong() {
         return soLuong;
     }
 
-    public void setSoLuong(int soLuong) {
+    public void setSoLuong(String soLuong) {
         this.soLuong = soLuong;
     }
 }

@@ -4,11 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class ChiTietSD implements Serializable {
-    String maPhong, maThietBi;
-    Date ngaySuDung;
-    int soLuong;
+    String maPhong, maThietBi, ngaySuDung, soLuong;
 
-    public ChiTietSD(String maPhong, String maThietBi, Date ngaySuDung, int soLuong) {
+    public ChiTietSD(String maPhong, String maThietBi, String ngaySuDung, String soLuong) {
         this.maPhong = maPhong;
         this.maThietBi = maThietBi;
         this.ngaySuDung = ngaySuDung;
@@ -34,19 +32,19 @@ public class ChiTietSD implements Serializable {
         this.maThietBi = maThietBi;
     }
 
-    public Date getNgaySuDung() {
+    public String getNgaySuDung() {
         return ngaySuDung;
     }
 
-    public void setNgaySuDung(Date ngaySuDung) {
+    public void setNgaySuDung(String ngaySuDung) {
         this.ngaySuDung = ngaySuDung;
     }
 
-    public int getSoLuong() {
+    public String getSoLuong() {
         return soLuong;
     }
 
-    public void setSoLuong(int soLuong) {
+    public void setSoLuong(String soLuong) {
         this.soLuong = soLuong;
     }
 }

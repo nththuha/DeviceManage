@@ -13,7 +13,7 @@ public class DBChiTietSD extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql="CREATE TABLE chitietsudung (ngaysudung NUMERIC, soluong INTEGER, maphong TEXT, matb TEXT, PRIMARY KEY(maphong,matb)," +
+        String sql="CREATE TABLE chitietsudung (ngaysudung TEXT, soluong TEXT, maphong TEXT, matb TEXT, PRIMARY KEY(maphong,matb)," +
                 "FOREIGN KEY(maphong) REFERENCES Phonghoc(maphong) ON DELETE CASCADE ON UPDATE NO ACTION, " +
                 "FOREIGN KEY(matb) REFERENCES Thietbi(matb) ON DELETE CASCADE ON UPDATE NO ACTION)";
         db.execSQL(sql);

@@ -36,10 +36,6 @@ import javax.mail.internet.MimeMessage;
 
 public class LoginActivity extends AppCompatActivity {
     private DBNhanVien dbNhanVien;
-    private DBLoaiThietBi dbLoaiThietBi;
-    private DBThietBi dbThietBi;
-    private DBPhongHoc dbPhongHoc;
-    private DBChiTietSD dbChiTietSD;
 
     EditText txtUser, txtPass;
     Button btnLogin;
@@ -62,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void setEvent() {
         dbNhanVien = new DBNhanVien(this);
-//        dbNhanVien.themNhanVien(new NhanVien("NV01", "ngothuha", "4n/0+VVr3Mj+uVm31GQvyw==", "thuhango0204@gmail.com", "123"));
+//        dbNhanVien.themNhanVien(new NhanVien("NV01", "Thu Hà", "4n/0+VVr3Mj+uVm31GQvyw==", "thuhango0204@gmail.com", "123"));
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -155,18 +151,5 @@ public class LoginActivity extends AppCompatActivity {
         txtPass = findViewById(R.id.txtPass);
         btnLogin = findViewById(R.id.btnLogin);
         tvForgotPass = findViewById(R.id.tvForgotPass);
-    }
-
-    private void getDataBase() {
-        dbNhanVien = new DBNhanVien(this);
-        dbNhanVien.getReadableDatabase();
-        dbLoaiThietBi = new DBLoaiThietBi(this);
-        dbLoaiThietBi.getReadableDatabase();
-        dbThietBi = new DBThietBi(this);
-        dbThietBi.getReadableDatabase();
-        dbPhongHoc = new DBPhongHoc(this);
-        dbPhongHoc.getReadableDatabase();
-        dbChiTietSD = new DBChiTietSD(this);
-        dbChiTietSD.getReadableDatabase();
     }
 }
