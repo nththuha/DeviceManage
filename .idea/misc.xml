@@ -3,33 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/drawable/ic_arrow_back.xml" value="0.1" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/drawable/ic_home.xml" value="0.2125" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/drawable/ic_taikhoan.xml" value="0.2125" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/drawable/round_border90.xml" value="0.1" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/drawable/round_border_green20.xml" value="0.138" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/drawable/round_border_while30.xml" value="0.1" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_chitiet_sudung.xml" value="0.25" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_ct_sudung.xml" value="0.25" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_dialog_logout.xml" value="0.25" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_home.xml" value="0.23157894736842105" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_loai_thiet_bi.xml" value="0.25" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_main.xml" value="0.1037037037037037" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_test.xml" value="0.1" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/fragment_home_activity.xml" value="0.24947916666666667" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/fragment_taikhoan_activity.xml" value="0.1" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/menu/activity_menu_home.xml" value="0.24947916666666667" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/menu/activity_menu_trangchu.xml" value="0.2" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/drawable/ic_lock_login.xml" value="0.148" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/drawable/ic_person_login.xml" value="0.148" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/drawable/round_border_blue10.xml" value="0.1365" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/drawable/round_border_onclick.xml" value="0.148" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/drawable/round_border_purple10.xml" value="0.148" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/drawable/round_border_purple60.xml" value="0.148" />
+        <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/drawable/round_border_search.xml" value="0.115" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/drawable/wave.xml" value="0.148" />
+        <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/activity_loai_thiet_bi.xml" value="0.264" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/activity_login.xml" value="0.12158054711246201" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/fragment_home_activity.xml" value="0.25" />
+        <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/layout_loai_thiet_bi.xml" value="0.25" />
       </map>
     </option>
   </component>

@@ -93,6 +93,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         tvForgotPass.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 String tenDangNhap = txtUser.getText().toString().trim();
@@ -104,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (nhanVien != null) {
                     String matKhauMoi = taoMatKhau();
-                    //dbNhanVien.suaMatKhau(nhanVien.getTenDangNhap(), matKhauMoi);
+                    dbNhanVien.suaMatKhau(nhanVien.getTenDangNhap(), matKhauMoi);
                     tvForgotPass.setEnabled(false);
                     Toast.makeText(LoginActivity.this, "VUI LÒNG ĐỢI, HỆ THỐNG ĐANG XỬ LÝ", Toast.LENGTH_SHORT).show();
                     guiMail(nhanVien.getMail(), matKhauMoi);
