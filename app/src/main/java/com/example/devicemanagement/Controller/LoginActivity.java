@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void setEvent() {
         dbNhanVien = new DBNhanVien(this);
-//        dbNhanVien.themNhanVien(new NhanVien("NV01", "ngothuha", "4n/0+VVr3Mj+uVm31GQvyw==", "thuhango0204@gmail.com", "123"));
+//        dbNhanVien.themNhanVien(new NhanVien("NV01", "Thu Hà", "4n/0+VVr3Mj+uVm31GQvyw==", "thuhango0204@gmail.com", "123"));
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
