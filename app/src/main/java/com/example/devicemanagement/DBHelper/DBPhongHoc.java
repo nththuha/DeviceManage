@@ -41,6 +41,7 @@ public class DBPhongHoc extends SQLiteOpenHelper {
         SQLiteDatabase database = getWritableDatabase();
         database.execSQL(sql, new String[]{phongHoc.getMaPhong(), phongHoc.getLoaiPhong(), phongHoc.getTang(), ma});
         database.close();
+
     }
 
     public void xoaPhongHoc(String maPhongHoc){
