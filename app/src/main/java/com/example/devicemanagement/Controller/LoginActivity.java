@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -39,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText txtUser, txtPass;
     Button btnLogin;
-    TextView tvForgotPass;
+    TextView tvForgotPass, tvTieuDeQL;
 
     ArrayList<NhanVien> DSNV = new ArrayList<>();
     NhanVien nhanVienDangNhap = new NhanVien();
@@ -53,7 +55,13 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 //        getDataBase();
         setControl();
+        startAnimation();
         setEvent();
+    }
+
+    private void startAnimation() {
+        Animation animation = new AnimationUtils().loadAnimation(this, R.anim.anim);
+        tvTieuDeQL.setAnimation(animation);
     }
 
     private void setEvent() {
@@ -151,5 +159,6 @@ public class LoginActivity extends AppCompatActivity {
         txtPass = findViewById(R.id.txtPass);
         btnLogin = findViewById(R.id.btnLogin);
         tvForgotPass = findViewById(R.id.tvForgotPass);
+        tvTieuDeQL = findViewById(R.id.tvTieuDeQL);
     }
 }

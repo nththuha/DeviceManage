@@ -14,6 +14,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tvTieuDeQL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="QUẢN LÝ THIẾT BỊ TRƯỜNG HỌC"
@@ -22,6 +23,7 @@
             android:textStyle="bold"
             android:textSize="25sp"
             android:textColor="@color/white"/>
+
     </LinearLayout>
 
     <View
