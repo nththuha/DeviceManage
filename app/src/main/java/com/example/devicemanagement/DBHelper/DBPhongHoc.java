@@ -36,10 +36,10 @@ public class DBPhongHoc extends SQLiteOpenHelper {
         database.close();
     }
 
-    public void suaPhongHoc(PhongHoc phongHoc){
-        String sql = "update phonghoc set loaiphong=?, tang=? where maphonghoc=?";
+    public void suaPhongHoc(PhongHoc phongHoc, String ma){
+        String sql = "update phonghoc set maphonghoc=?, loaiphong=?, tang=? where maphonghoc=?";
         SQLiteDatabase database = getWritableDatabase();
-        database.execSQL(sql, new String[]{phongHoc.getLoaiPhong(), phongHoc.getTang(), phongHoc.getMaPhong()});
+        database.execSQL(sql, new String[]{phongHoc.getMaPhong(), phongHoc.getLoaiPhong(), phongHoc.getTang(), ma});
         database.close();
     }
 
