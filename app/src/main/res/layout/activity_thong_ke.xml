@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/ic_bg"
     android:orientation="vertical"
-    tools:context=".Controller.ThietBiActivity">
+    tools:context=".Controller.ThongKeActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tb_label"
         android:layout_width="match_parent"
@@ -29,9 +29,10 @@
             android:layout_marginEnd="30dp"
             android:gravity="center"
             android:layout_centerInParent="true"
-            android:text="QUẢN LÝ THIẾT BỊ"
+            android:text="THỐNG KÊ"
             android:textColor="@color/black"
             android:textSize="28sp"
             android:textStyle="bold" />
     </androidx.appcompat.widget.Toolbar>
+
 </LinearLayout>

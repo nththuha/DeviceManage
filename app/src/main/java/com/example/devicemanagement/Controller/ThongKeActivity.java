@@ -8,12 +8,12 @@ import android.widget.ImageButton;
 
 import com.example.devicemanagement.R;
 
-public class ThietBiActivity extends AppCompatActivity {
+public class ThongKeActivity extends AppCompatActivity {
     ImageButton imbBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_thiet_bi);
+        setContentView(R.layout.activity_thong_ke);
         setControl();
         setEvent();
     }

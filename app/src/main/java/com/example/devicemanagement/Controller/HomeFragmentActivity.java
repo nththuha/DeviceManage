@@ -127,6 +127,9 @@ public class HomeFragmentActivity extends Fragment {
                 llNhanVien.setBackgroundResource(R.drawable.round_border_while30);
                 llPhongHoc.setBackgroundResource(R.drawable.round_border_while30);
                 llCTSuDung.setBackgroundResource(R.drawable.round_border_while30);
+                Toast.makeText(getContext(), "Thống kê", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getContext(),ThongKeActivity.class));
+
             }
         });
         llCTSuDung.setOnClickListener(new View.OnClickListener() {
