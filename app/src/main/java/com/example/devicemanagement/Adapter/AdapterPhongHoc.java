@@ -14,18 +14,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.devicemanagement.Controller.LoaiThietBiActivity;
 import com.example.devicemanagement.Controller.PhongHocActivity;
-import com.example.devicemanagement.DBHelper.DBLoaiThietBi;
 import com.example.devicemanagement.DBHelper.DBPhongHoc;
-import com.example.devicemanagement.Entity.LoaiThietBi;
 import com.example.devicemanagement.Entity.PhongHoc;
 import com.example.devicemanagement.R;
 
@@ -46,6 +42,11 @@ public class AdapterPhongHoc extends ArrayAdapter<PhongHoc> {
         this.context = context;
         this.resource = resource;
         this.data = data;
+    }
+
+    public void setFilterList(ArrayList<PhongHoc> filter){
+        this.data = filter;
+        notifyDataSetChanged();
     }
 
     @Override

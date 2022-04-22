@@ -11,25 +11,31 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.devicemanagement.Adapter.AdapterLoaiPhong;
 import com.example.devicemanagement.Adapter.AdapterLoaiThietBi;
 import com.example.devicemanagement.Adapter.AdapterNhanVien;
 import com.example.devicemanagement.Adapter.AdapterPhongHoc;
 import com.example.devicemanagement.DBHelper.DBLoaiThietBi;
 import com.example.devicemanagement.DBHelper.DBNhanVien;
 import com.example.devicemanagement.DBHelper.DBPhongHoc;
+import com.example.devicemanagement.Entity.LoaiPhong;
 import com.example.devicemanagement.Entity.LoaiThietBi;
 import com.example.devicemanagement.Entity.NhanVien;
 import com.example.devicemanagement.Entity.PhongHoc;
 import com.example.devicemanagement.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PhongHocActivity extends AppCompatActivity {
     ListView lvPH;
@@ -37,9 +43,12 @@ public class PhongHocActivity extends AppCompatActivity {
     SearchView svPH;
     Button btnLuu, btnThoat;
     EditText txtMaPhong, txtLoaiPhong, txtTang;
+    Spinner snPH;
     AdapterPhongHoc adapterPhongHoc;
+    AdapterLoaiPhong adapterLoaiPhong;
     ArrayList<PhongHoc> DSPH;
     DBPhongHoc dbPhongHoc;
+    ArrayList<PhongHoc> filter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +64,42 @@ public class PhongHocActivity extends AppCompatActivity {
         adapterPhongHoc = new AdapterPhongHoc(this, R.layout.layout_phong_hoc, DSPH);
         lvPH.setAdapter(adapterPhongHoc);
 
+        adapterLoaiPhong = new AdapterLoaiPhong(this, R.layout.item_selected_spinner, getloaiPhong());
+        snPH.setAdapter(adapterLoaiPhong);
+        snPH.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String loai = adapterLoaiPhong.getItem(i).getLoai();
+                if(!loai.equals("Chọn loại phòng")){
+                    if (loai.equals("Lý thuyết")) {
+                        filter = new ArrayList<>();
+                        for (PhongHoc ph : DSPH) {
+                            if (ph.getLoaiPhong().equals("Lý thuyết")) {
+                                filter.add(ph);
+                            }
+                        }
+                        adapterPhongHoc.setFilterList(filter);
+                    } else {
+                        filter = new ArrayList<>();
+                        for (PhongHoc ph : DSPH) {
+                            if (ph.getLoaiPhong().equals("Thực hành")) {
+                                filter.add(ph);
+                            }
+                        }
+                        adapterPhongHoc.setFilterList(filter);
+                    }
+                }
+                else{
+                    loadListView(dbPhongHoc);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         imbBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,6 +113,41 @@ public class PhongHocActivity extends AppCompatActivity {
                 themPhongHoc(Gravity.CENTER, dbPhongHoc);
             }
         });
+
+        svPH.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                getFilter(s);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                getFilter(s);
+                return false;
+            }
+        });
+    }
+
+    private List getloaiPhong() {
+        List<LoaiPhong> LP = new ArrayList<>();
+        LP.add(new LoaiPhong("Chọn loại phòng"));
+        LP.add(new LoaiPhong("Lý thuyết"));
+        LP.add(new LoaiPhong("Thực hành"));
+        return LP;
+    }
+
+    private void getFilter(String s){
+        filter = new ArrayList<>();
+        for (PhongHoc ph: DSPH) {
+            if(ph.getMaPhong().toLowerCase().contains(s)){
+                filter.add(ph);
+            }
+        }
+        adapterPhongHoc.setFilterList(filter);
+        if(filter.isEmpty()){
+            Toast.makeText(this, "Không có dữ liệu để hiển thị", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void setControl() {
@@ -77,6 +157,7 @@ public class PhongHocActivity extends AppCompatActivity {
         imbSua = findViewById(R.id.imbSua);
         imbXoa = findViewById(R.id.imbXoa);
         svPH = findViewById(R.id.svPH);
+        snPH = findViewById(R.id.snPH);
     }
 
     public void loadListView(DBPhongHoc dbPhongHoc){
