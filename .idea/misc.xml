@@ -10,8 +10,11 @@
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/drawable/round_border_purple10.xml" value="0.148" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/drawable/round_border_purple60.xml" value="0.148" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/drawable/wave.xml" value="0.148" />
+        <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/activity_chitiet_sudung.xml" value="0.25" />
+        <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/activity_loai_thiet_bi.xml" value="0.264" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/layout_loai_thiet_bi.xml" value="0.14130434782608695" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.179" />
         <entry key="..\:/Users/NHAT/OneDrive/HK2 - NAM4/PhatTrienUngDungChoCacThietBiDiDong/DeviceManage/app/src/main/res/layout/activity_chitiet_sudung.xml" value="0.2536231884057971" />
         <entry key="..\:/Users/NHAT/OneDrive/HK2 - NAM4/PhatTrienUngDungChoCacThietBiDiDong/DeviceManage/app/src/main/res/layout/activity_dialog_logout.xml" value="0.2536231884057971" />

@@ -35,6 +35,8 @@ public class LoaiThietBiActivity extends AppCompatActivity {
     ArrayList<LoaiThietBi> DSLTB;
     DBLoaiThietBi dbLoaiThietBi;
 
+    ArrayList<LoaiThietBi> filter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +47,8 @@ public class LoaiThietBiActivity extends AppCompatActivity {
 
     private void setEvent() {
         dbLoaiThietBi = new DBLoaiThietBi(this);
+
+        loadListView(dbLoaiThietBi);
 
 //        dbLoaiThietBi.themLTB(new LoaiThietBi("CS", "Chiếu sáng"));
 //        dbLoaiThietBi.themLTB(new LoaiThietBi("DC", "Dụng cụ dạy học"));
@@ -65,6 +69,32 @@ public class LoaiThietBiActivity extends AppCompatActivity {
                 finish();
             }
         });
+        svLTB.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                getFilter(s);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                getFilter(s);
+                return false;
+            }
+        });
+    }
+
+    private void getFilter(String s){
+        filter = new ArrayList<>();
+        for (LoaiThietBi e: DSLTB) {
+            if(e.getTenLoai().toLowerCase().contains(s)){
+                filter.add(e);
+            }
+        }
+        adapterLoaiThietBi.setFilterList(filter);
+        if(filter.isEmpty()){
+            Toast.makeText(this, "Không có dữ liệu để hiển thị", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void loadListView(DBLoaiThietBi dbLoaiThietBi){

@@ -38,6 +38,11 @@ public class AdapterLoaiThietBi extends ArrayAdapter<LoaiThietBi> {
 
     DBLoaiThietBi dbLoaiThietBi;
 
+    public void setFilterList(ArrayList<LoaiThietBi> filter){
+        this.data = filter;
+        notifyDataSetChanged();
+    }
+
     public AdapterLoaiThietBi(@NonNull Context context, int resource, @NonNull ArrayList<LoaiThietBi> data) {
         super(context, resource, data);
         this.context = context;
