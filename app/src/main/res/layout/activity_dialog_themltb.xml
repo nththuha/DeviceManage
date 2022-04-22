@@ -57,11 +57,13 @@
         <Button
             android:id="@+id/btnThoat"
             android:text="THOÁT"
+            android:layout_marginBottom="5dp"
             style="@style/style_themltb_btn" />
 
         <Button
             android:id="@+id/btnLuu"
             android:text="LƯU"
+            android:layout_marginBottom="5dp"
             style="@style/style_themltb_btn" />
 
     </LinearLayout>

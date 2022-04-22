@@ -43,11 +43,13 @@
 
         <Button
             android:id="@+id/btnKhongXoa"
+            android:layout_marginBottom="5dp"
             style="@style/style_themltb_btn"
             android:text="HỦY" />
 
         <Button
             android:id="@+id/btnDongYXoa"
+            android:layout_marginBottom="5dp"
             style="@style/style_themltb_btn"
             android:text="XÁC NHẬN" />
 
