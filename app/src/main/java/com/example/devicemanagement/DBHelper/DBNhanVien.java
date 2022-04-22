@@ -39,10 +39,25 @@ public class DBNhanVien extends SQLiteOpenHelper {
 //        onCreate(db);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void themNhanVien(NhanVien nhanVien){
+        String matKhau = "";
+        try {
+            matKhau = maHoa(nhanVien.getMatKhau());
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (NoSuchPaddingException e) {
+            e.printStackTrace();
+        } catch (IllegalBlockSizeException e) {
+            e.printStackTrace();
+        } catch (BadPaddingException e) {
+            e.printStackTrace();
+        } catch (InvalidKeyException e) {
+            e.printStackTrace();
+        }
         String sql = "INSERT INTO nhanvien VALUES (?,?,?,?,?)";
         SQLiteDatabase database = getWritableDatabase();
-        database.execSQL(sql, new String[]{nhanVien.getTenDangNhap(), nhanVien.getHoTen(), nhanVien.getMatKhau(), nhanVien.getMail(), nhanVien.getHinhAnh()});
+        database.execSQL(sql, new String[]{nhanVien.getTenDangNhap(), nhanVien.getHoTen(), matKhau, nhanVien.getMail(), nhanVien.getHinhAnh()});
         database.close();
     }
 
