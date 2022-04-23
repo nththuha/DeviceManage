@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
         <TextView
             android:id="@+id/tvName"
             android:layout_width="213dp"
@@ -23,8 +22,6 @@
             android:textColor="@color/teal_700"
             android:textSize="18sp"
             android:textStyle="bold" />
-
-
         <ImageButton
             android:id="@+id/imvLogout"
             android:layout_width="wrap_content"
@@ -40,7 +37,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:orientation="vertical">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,13 +55,11 @@
                 android:background="@drawable/round_border_while30"
                 android:orientation="vertical"
                 android:padding="20dp">
-
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_thietbi"/>
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -76,7 +70,6 @@
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
-
             <LinearLayout
                 android:id="@+id/llLoaiTB"
                 android:layout_width="0dp"
@@ -87,13 +80,11 @@
                 android:background="@drawable/round_border_while30"
                 android:orientation="vertical"
                 android:padding="20dp">
-
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_loaithietbi"/>
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -105,7 +96,6 @@
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -115,7 +105,6 @@
             android:layout_marginEnd="20dp"
             android:orientation="horizontal"
             android:weightSum="2">
-
             <LinearLayout
                 android:id="@+id/llPhongHoc"
                 android:layout_width="0dp"
@@ -126,13 +115,11 @@
                 android:background="@drawable/round_border_while30"
                 android:orientation="vertical"
                 android:padding="20dp">
-
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_phonghoc"/>
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -143,7 +130,6 @@
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
-
             <LinearLayout
                 android:id="@+id/llCTSuDung"
                 android:layout_width="0dp"
@@ -154,13 +140,11 @@
                 android:background="@drawable/round_border_while30"
                 android:orientation="vertical"
                 android:padding="20dp">
-
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_ctsudung"/>
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -171,7 +155,6 @@
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
-
         </LinearLayout>
         <LinearLayout
             android:id="@+id/llBottom"
@@ -183,7 +166,6 @@
             android:layout_marginEnd="20dp"
             android:orientation="horizontal"
             android:weightSum="2">
-
             <LinearLayout
                 android:id="@+id/llNhanVien"
                 android:layout_width="0dp"
@@ -194,13 +176,11 @@
                 android:background="@drawable/round_border_while30"
                 android:orientation="vertical"
                 android:padding="20dp">
-
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_nhanvien"/>
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -211,7 +191,6 @@
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
-
             <LinearLayout
                 android:id="@+id/llThongKe"
                 android:layout_width="0dp"
@@ -222,13 +201,11 @@
                 android:background="@drawable/round_border_while30"
                 android:orientation="vertical"
                 android:padding="20dp">
-
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_thongke"/>
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -239,11 +216,6 @@
                     android:textSize="16sp"
                     android:textStyle="bold" />
             </LinearLayout>
-
         </LinearLayout>
-
     </LinearLayout>
-
-
-
 </FrameLayout>

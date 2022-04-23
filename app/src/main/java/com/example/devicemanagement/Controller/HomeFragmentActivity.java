@@ -186,6 +186,7 @@ public class HomeFragmentActivity extends Fragment {
         btnY.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startActivity(new Intent(getContext(),LoginActivity.class));
                 getActivity().finish();
             }
         });
