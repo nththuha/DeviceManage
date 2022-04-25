@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_bg"
+    android:orientation="vertical"
+    tools:context=".Controller.ChiTietThietBiActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground">
+
+        <ImageButton
+            android:id="@+id/imbBackCTTB"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/ic_arrow_back"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+        <!--android:background="@color/blue_100"-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="30dp"
+            android:gravity="center"
+            android:text="QUẢN LÝ THIẾT BỊ"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/tvTieuDeTB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="CHI TIẾT THIẾT BỊ"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/style_themltb_tieude"
+                android:text="Mã thiết bị:" />
+
+            <EditText
+                android:id="@+id/txtMaTB"
+                style="@style/style_themltb_tentltb" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/style_themltb_tieude"
+                android:text="Tên thiết bị:" />
+
+            <EditText
+                android:id="@+id/txtTenTB"
+                style="@style/style_themltb_tentltb" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/style_themltb_tieude"
+                android:text="Xuất xứ:" />
+
+            <EditText
+                android:id="@+id/txtXuatxu"
+                style="@style/style_themltb_tentltb" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/style_themltb_tieude"
+                android:text="Số lượng:" />
+
+            <EditText
+                android:id="@+id/txtSoluongTB"
+                style="@style/style_themltb_tentltb" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/style_themltb_tieude"
+                android:layout_width="63dp"
+                android:layout_height="57dp"
+                android:text="Tên loại thiết bị:" />
+
+            <Spinner
+                android:id="@+id/spTenloaiTB"
+                android:layout_width="267dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:background="@android:color/transparent"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnLuuTB"
+            style="@style/style_themltb_btn"
+            android:layout_width="150dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="LƯU" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
