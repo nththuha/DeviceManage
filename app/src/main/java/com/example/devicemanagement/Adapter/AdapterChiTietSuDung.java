@@ -1,73 +1,62 @@
 package com.example.devicemanagement.Adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.devicemanagement.DBHelper.DBThietBi;
 import com.example.devicemanagement.Entity.ThietBi;
 import com.example.devicemanagement.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterChiTietSuDung extends RecyclerView.Adapter<AdapterChiTietSuDung.ViewHolder> {
-    private ItemClickCTSD _itemClick;
-    private List<ThietBi> thietBiList;
+public class AdapterChiTietSuDung extends ArrayAdapter<ThietBi> {
+    Context context;
+    int resource;
+    ArrayList<ThietBi> data;
+    TextView tvMatb, tvTentb, tvSoluong;
 
-    public AdapterChiTietSuDung(ItemClickCTSD itemClick, List<ThietBi> thietBiList) {
-        this._itemClick = itemClick;
-        this.thietBiList = thietBiList;
+    public AdapterChiTietSuDung(@NonNull Context context, int resource, @NonNull ArrayList<ThietBi> data) {
+        super(context, resource, data);
+        this.context = context;
+        this.resource = resource;
+        this.data = data;
+    }
+    public void setFilterList(ArrayList<ThietBi> filter) {
+        this.data = filter;
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public int getCount() {
+        return data.size();
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.activity_item_chitiet_sudung,parent,false);
-        ViewHolder viewHolder = new ViewHolder(view,_itemClick);
-        return viewHolder;
-    }
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        convertView = LayoutInflater.from(context).inflate(resource, null);
+        tvMatb = convertView.findViewById(R.id.tvMaThietBi);
+        tvTentb = convertView.findViewById(R.id.tvTenThietBi);
+        tvSoluong = convertView.findViewById(R.id.tvSoLuongMuon);
+        ThietBi thietBi = data.get(position);
+        tvMatb.setText(thietBi.getMaThietBi());
+        tvTentb.setText(thietBi.getTenThietBi());
+        tvSoluong.setText(thietBi.getSoLuong());
 
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final ThietBi thietBi = thietBiList.get(position);
-        holder.tvMaThietBi.setText(thietBi.getMaThietBi());
-        holder.tvTenThietBi.setText(thietBi.getTenThietBi());
-        holder.tvSoLuongMuon.setText(thietBi.getTenThietBi()+"/"+thietBi.getTenThietBi());
-        holder.llItemClick.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                holder._itemClick.onItemClick(thietBi);
-            }
-        });
-    }
-
-    @Override
-    public int getItemCount() {
-        if(thietBiList != null)
-            return thietBiList.size();
-        return 0;
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        ItemClickCTSD _itemClick;
-        TextView tvMaThietBi, tvTenThietBi, tvSoLuongMuon;
-        RelativeLayout llItemClick;
-        public ViewHolder(@NonNull View view,ItemClickCTSD itemClick) {
-            super(view);
-            _itemClick = itemClick;
-            tvMaThietBi = view.findViewById(R.id.tvMaThietBi);
-            tvTenThietBi = view.findViewById(R.id.tvTenThietBi);
-            tvSoLuongMuon = view.findViewById(R.id.tvSoLuongMuon);
-            llItemClick = view.findViewById(R.id.llItemClick);
-        }
-    }
-
-    public interface ItemClickCTSD{
-        void onItemClick(ThietBi thietBi);
+        return convertView;
     }
 }

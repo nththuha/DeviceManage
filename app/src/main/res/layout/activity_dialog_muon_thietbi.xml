@@ -35,11 +35,12 @@
                 android:textColor="@color/black"
                 android:text="@string/maPhong"/>
 
-            <Spinner
+            <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/spMaPhong"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginStart="24dp"
+                android:background="@android:color/transparent"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
         </LinearLayout>
         <LinearLayout
@@ -54,7 +55,6 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:text="@string/maThietBi"/>
-
             <TextView
                 android:id="@+id/tvMaTB"
                 android:layout_width="match_parent"
@@ -75,7 +75,7 @@
                 android:text="@string/soLuong"/>
 
             <EditText
-                android:id="@+id/tvSoLuong"
+                android:id="@+id/txtSoLuongSD"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginStart="30dp"
@@ -95,17 +95,18 @@
                 android:text="@string/ngayMuon"/>
 
             <EditText
-                android:id="@+id/tvNgay"
-                android:layout_width="210dp"
+                android:id="@+id/txtNgay"
+                android:layout_width="200dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
                 android:inputType="date"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-            <ImageView
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="2dp"
+                android:background="?android:selectableItemBackground"
                 android:src="@drawable/ic_date"/>
         </LinearLayout>
 
@@ -127,7 +128,7 @@
                 android:layout_marginStart="20dp"
                 android:textSize="14sp"/>
             <Button
-                android:id="@+id/btnHuy"
+                android:id="@+id/btnHuyMT"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

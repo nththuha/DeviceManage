@@ -11,24 +11,35 @@
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/drawable/round_border90.xml" value="0.1" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/drawable/round_border_green20.xml" value="0.138" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/drawable/round_border_while30.xml" value="0.1" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_chitiet_sudung.xml" value="0.25" />
+        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_chitiet_sudung.xml" value="0.264" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_click_item.xml" value="0.1" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_ct_sudung.xml" value="0.25" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_dialog_logout.xml" value="0.1" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_dialog_muon_thietbi.xml" value="0.23423423423423423" />
+        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_dialog_logout.xml" value="0.264" />
+        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_dialog_muon_thietbi.xml" value="0.1" />
+        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_dialog_muon_tra.xml" value="0.264" />
+        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_dialog_them_thietbi.xml" value="0.25" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_dialog_themltb.xml" value="0.24615384615384617" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_dialog_thongtin_nhanvien.xml" value="0.264" />
+        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_dialog_tra_thietbi.xml" value="0.25" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_dialog_xoaltb.xml" value="0.1" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_home.xml" value="0.23157894736842105" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_item_chitiet_sudung.xml" value="0.264" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_loai_thiet_bi.xml" value="0.1" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_main.xml" value="0.1037037037037037" />
+        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_nhan_vien.xml" value="0.25" />
+        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_phong_hoc.xml" value="0.25" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_test.xml" value="0.1" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_thiet_bi.xml" value="0.21481481481481482" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_thong_ke.xml" value="0.1" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/fragment_home_activity.xml" value="0.24947916666666667" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/fragment_taikhoan_activity.xml" value="0.1" />
+        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/item_phonghoc_spinner.xml" value="0.25" />
+        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/item_selected_spinner.xml" value="0.25" />
+        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/item_selected_spinnermaloaitb.xml" value="0.24615384615384617" />
+        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/item_spinner.xml" value="0.25" />
+        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/item_thietbi_spinner.xml" value="0.25" />
+        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/layout_loai_thiet_bi.xml" value="0.1" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/menu/activity_menu_home.xml" value="0.24947916666666667" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/menu/activity_menu_trangchu.xml" value="0.2" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1835" />
