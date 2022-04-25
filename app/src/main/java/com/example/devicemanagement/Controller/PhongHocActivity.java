@@ -172,8 +172,7 @@ public class PhongHocActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.activity_dialog_them_sua_ph);
 
         Window window = dialog.getWindow();
-        if (window == null)
-            return;
+        if (window == null) return;
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
