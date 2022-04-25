@@ -20,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/icon_dropdown"/>
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/icon_dropdown" />
 
 </RelativeLayout>
