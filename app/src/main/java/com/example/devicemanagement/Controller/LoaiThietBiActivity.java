@@ -23,6 +23,7 @@ import com.example.devicemanagement.Entity.LoaiThietBi;
 import com.example.devicemanagement.R;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class LoaiThietBiActivity extends AppCompatActivity {
     ListView lvLTB;
@@ -87,7 +88,7 @@ public class LoaiThietBiActivity extends AppCompatActivity {
     private void getFilter(String s){
         filter = new ArrayList<>();
         for (LoaiThietBi e: DSLTB) {
-            if(e.getTenLoai().toLowerCase().contains(s)){
+            if(e.getTenLoai().toLowerCase().contains(s.toLowerCase())){
                 filter.add(e);
             }
         }
