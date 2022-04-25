@@ -49,11 +49,11 @@ public class LoginActivity extends AppCompatActivity {
     final String mail = "thuhango0204@gmail.com";
     final String password = "tvchhnsxhegolohs";
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-//        getDataBase();
         setControl();
         startAnimation();
         setEvent();
@@ -64,9 +64,10 @@ public class LoginActivity extends AppCompatActivity {
         tvTieuDeQL.setAnimation(animation);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void setEvent() {
         dbNhanVien = new DBNhanVien(this);
-        //dbNhanVien.themNhanVien(new NhanVien("NV01", "Thu Hà", "4n/0+VVr3Mj+uVm31GQvyw==", "thuhango0204@gmail.com", "123"));
+//        dbNhanVien.themNhanVien(new NhanVien("NV02", "Thu Hà", "02042000", "thuhango0204@gmail.com", "123"));
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
