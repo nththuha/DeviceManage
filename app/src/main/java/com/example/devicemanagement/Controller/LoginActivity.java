@@ -144,8 +144,8 @@ public class LoginActivity extends AppCompatActivity {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(mail));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(mailToSend));
-            message.setSubject("LẤY LẠI MẬT KHẨU");
-            message.setText(matKhauMoi);
+            message.setSubject("APP QUẢN LÝ THIẾT BỊ TRƯỜNG HỌC - LẤY LẠI MẬT KHẨU");
+            message.setText("Mật khẩu mới của bạn là: " + matKhauMoi);
             Transport.send(message);
             Toast.makeText(LoginActivity.this, "Mật khẩu mới đã được gửi vào mail!", Toast.LENGTH_SHORT).show();
 
