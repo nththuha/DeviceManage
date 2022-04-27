@@ -1,5 +1,6 @@
 package com.example.devicemanagement.Controller;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -89,8 +90,15 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
                 filter.add(tb);
         }
         adapterCTSD.setFilterList(filter);
-        if (filter.isEmpty())
-            Toast.makeText(this, "Không có dữ liệu để hiển thị!", Toast.LENGTH_SHORT).show();
+        if (filter.isEmpty()){
+            //Toast.makeText(this, "Không có dữ liệu để hiển thị!", Toast.LENGTH_SHORT).show();
+            new AlertDialog.Builder(this)
+                    .setTitle("Thông báo")
+                    .setMessage("Không có dữ liệu để hiển thị!")
+                    .setCancelable(true)
+                    .show();
+        }
+
     }
 
     public void loadListView(DBThietBi dbThietBi) {
