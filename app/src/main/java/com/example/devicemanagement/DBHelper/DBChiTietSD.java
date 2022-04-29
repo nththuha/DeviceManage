@@ -1,10 +1,16 @@
 package com.example.devicemanagement.DBHelper;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import com.example.devicemanagement.Entity.ChiTietSD;
+import com.example.devicemanagement.Entity.ThietBi;
+
+import java.util.ArrayList;
 
 public class DBChiTietSD extends SQLiteOpenHelper {
     public DBChiTietSD(@Nullable Context context) {
@@ -25,5 +31,33 @@ public class DBChiTietSD extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-
+    public ArrayList<ChiTietSD> layDSCTSD() {
+        ArrayList<ChiTietSD> data = new ArrayList<>();
+        String sql = "SELECT * FROM chitietsudung";
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery(sql, null);
+        if (cursor.moveToFirst()) {
+            do {
+                ChiTietSD chiTietSD = new ChiTietSD();
+                chiTietSD.setNgaySuDung(cursor.getString(0));
+                chiTietSD.setSoLuong(cursor.getString(1));
+                chiTietSD.setMaPhong(cursor.getString(2));
+                chiTietSD.setMaThietBi(cursor.getString(3));
+                data.add(chiTietSD);
+            } while (cursor.moveToNext());
+        }
+        return data;
+    }
+    public void themChiTietSD(ChiTietSD chiTietSD) {
+        String sql = "INSERT INTO chitietsudung VALUES (?,?,?,?)";
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sql, new String[]{chiTietSD.getNgaySuDung(), chiTietSD.getSoLuong(), chiTietSD.getMaPhong(), chiTietSD.getMaThietBi()});
+        database.close();
+    }
+    public void suaChiTietSD(ChiTietSD chiTietSD) {
+        String sql = "update chitietsudung set ngaysudung=?, soluong=? where maphong=? and matb=?";
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sql, new String[]{chiTietSD.getNgaySuDung(), chiTietSD.getSoLuong(), chiTietSD.getMaPhong(), chiTietSD.getMaThietBi()});
+        database.close();
+    }
 }
