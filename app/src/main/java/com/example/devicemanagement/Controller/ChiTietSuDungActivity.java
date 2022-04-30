@@ -51,6 +51,8 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
     AdapterMaThietBi adapterMaThietBi;
     DBChiTietSD dbChiTietSD;
     DBThietBi dbThietBi;
+    ChiTietSD chiTietSD;
+    ThietBi thietBi;
     ListView lvCTSuDung;
     ImageButton imbBack;
     Button btnMuonCTTB, btnTraCTTB, btnMuon, btnTra, btnHuyMT;
@@ -99,7 +101,7 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
         btnMuonCTTB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialogMuonThietBi(Gravity.CENTER, dbChiTietSD, dbThietBi);
+                dialogMuonThietBi(Gravity.CENTER,dbChiTietSD, dbThietBi);
             }
         });
         btnTraCTTB.setOnClickListener(new View.OnClickListener() {
@@ -191,15 +193,16 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
         tvSoLuongCTmuon.setText(chiTietSDs.get(i).getSoLuong());
         tvNgayCTmuon.setText(chiTietSDs.get(i).getNgaySuDung());
 
-        Integer slmuon = Integer.parseInt(tvSoLuongCTmuon.getText().toString().trim());
-        Integer sltong = Integer.parseInt(dbThietBi.laySLThietBi(chiTietSDs.get(i).getMaThietBi().toString().trim()));
-        Integer sldu = sltong - slmuon;
+         Integer slmuon = Integer.parseInt(tvSoLuongCTmuon.getText().toString().trim());
+         Integer tongsl = Integer.parseInt(dbThietBi.laySLThietBi(chiTietSDs.get(i).getMaThietBi().toString().trim()));
+         Integer sldu = tongsl - slmuon;
 
         tvSoLuongCTconlai.setText(sldu.toString());
         dialog.show();
 
     }
     private void dialogMuonThietBi(int gravity, DBChiTietSD dbChiTietSD,DBThietBi dbThietBi) {
+        chiTietSD = new ChiTietSD();
         //xử lý vị trí của dialog
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -234,7 +237,6 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
 
         date = new Date(millis);
         tvNgay.setText(date.toString());
-//        tongsl = dbThietBi.laySLThietBi(maThietBi);
         //----------------------------spinner------------------------------
         adapterMaPhong = new AdapterMaPhong(this,R.layout.spinner_maphong,getMaPhong());
         spMaPhong.setAdapter(adapterMaPhong);
@@ -247,12 +249,16 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
-        adapterMaThietBi = new AdapterMaThietBi(this,R.layout.spinner_mathietbi,getMaThietBi());
+        adapterMaThietBi = new AdapterMaThietBi(getApplication(),R.layout.spinner_mathietbi,getMaThietBi());
         spMaThietBi.setAdapter(adapterMaThietBi);
         spMaThietBi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 maThietBi = adapterMaThietBi.getItem(i).getMaThietBi().toString();
+                tongsl = Integer.parseInt(dbThietBi.laySLThietBi(maThietBi));
+                slmuon = dbChiTietSD.laySLThietBi(maPhong,maThietBi);
+                sldu = tongsl - slmuon;
+                tvSoLuongDu.setText("/"+sldu);
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -274,11 +280,13 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
                     txtSoLuongSD.setError(view.getResources().getString(R.string.erorr_soLuongMuon + tongsl));
                 }*/
 
-
-                slmuon = Integer.parseInt(SoLuong);
-                sldu = tongsl - slmuon;
-
+                /*slmuon = Integer.parseInt(SoLuong);
+                sldu = tongsl - slmuon;*/
                 thongBaoThanhCong(Gravity.CENTER);
+                if(chiTietSD.getMaPhong() == maPhong && chiTietSD.getMaThietBi() == maThietBi && chiTietSD.getNgaySuDung() == date.toString()){
+                    Integer tongslmuon = Integer.parseInt(chiTietSD.getSoLuong().trim()) + Integer.parseInt(SoLuong);
+                    dbChiTietSD.suaChiTietSD(new ChiTietSD(tvNgay.getText().toString(),tongslmuon.toString(),maPhong,maThietBi));
+                }
                 dbChiTietSD.themChiTietSD(new ChiTietSD(tvNgay.getText().toString(),SoLuong,maPhong,maThietBi));
                 loadListView(dbChiTietSD);
                 txtSoLuongSD.setText("");

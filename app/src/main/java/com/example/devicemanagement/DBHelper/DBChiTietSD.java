@@ -65,4 +65,12 @@ public class DBChiTietSD extends SQLiteOpenHelper {
         database.execSQL(sql, new String[]{maphong,matb});
         database.close();
     }
+    public Integer laySLThietBi(String maphong, String matb){
+        String sql = "SELECT soluong FROM chitietsudung WHERE maphong='" + maphong +"' and matb='" + matb+"'";
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery(sql, null,null);
+        if (cursor.moveToFirst())
+            return Integer.parseInt(cursor.getString(0).toString().trim());
+        return 0;
+    }
 }
