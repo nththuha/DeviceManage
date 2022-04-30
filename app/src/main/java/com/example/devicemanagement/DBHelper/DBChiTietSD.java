@@ -31,7 +31,7 @@ public class DBChiTietSD extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public ArrayList<ChiTietSD> layDSCTSD() {
+    public ArrayList<ChiTietSD> layDSChiTietSD() {
         ArrayList<ChiTietSD> data = new ArrayList<>();
         String sql = "SELECT * FROM chitietsudung";
         SQLiteDatabase database = getReadableDatabase();
@@ -39,10 +39,10 @@ public class DBChiTietSD extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 ChiTietSD chiTietSD = new ChiTietSD();
-                chiTietSD.setNgaySuDung(cursor.getString(0));
-                chiTietSD.setSoLuong(cursor.getString(1));
-                chiTietSD.setMaPhong(cursor.getString(2));
-                chiTietSD.setMaThietBi(cursor.getString(3));
+                chiTietSD.setMaPhong(cursor.getString(0));
+                chiTietSD.setMaThietBi(cursor.getString(1));
+                chiTietSD.setNgaySuDung(cursor.getString(2));
+                chiTietSD.setSoLuong(cursor.getString(3));
                 data.add(chiTietSD);
             } while (cursor.moveToNext());
         }
