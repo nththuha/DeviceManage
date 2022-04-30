@@ -7,6 +7,7 @@
     android:background="@drawable/ic_bg"
     android:orientation="vertical"
     tools:context=".Controller.ThongKeActivity">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tb_label"
         android:layout_width="match_parent"
@@ -21,18 +22,148 @@
             android:background="?android:selectableItemBackground"
             android:src="@drawable/ic_arrow_back"
             tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-        <!--android:background="@color/blue_100"-->
 
         <TextView
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_marginEnd="30dp"
             android:gravity="center"
-            android:layout_centerInParent="true"
-            android:text="THỐNG KÊ"
+            android:text="Thống Kê Sử Dụng Thiết Bị"
             android:textColor="@color/black"
             android:textSize="28sp"
             android:textStyle="bold" />
+
     </androidx.appcompat.widget.Toolbar>
+    <LinearLayout
+        android:id="@+id/relativeLayout3"
+        android:layout_width="fill_parent"
+        android:layout_height="57dp"
+        android:background="@color/blue_100">
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="57dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Ngày bắt đầu"
+            android:textColor="#000" />
+        <EditText
+            android:layout_width="104dp"
+            android:layout_height="50dp">
+
+        </EditText>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="57dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Ngày kết thúc"
+            android:textColor="#000" />
+
+        <EditText
+            android:layout_width="97dp"
+            android:layout_height="50dp">
+
+        </EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/relativeLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btnFilter"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Lọc"></Button>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id = "@+id/relativeLayout1"
+        android:layout_width = "fill_parent"
+        android:layout_height = "wrap_content"
+        android:background = "@color/blue_200" >
+
+        <TextView
+            android:layout_width = "0dp"
+            android:layout_height = "wrap_content"
+            android:layout_weight = "1"
+            android:gravity = "center"
+            android:padding = "5dp"
+            android:text = "NGAY SD"
+            android:textColor = "#000" />
+
+        <TextView
+            android:layout_width = "0dp"
+            android:layout_height = "wrap_content"
+            android:layout_weight = "2"
+            android:gravity = "center"
+            android:padding = "5dp"
+            android:text = "TEN TB"
+            android:textColor = "#000" />
+
+        <TextView
+            android:layout_width = "0dp"
+            android:layout_height = "wrap_content"
+            android:layout_weight = "1.5"
+            android:gravity = "center"
+            android:padding = "5dp"
+            android:text = "MÃ PHÒNG"
+            android:textColor = "#000" />
+
+        <TextView
+            android:layout_width = "0dp"
+            android:layout_height = "wrap_content"
+            android:layout_weight = "1"
+            android:gravity = "center"
+            android:padding = "5dp"
+            android:text = "SỐ LƯỢNG"
+            android:textColor = "#000" />
+    </LinearLayout>
+
+
+    <ListView
+        android:id="@+id/listviewhuyen"
+        android:layout_width="match_parent"
+        android:layout_height="433dp"
+        android:divider="@null" />
+
+    <LinearLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="57dp"
+        android:background="@color/blue_200">
+
+        <Button
+            android:id="@+id/btnChart"
+            android:layout_width="164dp"
+            android:layout_height="57dp"
+            android:text="xem Chart"></Button>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btnReport"
+            android:layout_width="189dp"
+            android:layout_height="match_parent"
+            android:text="xuất Báo Cáo"></Button>
+
+    </LinearLayout>
 
 </LinearLayout>

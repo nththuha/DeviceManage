@@ -36,6 +36,9 @@
             android:name=".Controller.LoaiThietBiActivity"
             android:exported="false" />
         <activity
+            android:name=".Controller.ChartActivity"
+            android:exported="false" />
+        <activity
             android:name=".Controller.LoginActivity"
             android:exported="true">
             <intent-filter>

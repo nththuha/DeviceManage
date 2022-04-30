@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
 }
 
+
 android {
     compileSdk 32
 
@@ -43,4 +44,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'com.sun.mail:android-mail:1.6.6'
     implementation 'com.sun.mail:android-activation:1.6.6'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }
