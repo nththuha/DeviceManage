@@ -37,6 +37,7 @@ import com.example.devicemanagement.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class PhongHocActivity extends AppCompatActivity {
     ListView lvPH;
@@ -141,7 +142,7 @@ public class PhongHocActivity extends AppCompatActivity {
     private void getFilter(String s){
         filter = new ArrayList<>();
         for (PhongHoc ph: DSPH) {
-            if(ph.getMaPhong().toLowerCase().contains(s)){
+            if(ph.getMaPhong().toLowerCase().contains(s.toLowerCase())){
                 filter.add(ph);
             }
         }
@@ -204,6 +205,9 @@ public class PhongHocActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String maPhong = txtMaPhong.getText().toString();
                 String loaiPhong = txtLoaiPhong.getText().toString();
+                String lp1 = loaiPhong.substring(0,1);
+                String lp2 = loaiPhong.substring(1, loaiPhong.length());
+                loaiPhong = lp1.toUpperCase() + lp2.toLowerCase();
                 String tang = txtTang.getText().toString();
                 if(maPhong.equals("")){
                     Toast.makeText(PhongHocActivity.this, "Mã phòng không được để trống!", Toast.LENGTH_SHORT);
