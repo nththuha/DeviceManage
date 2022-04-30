@@ -23,8 +23,8 @@ public class AdapterMaPhong extends ArrayAdapter<PhongHoc> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_selected_spinner, parent, false);
-        TextView tvSelected = convertView.findViewById(R.id.tvSelected);
+        convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.spinner_maphong, parent, false);
+        TextView tvSelected = convertView.findViewById(R.id.tvSelectedMaPhong);
         PhongHoc phongHoc = (PhongHoc) this.getItem(position);
         if(phongHoc != null){
             tvSelected.setText(phongHoc.getMaPhong());
@@ -34,8 +34,8 @@ public class AdapterMaPhong extends ArrayAdapter<PhongHoc> {
 
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_phonghoc_spinner, parent, false);
-        TextView tvPhongHoc = convertView.findViewById(R.id.tvPHoc);
+        convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_spinner_maphong, parent, false);
+        TextView tvPhongHoc = convertView.findViewById(R.id.tvMaPhongSpinner);
         PhongHoc phongHoc = (PhongHoc) this.getItem(position);
         if(phongHoc != null){
             tvPhongHoc.setText(phongHoc.getMaPhong());

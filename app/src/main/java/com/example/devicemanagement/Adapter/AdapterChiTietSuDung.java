@@ -1,41 +1,51 @@
 package com.example.devicemanagement.Adapter;
 
+import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.devicemanagement.Controller.ChiTietSuDungActivity;
+import com.example.devicemanagement.DBHelper.DBChiTietSD;
 import com.example.devicemanagement.DBHelper.DBThietBi;
+import com.example.devicemanagement.Entity.ChiTietSD;
 import com.example.devicemanagement.Entity.ThietBi;
 import com.example.devicemanagement.R;
 
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.List;
 
-public class AdapterChiTietSuDung extends ArrayAdapter<ThietBi> {
+public class AdapterChiTietSuDung extends ArrayAdapter<ChiTietSD> {
     Context context;
     int resource;
-    ArrayList<ThietBi> data;
-    TextView tvMatb, tvTentb, tvSoluong;
+    ArrayList<ChiTietSD> data;
+    DBChiTietSD dbChiTietSD;
+    ChiTietSD chiTietSD;
+    TextView tvMaPhongSD, tvMaThietBiSD, tvSoLuongMuon;
+    Integer sldu = 0;
 
-    public AdapterChiTietSuDung(@NonNull Context context, int resource, @NonNull ArrayList<ThietBi> data) {
+    public AdapterChiTietSuDung(@NonNull Context context, int resource, @NonNull ArrayList<ChiTietSD> data) {
         super(context, resource, data);
         this.context = context;
         this.resource = resource;
         this.data = data;
     }
-    public void setFilterList(ArrayList<ThietBi> filter) {
+    public void setFilterList(ArrayList<ChiTietSD> filter) {
         this.data = filter;
         notifyDataSetChanged();
     }
@@ -49,13 +59,14 @@ public class AdapterChiTietSuDung extends ArrayAdapter<ThietBi> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         convertView = LayoutInflater.from(context).inflate(resource, null);
-        tvMatb = convertView.findViewById(R.id.tvMaThietBi);
-        tvTentb = convertView.findViewById(R.id.tvTenThietBi);
-        tvSoluong = convertView.findViewById(R.id.tvSoLuongMuon);
-        ThietBi thietBi = data.get(position);
-        tvMatb.setText(thietBi.getMaThietBi());
-        tvTentb.setText(thietBi.getTenThietBi());
-        tvSoluong.setText(thietBi.getSoLuong());
+        tvMaPhongSD = convertView.findViewById(R.id.tvMaPhongSD);
+        tvMaThietBiSD = convertView.findViewById(R.id.tvMaThietBiSD);
+        tvSoLuongMuon = convertView.findViewById(R.id.tvSoLuongMuon);
+        chiTietSD = data.get(position);
+
+        tvMaPhongSD.setText(chiTietSD.getMaPhong());
+        tvMaThietBiSD.setText(chiTietSD.getMaThietBi());
+        tvSoLuongMuon.setText(chiTietSD.getSoLuong());
 
         return convertView;
     }

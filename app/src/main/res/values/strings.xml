@@ -7,4 +7,6 @@
     <string name="tenThietBi">Tên Thiết Bị</string>
     <string name="soLuong">Số lượng</string>
     <string name="ngayMuon">Ngày mượn</string>
+    <string name="erorr_soLuongMuon">Vui lòng nhập số lượng bé hơn bằng </string>
+    <string name="erorr_soLuongTrong">Vui lòng nhập số lượng!</string>
 </resources>

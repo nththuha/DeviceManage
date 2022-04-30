@@ -69,5 +69,11 @@ public class DBThietBi extends SQLiteOpenHelper {
         database.execSQL(sql, new String[]{thietBi.getTenThietBi(), thietBi.getXuatXu(), thietBi.getSoLuong(), thietBi.getMaLoai(), thietBi.getMaThietBi()});
         database.close();
     }
+    public Integer laySLThietBi(String matb){
+        String sql = "SELECT soluong FROM thietbi WHERE matb=?";
+        SQLiteDatabase database = getReadableDatabase();
+        database.execSQL(sql,new String[]{matb});
+        return Integer.parseInt(sql);
+    }
 
 }
