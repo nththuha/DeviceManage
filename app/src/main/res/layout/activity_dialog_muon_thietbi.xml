@@ -83,15 +83,26 @@
 
             <EditText
                 android:id="@+id/txtSoLuongSD"
-                android:layout_width="match_parent"
+                android:layout_width="60dp"
                 android:layout_height="40dp"
-                android:layout_gravity="bottom"
-                android:gravity="center_vertical"
+                android:layout_gravity="center_horizontal|bottom"
+                android:gravity="center_vertical|right"
                 android:layout_marginStart="30dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:inputType="number"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+            <TextView
+                android:id="@+id/tvSoLuongDu"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="5dp"
+                android:layout_gravity="center_horizontal|top"
+                android:gravity="center_vertical"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:text="số lượng dư"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"

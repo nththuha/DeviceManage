@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import com.example.devicemanagement.Entity.ChiTietSD;
-import com.example.devicemanagement.Entity.ThietBi;
 
 import java.util.ArrayList;
 
@@ -58,6 +57,12 @@ public class DBChiTietSD extends SQLiteOpenHelper {
         String sql = "update chitietsudung set ngaysudung=?, soluong=? where maphong=? and matb=?";
         SQLiteDatabase database = getWritableDatabase();
         database.execSQL(sql, new String[]{chiTietSD.getNgaySuDung(), chiTietSD.getSoLuong(), chiTietSD.getMaPhong(), chiTietSD.getMaThietBi()});
+        database.close();
+    }
+    public void xoaChiTietSD(String maphong,String matb) {
+        String sql = "Delete from chitietthietbi where maphong=? and matb = ?";
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sql, new String[]{maphong,matb});
         database.close();
     }
 }

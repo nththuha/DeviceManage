@@ -67,6 +67,7 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
         setEvent();
     }
     private void setEvent() {
+        dbThietBi = new DBThietBi(this);
         dbChiTietSD = new DBChiTietSD(this);
         loadListView(dbChiTietSD);
         imbBack.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +80,7 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 lvCTSuDung.setBackgroundResource(R.drawable.activity_onclick_item);
-                dialogChiTietMuon(Gravity.CENTER,i);
+                dialogChiTietMuon(Gravity.CENTER,i, dbThietBi);
             }
         });
         svCTSD.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -98,13 +99,13 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
         btnMuonCTTB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialogMuonThietBi(Gravity.CENTER, dbChiTietSD);
+                dialogMuonThietBi(Gravity.CENTER, dbChiTietSD, dbThietBi);
             }
         });
         btnTraCTTB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //dialogTraThietBi(Gravity.CENTER, dbChiTietSD);
+                //dialogTraThietBi(Gravity.CENTER, dbChiTietSD, dbThietBi);
             }
         });
     }
@@ -157,7 +158,7 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
         DBThietBi dbThietBi = new DBThietBi(this);
         return dbThietBi.layDSThietBi();
     }
-    private void dialogChiTietMuon(int gravity, int i) {
+    private void dialogChiTietMuon(int gravity, int i, DBThietBi dbThietBi) {
         //xử lý vị trí của dialog
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -189,11 +190,16 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
         tvMaTBCTmuon.setText(chiTietSDs.get(i).getMaThietBi());
         tvSoLuongCTmuon.setText(chiTietSDs.get(i).getSoLuong());
         tvNgayCTmuon.setText(chiTietSDs.get(i).getNgaySuDung());
-        //tvSoLuongCTconlai.setText(thietBis.get(i).getSoLuong());
+
+        Integer slmuon = Integer.parseInt(tvSoLuongCTmuon.getText().toString().trim());
+        Integer sltong = Integer.parseInt(dbThietBi.laySLThietBi(chiTietSDs.get(i).getMaThietBi().toString().trim()));
+        Integer sldu = sltong - slmuon;
+
+        tvSoLuongCTconlai.setText(sldu.toString());
         dialog.show();
 
     }
-    private void dialogMuonThietBi(int gravity, DBChiTietSD dbChiTietSD) {
+    private void dialogMuonThietBi(int gravity, DBChiTietSD dbChiTietSD,DBThietBi dbThietBi) {
         //xử lý vị trí của dialog
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -219,10 +225,12 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
         spMaPhong = dialog.findViewById(R.id.spMaPhong);
         spMaThietBi = dialog.findViewById(R.id.spMaThietBi);
         TextView tvNgay = dialog.findViewById(R.id.tvNgay);
+        TextView tvSoLuongDu = dialog.findViewById(R.id.tvSoLuongDu);
         EditText txtSoLuongSD = dialog.findViewById(R.id.txtSoLuongSD);
 
         btnMuon = dialog.findViewById(R.id.btnMuon);
         btnHuyMT = dialog.findViewById(R.id.btnHuyMT);
+
 
         date = new Date(millis);
         tvNgay.setText(date.toString());
@@ -265,6 +273,8 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
                     txtSoLuongSD.requestFocus();
                     txtSoLuongSD.setError(view.getResources().getString(R.string.erorr_soLuongMuon + tongsl));
                 }*/
+
+
                 slmuon = Integer.parseInt(SoLuong);
                 sldu = tongsl - slmuon;
 

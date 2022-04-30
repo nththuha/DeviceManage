@@ -59,6 +59,7 @@ public class AdapterChiTietSuDung extends ArrayAdapter<ChiTietSD> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         convertView = LayoutInflater.from(context).inflate(resource, null);
+        DBThietBi dbThietBi = new DBThietBi(context);
         tvMaPhongSD = convertView.findViewById(R.id.tvMaPhongSD);
         tvMaThietBiSD = convertView.findViewById(R.id.tvMaThietBiSD);
         tvSoLuongMuon = convertView.findViewById(R.id.tvSoLuongMuon);
@@ -66,7 +67,7 @@ public class AdapterChiTietSuDung extends ArrayAdapter<ChiTietSD> {
 
         tvMaPhongSD.setText(chiTietSD.getMaPhong());
         tvMaThietBiSD.setText(chiTietSD.getMaThietBi());
-        tvSoLuongMuon.setText(chiTietSD.getSoLuong());
+        tvSoLuongMuon.setText(chiTietSD.getSoLuong()+"/"+dbThietBi.laySLThietBi(chiTietSD.getMaThietBi()));
 
         return convertView;
     }
