@@ -47,8 +47,6 @@ public class ThongKeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ThongKeActivity.this,ChartActivity.class);
-
-                // move to new activity
                 startActivity(intent);
             }
         });
