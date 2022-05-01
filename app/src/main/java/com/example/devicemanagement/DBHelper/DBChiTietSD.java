@@ -59,11 +59,19 @@ public class DBChiTietSD extends SQLiteOpenHelper {
         database.execSQL(sql, new String[]{chiTietSD.getNgaySuDung(), chiTietSD.getSoLuong(), chiTietSD.getMaPhong(), chiTietSD.getMaThietBi()});
         database.close();
     }
+    public void xoaCTSD(){
+        String sql = "Delete from chitietsudung";
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sql);
+        database.close();
+    }
     public void xoaChiTietSD(String maphong,String matb) {
         String sql = "Delete from chitietthietbi where maphong=? and matb = ?";
         SQLiteDatabase database = getWritableDatabase();
         database.execSQL(sql, new String[]{maphong,matb});
         database.close();
+
+
     }
     public Integer laySLThietBi(String maphong, String matb){
         String sql = "SELECT soluong FROM chitietsudung WHERE maphong='" + maphong +"' and matb='" + matb+"'";
