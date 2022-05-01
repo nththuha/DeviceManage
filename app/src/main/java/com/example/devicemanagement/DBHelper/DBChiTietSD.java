@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import com.example.devicemanagement.Entity.ChiTietSD;
-import com.example.devicemanagement.Entity.ThietBi;
 
 import java.util.ArrayList;
 
@@ -31,7 +30,7 @@ public class DBChiTietSD extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public ArrayList<ChiTietSD> layDSCTSD() {
+    public ArrayList<ChiTietSD> layDSChiTietSD() {
         ArrayList<ChiTietSD> data = new ArrayList<>();
         String sql = "SELECT * FROM chitietsudung";
         SQLiteDatabase database = getReadableDatabase();
@@ -39,10 +38,10 @@ public class DBChiTietSD extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 ChiTietSD chiTietSD = new ChiTietSD();
-                chiTietSD.setNgaySuDung(cursor.getString(0));
-                chiTietSD.setSoLuong(cursor.getString(1));
-                chiTietSD.setMaPhong(cursor.getString(2));
-                chiTietSD.setMaThietBi(cursor.getString(3));
+                chiTietSD.setMaPhong(cursor.getString(0));
+                chiTietSD.setMaThietBi(cursor.getString(1));
+                chiTietSD.setNgaySuDung(cursor.getString(2));
+                chiTietSD.setSoLuong(cursor.getString(3));
                 data.add(chiTietSD);
             } while (cursor.moveToNext());
         }
@@ -59,5 +58,19 @@ public class DBChiTietSD extends SQLiteOpenHelper {
         SQLiteDatabase database = getWritableDatabase();
         database.execSQL(sql, new String[]{chiTietSD.getNgaySuDung(), chiTietSD.getSoLuong(), chiTietSD.getMaPhong(), chiTietSD.getMaThietBi()});
         database.close();
+    }
+    public void xoaChiTietSD(String maphong,String matb) {
+        String sql = "Delete from chitietthietbi where maphong=? and matb = ?";
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sql, new String[]{maphong,matb});
+        database.close();
+    }
+    public Integer laySLThietBi(String maphong, String matb){
+        String sql = "SELECT soluong FROM chitietsudung WHERE maphong='" + maphong +"' and matb='" + matb+"'";
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery(sql, null,null);
+        if (cursor.moveToFirst())
+            return Integer.parseInt(cursor.getString(0).toString().trim());
+        return 0;
     }
 }

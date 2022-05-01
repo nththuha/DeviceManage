@@ -41,7 +41,7 @@
             android:id="@+id/txtUser"
             android:layout_marginTop="48dp"
             android:hint="Tên đăng nhập"
-            android:text="NV02"
+            android:text="NV01"
             android:drawableStart="@drawable/ic_person_login"
             style="@style/style_login_txtdangnhap" />
 
