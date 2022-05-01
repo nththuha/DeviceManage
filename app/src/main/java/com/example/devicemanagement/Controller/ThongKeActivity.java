@@ -48,6 +48,7 @@ public class ThongKeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ThongKeActivity.this,ChartActivity.class);
 
+                // move to new activity
                 startActivity(intent);
             }
         });
@@ -65,7 +66,7 @@ public class ThongKeActivity extends AppCompatActivity {
 //        historyList.add(new ChiTietSD("1","2","3","4"));
 //        historyList.add(new ChiTietSD("44","44","455566","4"));
 //        historyList.add(new ChiTietSD("44","44","455566","4"));
-        historyList = dbChiTietSD.layDSCTSD();
+        historyList = dbChiTietSD.layDSChiTietSD();
         ListView lview = (ListView) findViewById(R.id.listviewhuyen);
         listviewAdapter adapter = new listviewAdapter(this, historyList);
         lview.setAdapter(adapter);
