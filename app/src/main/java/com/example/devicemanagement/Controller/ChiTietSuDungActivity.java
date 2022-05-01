@@ -2,6 +2,7 @@ package com.example.devicemanagement.Controller;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -15,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Spinner;
@@ -41,6 +43,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChiTietSuDungActivity extends AppCompatActivity{
+    Context context;
     Date date;
     long millis = System.currentTimeMillis();
     ArrayList<ChiTietSD> chiTietSDs;
@@ -55,16 +58,17 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
     ThietBi thietBi;
     ListView lvCTSuDung;
     ImageButton imbBack;
-    Button btnMuonCTTB, btnTraCTTB, btnMuon, btnTra, btnHuyMT;
+    Button btnMuonCTTB, btnMuon, btnTra,btnHuyT, btnHuyM;
     SearchView svCTSD;
     Spinner spMaPhong, spMaThietBi;
     String maPhong = "";
     String maThietBi = "";
-    Integer slmuon = 0, tongsl = 0, sldu = 0;
+    int tongsl = 0, sldu = 0, slmuon = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chitiet_sudung);
+        context = this;
         setControl();
         setEvent();
     }
@@ -85,6 +89,13 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
                 dialogChiTietMuon(Gravity.CENTER,i, dbThietBi);
             }
         });
+        lvCTSuDung.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                dialogTraThietBi(Gravity.CENTER,i,dbChiTietSD,dbThietBi);
+                return true;
+            }
+        });
         svCTSD.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
@@ -102,12 +113,6 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 dialogMuonThietBi(Gravity.CENTER,dbChiTietSD, dbThietBi);
-            }
-        });
-        btnTraCTTB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //dialogTraThietBi(Gravity.CENTER, dbChiTietSD, dbThietBi);
             }
         });
     }
@@ -143,7 +148,6 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
         lvCTSuDung = findViewById(R.id.lvCTSuDung);
         svCTSD = findViewById(R.id.svCTSD);
         btnMuonCTTB = findViewById(R.id.btnMuonCTTB);
-        btnTraCTTB = findViewById(R.id.btnTraCTTB);
     }
 
     @Override
@@ -193,16 +197,16 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
         tvSoLuongCTmuon.setText(chiTietSDs.get(i).getSoLuong());
         tvNgayCTmuon.setText(chiTietSDs.get(i).getNgaySuDung());
 
-         Integer slmuon = Integer.parseInt(tvSoLuongCTmuon.getText().toString().trim());
-         Integer tongsl = Integer.parseInt(dbThietBi.laySLThietBi(chiTietSDs.get(i).getMaThietBi().toString().trim()));
-         Integer sldu = tongsl - slmuon;
+        int tongsl = Integer.parseInt(dbThietBi.laySLThietBi(chiTietSDs.get(i).getMaThietBi()));
+        int slmuon = Integer.parseInt(dbChiTietSD.layTongSLMuonMatb(chiTietSDs.get(i).getMaThietBi()));
+        int sldu = tongsl - slmuon;
 
-        tvSoLuongCTconlai.setText(sldu.toString());
+        tvSoLuongCTconlai.setText(String.valueOf(sldu));
         dialog.show();
 
     }
     private void dialogMuonThietBi(int gravity, DBChiTietSD dbChiTietSD,DBThietBi dbThietBi) {
-        chiTietSD = new ChiTietSD();
+        chiTietSDs = new ArrayList<>();
         //xử lý vị trí của dialog
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -225,14 +229,15 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
         } else {
             dialog.setCancelable(false);
         }
-        spMaPhong = dialog.findViewById(R.id.spMaPhong);
-        spMaThietBi = dialog.findViewById(R.id.spMaThietBi);
-        TextView tvNgay = dialog.findViewById(R.id.tvNgay);
+        spMaPhong = dialog.findViewById(R.id.spMaPhongM);
+        spMaThietBi = dialog.findViewById(R.id.spMaThietBiM);
+        LinearLayout llSoLuongMuon = dialog.findViewById(R.id.llSoLuongM);
+        TextView tvNgay = dialog.findViewById(R.id.tvNgayM);
         TextView tvSoLuongDu = dialog.findViewById(R.id.tvSoLuongDu);
         EditText txtSoLuongSD = dialog.findViewById(R.id.txtSoLuongSD);
 
         btnMuon = dialog.findViewById(R.id.btnMuon);
-        btnHuyMT = dialog.findViewById(R.id.btnHuyMT);
+        btnHuyM = dialog.findViewById(R.id.btnHuyM);
 
 
         date = new Date(millis);
@@ -254,11 +259,14 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
         spMaThietBi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                maThietBi = adapterMaThietBi.getItem(i).getMaThietBi().toString();
+                maThietBi = adapterMaThietBi.getItem(i).getMaThietBi();
                 tongsl = Integer.parseInt(dbThietBi.laySLThietBi(maThietBi));
-                slmuon = dbChiTietSD.laySLThietBi(maPhong,maThietBi);
+                slmuon = Integer.parseInt(dbChiTietSD.layTongSLMuonMatb(maThietBi));
                 sldu = tongsl - slmuon;
                 tvSoLuongDu.setText("/"+sldu);
+                if(sldu == 0)
+                    llSoLuongMuon.setVisibility(View.GONE);
+                else llSoLuongMuon.setVisibility(View.VISIBLE);
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -273,27 +281,37 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
 
                 /*if (TextUtils.isEmpty(SoLuong)){
                     txtSoLuongSD.requestFocus();
-                    txtSoLuongSD.setError(view.getResources().getString(R.string.erorr_soLuongTrong));
+                    txtSoLuongSD.setError(context.getResources().getString(R.string.erorr_soLuongTrong));
                 }
-                if((Integer.parseInt(SoLuong) > tongsl)){
+                if((Integer.parseInt(SoLuong) > sldu)){
                     txtSoLuongSD.requestFocus();
-                    txtSoLuongSD.setError(view.getResources().getString(R.string.erorr_soLuongMuon + tongsl));
+                    txtSoLuongSD.setError(context.getResources().getString(R.string.erorr_soLuongMuon + sldu));
                 }*/
 
-                /*slmuon = Integer.parseInt(SoLuong);
-                sldu = tongsl - slmuon;*/
-                thongBaoThanhCong(Gravity.CENTER);
-                if(chiTietSD.getMaPhong() == maPhong && chiTietSD.getMaThietBi() == maThietBi && chiTietSD.getNgaySuDung() == date.toString()){
-                    Integer tongslmuon = Integer.parseInt(chiTietSD.getSoLuong().trim()) + Integer.parseInt(SoLuong);
-                    dbChiTietSD.suaChiTietSD(new ChiTietSD(tvNgay.getText().toString(),tongslmuon.toString(),maPhong,maThietBi));
-                }
-                dbChiTietSD.themChiTietSD(new ChiTietSD(tvNgay.getText().toString(),SoLuong,maPhong,maThietBi));
-                loadListView(dbChiTietSD);
+                thongBaoThanhCong(Gravity.CENTER,"Mượn thiết bị thành công!");
+                /*for (ChiTietSD chiTietSD: chiTietSDs) {
+                    if((maPhong == chiTietSD.getMaPhong()) && (maThietBi == chiTietSD.getMaThietBi()) && (date.toString() == chiTietSD.getNgaySuDung())){
+                        int tongslmuon = Integer.parseInt(chiTietSD.getSoLuong().trim()) + Integer.parseInt(SoLuong);
+                        dbChiTietSD.suaChiTietSD(new ChiTietSD(maPhong,maThietBi,tvNgay.getText().toString(),String.valueOf(tongslmuon)));
+
+                    }
+                    else
+                        dbChiTietSD.themChiTietSD(new ChiTietSD(maPhong,maThietBi,tvNgay.getText().toString(),SoLuong));
+                        loadListView(dbChiTietSD);
+                        txtSoLuongSD.setText("");
+                        tvSoLuongDu.setText("/"+sldu);
+                        dialog.show();
+                }*/
+                dbChiTietSD.themChiTietSD(new ChiTietSD(maPhong,maThietBi,tvNgay.getText().toString(),SoLuong));
+                int slmoi = Integer.parseInt(dbThietBi.laySLThietBi(maThietBi)) - Integer.parseInt(dbChiTietSD.layTongSLMuonMatb(maThietBi));
+                tvSoLuongDu.setText("/"+slmoi);
                 txtSoLuongSD.setText("");
+                loadListView(dbChiTietSD);
                 dialog.show();
+
             }
         });
-        btnHuyMT.setOnClickListener(new View.OnClickListener() {
+        btnHuyM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
@@ -302,39 +320,11 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
         dialog.show();
 
     }
-
-    private void thongBaoThanhCong(int gravity) {
-            //xử lý vị trí của dialog
-            final Dialog dialog = new Dialog(this);
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.setContentView(R.layout.activity_dialog_tbthanhcong);
-
-            Window window = dialog.getWindow();
-            if (window == null)
-                return;
-            window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-            WindowManager.LayoutParams windowAttributes = window.getAttributes();
-            windowAttributes.gravity = gravity;
-            window.setAttributes(windowAttributes);
-
-            //click ra bên ngoài để tắt dialog
-            if (Gravity.CENTER == gravity) {
-                dialog.setCancelable(true);
-            } else {
-                dialog.setCancelable(true);
-            }
-            TextView tvThongBao = dialog.findViewById(R.id.tvThongBao);
-            tvThongBao.setText("Mượn thiết bị thành công!");
-            dialog.show();
-
-    }
-    /*private void dialogTraThietBi(int gravity, DBChiTietSD dbChiTietSD) {
+    private void dialogTraThietBi(int gravity,int i, DBChiTietSD dbChiTietSD, DBThietBi dbThietBi) {
         //xử lý vị trí của dialog
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.activity_dialog_muon_thietbi);
+        dialog.setContentView(R.layout.activity_dialog_tra_thietbi);
 
         Window window = dialog.getWindow();
         if (window == null)
@@ -353,34 +343,39 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
             dialog.setCancelable(false);
         }
 
-        TextView tvMaTB = dialog.findViewById(R.id.tvMaTB);
-        TextView tvTitleMuonTB = dialog.findViewById(R.id.tvTitleMuonTB);
-        Button btnTra = dialog.findViewById(R.id.btnMuon);
-        spMaPhong = dialog.findViewById(R.id.spMaPhong);
-        Button btnHuyMT = dialog.findViewById(R.id.btnHuyMT);
-        tvTitleMuonTB.setText("Trả thiết bị theo phòng");
-        tvMaTB.setText(thietBis.get(i).getMaThietBi());
-        btnTra.setText("Trả");
-        adapterMaPhong = new AdapterMaPhong(this,R.layout.item_selected_spinner,getMaPhong());
-        spMaPhong.setAdapter(adapterMaPhong);
-        spMaPhong.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                maPhong = adapterMaPhong.getItem(i).getMaPhong().toString();
-            }
+        LinearLayout llSoLuongTra = dialog.findViewById(R.id.llSoLuongT);
+        TextView tvMaPhong = dialog.findViewById(R.id.tvMaPhongT);
+        TextView tvMaThietBi = dialog.findViewById(R.id.tvMaThietBiT);
+        TextView tvNgayMuon = dialog.findViewById(R.id.tvNgayMuon);
+        EditText txtSoLuongTra = dialog.findViewById(R.id.txtSoLuongTra);
+        TextView tvSoLuongM = dialog.findViewById(R.id.tvSoLuongM);
+        btnTra = dialog.findViewById(R.id.btnTra);
+        btnHuyT = dialog.findViewById(R.id.btnHuyT);
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
+        tvMaPhong.setText(chiTietSDs.get(i).getMaPhong());
+        tvMaThietBi.setText(chiTietSDs.get(i).getMaThietBi());
+        tvNgayMuon.setText(chiTietSDs.get(i).getNgaySuDung());
+        tvSoLuongM.setText("/" + chiTietSDs.get(i).getSoLuong());
         btnTra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                int sltra = Integer.parseInt(txtSoLuongTra.getText().toString().trim());
+                int slmuon = Integer.parseInt(chiTietSDs.get(i).getSoLuong());
+                slmuon = slmuon - sltra;
+                if(slmuon == 0){
+                    dbChiTietSD.xoaChiTietSD(chiTietSDs.get(i).getMaPhong(),chiTietSDs.get(i).getMaThietBi());
+                }
+                else{
+                    dbChiTietSD.suaChiTietSD(new ChiTietSD(chiTietSDs.get(i).getMaPhong(),chiTietSDs.get(i).getMaThietBi(),chiTietSDs.get(i).getNgaySuDung(),String.valueOf(slmuon)));
+                }
+                thongBaoThanhCong(Gravity.CENTER,"Trả thiết bị thành công!");
+                loadListView(dbChiTietSD);
+                txtSoLuongTra.setText("");
+                tvSoLuongM.setText("/" + slmuon);
+                dialog.dismiss();
             }
         });
-        btnHuyMT.setOnClickListener(new View.OnClickListener() {
+        btnHuyT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
@@ -388,5 +383,32 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
         });
         dialog.show();
 
-    }*/
+    }
+    private void thongBaoThanhCong(int gravity, String text) {
+        //xử lý vị trí của dialog
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.activity_dialog_tbthanhcong);
+
+        Window window = dialog.getWindow();
+        if (window == null)
+            return;
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams windowAttributes = window.getAttributes();
+        windowAttributes.gravity = gravity;
+        window.setAttributes(windowAttributes);
+
+        //click ra bên ngoài để tắt dialog
+        if (Gravity.CENTER == gravity) {
+            dialog.setCancelable(true);
+        } else {
+            dialog.setCancelable(true);
+        }
+        TextView tvThongBao = dialog.findViewById(R.id.tvThongBao);
+        tvThongBao.setText(text);
+        dialog.show();
+
+    }
 }

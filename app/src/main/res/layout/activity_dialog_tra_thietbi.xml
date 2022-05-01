@@ -16,7 +16,7 @@
         android:textSize="20sp"
         android:gravity="center"
         android:textStyle="bold"
-        android:text="Mượn thiết bị theo phòng"/>
+        android:text="Trả thiết bị theo phòng"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,14 +35,16 @@
                 android:textColor="@color/black"
                 android:text="@string/maPhong"/>
 
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/spMaPhongM"
+            <TextView
+                android:id="@+id/tvMaPhongT"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginStart="24dp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginStart="34dp"
                 android:background="@android:color/transparent"
+                android:gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textStyle="bold"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
         </LinearLayout>
         <LinearLayout
@@ -57,11 +59,13 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:text="@string/maThietBi"/>
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/spMaThietBiM"
+            <TextView
+                android:id="@+id/tvMaThietBiT"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="29dp"
+                android:layout_gravity="center_horizontal|bottom"
+                android:gravity="center_vertical"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:background="@android:color/transparent"
@@ -81,18 +85,21 @@
                 android:text="@string/ngayMuon"/>
 
             <TextView
-                android:id="@+id/tvNgayM"
+                android:id="@+id/tvNgayMuon"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:gravity="center_vertical|center"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="24dp"
+                android:layout_gravity="center_horizontal|bottom"
+                android:gravity="center_vertical"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:inputType="date"
+                android:background="@android:color/transparent"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/llSoLuongM"
+            android:id="@+id/llSoLuongT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -106,18 +113,18 @@
                 android:text="@string/soLuong"/>
 
             <EditText
-                android:id="@+id/txtSoLuongSD"
+                android:id="@+id/txtSoLuongTra"
                 android:layout_width="60dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_horizontal|bottom"
                 android:gravity="center_vertical|right"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="37dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:inputType="number"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
             <TextView
-                android:id="@+id/tvSoLuongDu"
+                android:id="@+id/tvSoLuongM"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="5dp"
@@ -137,7 +144,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="5dp">
             <Button
-                android:id="@+id/btnHuyM"
+                android:id="@+id/btnHuyT"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -148,7 +155,7 @@
                 android:layout_marginStart="20dp"
                 android:textSize="14sp"/>
             <Button
-                android:id="@+id/btnMuon"
+                android:id="@+id/btnTra"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -156,7 +163,7 @@
                 android:layout_marginEnd="20dp"
                 android:textColor="@color/black"
                 android:background="@drawable/round_border_green20"
-                android:text="Mượn"
+                android:text="Trả"
                 android:textSize="14sp"/>
         </LinearLayout>
     </LinearLayout>

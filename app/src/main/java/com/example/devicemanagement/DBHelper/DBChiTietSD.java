@@ -18,7 +18,7 @@ public class DBChiTietSD extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql="CREATE TABLE chitietsudung (ngaysudung TEXT, soluong TEXT, maphong TEXT, matb TEXT, PRIMARY KEY(maphong,matb)," +
+        String sql="CREATE TABLE chitietsudung (maphong TEXT, matb TEXT, ngaysudung TEXT, soluong TEXT, PRIMARY KEY(maphong,matb)," +
                 "FOREIGN KEY(maphong) REFERENCES Phonghoc(maphong) ON DELETE CASCADE ON UPDATE NO ACTION, " +
                 "FOREIGN KEY(matb) REFERENCES Thietbi(matb) ON DELETE CASCADE ON UPDATE NO ACTION)";
         db.execSQL(sql);
@@ -50,27 +50,51 @@ public class DBChiTietSD extends SQLiteOpenHelper {
     public void themChiTietSD(ChiTietSD chiTietSD) {
         String sql = "INSERT INTO chitietsudung VALUES (?,?,?,?)";
         SQLiteDatabase database = getWritableDatabase();
-        database.execSQL(sql, new String[]{chiTietSD.getNgaySuDung(), chiTietSD.getSoLuong(), chiTietSD.getMaPhong(), chiTietSD.getMaThietBi()});
+        database.execSQL(sql, new String[]{chiTietSD.getMaPhong(), chiTietSD.getMaThietBi(),chiTietSD.getNgaySuDung(), chiTietSD.getSoLuong()});
         database.close();
     }
+    //UPDATE chitietsudung SET ngaysudung='2022-05-02', soluong='7' WHERE maphong='LT11' AND matb='USB1'
     public void suaChiTietSD(ChiTietSD chiTietSD) {
-        String sql = "update chitietsudung set ngaysudung=?, soluong=? where maphong=? and matb=?";
+        String sql = "UPDATE chitietsudung SET ngaysudung=?, soluong=? WHERE maphong=? AND matb=?";
         SQLiteDatabase database = getWritableDatabase();
-        database.execSQL(sql, new String[]{chiTietSD.getNgaySuDung(), chiTietSD.getSoLuong(), chiTietSD.getMaPhong(), chiTietSD.getMaThietBi()});
+        database.execSQL(sql, new String[]{chiTietSD.getMaPhong(), chiTietSD.getMaThietBi(), chiTietSD.getNgaySuDung(), chiTietSD.getSoLuong()});
         database.close();
     }
+    /*public void suaChiTietSD(String maphong, String matb, String ngaysudung, String soluong) {
+        String sql = "UPDATE chitietsudung SET ngaysudung='"+ngaysudung+"', soluong='"+soluong+"' WHERE maphong='"+maphong+"' AND matb='"+matb+"'";
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sql, new String[]{sql,null});
+        database.close();
+    }*/
     public void xoaChiTietSD(String maphong,String matb) {
-        String sql = "Delete from chitietthietbi where maphong=? and matb = ?";
+        String sql = "DELETE FROM chitietsudung WHERE maphong=? AND matb =?";
         SQLiteDatabase database = getWritableDatabase();
         database.execSQL(sql, new String[]{maphong,matb});
         database.close();
     }
-    public Integer laySLThietBi(String maphong, String matb){
-        String sql = "SELECT soluong FROM chitietsudung WHERE maphong='" + maphong +"' and matb='" + matb+"'";
+    public Integer laySLMuonTheoNgay(String maphong, String matb, String ngay){
+        String sql = "SELECT soluong FROM chitietsudung WHERE maphong='" + maphong +"' AND matb='" + matb +"' AND ngaysudung='" + ngay +"'";
         SQLiteDatabase database = getReadableDatabase();
-        Cursor cursor = database.rawQuery(sql, null,null);
+        Cursor cursor = database.rawQuery(sql, null);
         if (cursor.moveToFirst())
-            return Integer.parseInt(cursor.getString(0).toString().trim());
+            return Integer.parseInt(cursor.getString(0).trim());
         return 0;
+    }
+    //SELECT sum(soluong) FROM chitietsudung WHERE maphong='LT11' AND matb='USB1'
+    public String layTongSLMuon(String maphong, String matb){
+        String sql = "SELECT sum(soluong) FROM chitietsudung WHERE maphong='" + maphong +"' AND matb='" + matb +"'";
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery(sql, null);
+        if (cursor.moveToFirst())
+            return cursor.getString(0);
+        return null;
+    }
+    public String layTongSLMuonMatb(String matb){
+        String sql = "SELECT sum(soluong) FROM chitietsudung WHERE matb='" + matb +"'";
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery(sql, null);
+        if (cursor.moveToFirst())
+            return cursor.getString(0);
+        return null;
     }
 }
