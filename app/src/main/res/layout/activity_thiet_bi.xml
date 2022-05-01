@@ -101,7 +101,7 @@
     <ListView
         android:id="@+id/lvTB"
         android:layout_width="wrap_content"
-        android:layout_height="390dp" />
+        android:layout_height="350dp" />
 
     <ImageButton
         android:id="@+id/imbThemTB"

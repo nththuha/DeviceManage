@@ -68,6 +68,7 @@
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/layout_loai_thiet_bi.xml" value="0.11018518518518519" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/layout_thiet_bi.xml" value="0.12158054711246201" />
         <entry key="app/src/main/res/layout/activity_chi_tiet_thiet_bi.xml" value="0.18432971014492755" />
+        <entry key="app/src/main/res/layout/activity_chitiet_sudung.xml" value="0.18432971014492755" />
         <entry key="app/src/main/res/layout/activity_dialog_muon_thietbi.xml" value="0.18432971014492755" />
         <entry key="app/src/main/res/layout/activity_dialog_them_sua_ph.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_dialog_them_thietbi.xml" value="0.18432971014492755" />
@@ -85,6 +86,8 @@
         <entry key="app/src/main/res/layout/item_selected_spinner.xml" value="0.18432971014492755" />
         <entry key="app/src/main/res/layout/item_selected_spinnerMaloaiTB.xml" value="0.18432971014492755" />
         <entry key="app/src/main/res/layout/item_selected_spinnermaloaitb.xml" value="0.18432971014492755" />
+        <entry key="app/src/main/res/layout/item_spinner_maphong.xml" value="0.18432971014492755" />
+        <entry key="app/src/main/res/layout/item_spinner_mathietbi.xml" value="0.18432971014492755" />
         <entry key="app/src/main/res/layout/item_thietbi_spinner.xml" value="0.1" />
         <entry key="app/src/main/res/layout/layout_loai_thiet_bi.xml" value="0.18432971014492755" />
         <entry key="app/src/main/res/layout/layout_nhan_vien.xml" value="0.18432971014492755" />
@@ -92,6 +95,8 @@
         <entry key="app/src/main/res/layout/layout_thiet_bi.xml" value="0.165" />
         <entry key="app/src/main/res/layout/layout_thietbi.xml" value="0.18432971014492755" />
         <entry key="app/src/main/res/layout/layoutthietbi.xml" value="0.18432971014492755" />
+        <entry key="app/src/main/res/layout/spinner_maphong.xml" value="0.18432971014492755" />
+        <entry key="app/src/main/res/layout/spinner_mathietbi.xml" value="0.18432971014492755" />
       </map>
     </option>
   </component>

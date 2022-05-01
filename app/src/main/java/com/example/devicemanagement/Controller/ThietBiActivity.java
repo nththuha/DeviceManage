@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.devicemanagement.Adapter.AdapterTenLoaiThietBi;
@@ -43,6 +44,7 @@ public class ThietBiActivity extends AppCompatActivity {
     Button btnThoatTB, btnLuuTB;
     String maloaiTB;
     SearchView svTB;
+    TextView tvTieuDe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +106,8 @@ public class ThietBiActivity extends AppCompatActivity {
         }else{
             dialog.setCancelable(false);
         }
+        tvTieuDe = dialog.findViewById(R.id.tvTieuDeTB);
+        tvTieuDe.setText("THÊM THIỂT BỊ");
         txtMaTB = dialog.findViewById(R.id.txtMaTB);
         txtTenTB = dialog.findViewById(R.id.txtTenTB);
         txtXuatxu = dialog.findViewById(R.id.txtXuatxu);
@@ -171,7 +175,7 @@ public class ThietBiActivity extends AppCompatActivity {
     private void getFilter(String s){
         filter = new ArrayList<>();
         for (ThietBi tb: thietBis) {
-            if(tb.getTenThietBi().toLowerCase().contains(s)){
+            if(tb.getTenThietBi().toLowerCase().contains(s.toLowerCase())){
                 filter.add(tb);
             }
         }
