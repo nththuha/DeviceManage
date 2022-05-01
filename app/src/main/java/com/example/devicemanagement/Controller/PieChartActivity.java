@@ -41,6 +41,7 @@ public class PieChartActivity extends AppCompatActivity implements OnChartValueS
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pie_chart);
+        setControl();
         setEvent();
         listCTSD  = new DBChiTietSD(this).layDSChiTietSD();
 //        listCTSD =new ArrayList<>();
@@ -158,6 +159,13 @@ public class PieChartActivity extends AppCompatActivity implements OnChartValueS
 
         imbBack = findViewById(R.id.imbBack);
         next= findViewById(R.id.imbNext);
+
+        imbBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
 
