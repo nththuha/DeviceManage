@@ -36,7 +36,10 @@
             android:name=".Controller.LoaiThietBiActivity"
             android:exported="false" />
         <activity
-            android:name=".Controller.ChartActivity"
+            android:name=".Controller.PieChartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Controller.CombinedChartActivity"
             android:exported="false" />
         <activity
             android:name=".Controller.LoginActivity"

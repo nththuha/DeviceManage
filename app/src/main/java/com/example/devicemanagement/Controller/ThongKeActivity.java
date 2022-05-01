@@ -4,35 +4,26 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.devicemanagement.Adapter.listviewAdapter;
 import com.example.devicemanagement.DBHelper.DBChiTietSD;
-import com.example.devicemanagement.DBHelper.DBLoaiThietBi;
-import com.example.devicemanagement.DBHelper.DBPhongHoc;
-import com.example.devicemanagement.DBHelper.DBThietBi;
 import com.example.devicemanagement.Entity.ChiTietSD;
-import com.example.devicemanagement.Entity.LoaiThietBi;
-import com.example.devicemanagement.Entity.PhongHoc;
-import com.example.devicemanagement.Entity.ThietBi;
 import com.example.devicemanagement.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ThongKeActivity extends AppCompatActivity {
     ImageButton imbBack;
-    Button btnChart, btnOutExcel;
+    Button btnChart, btnOutExcel, btnLoc;
     DBChiTietSD dbChiTietSD;
-
+    ArrayList<ChiTietSD>  historyList = null;
+    int ngayBD, ngayKT;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,11 +34,21 @@ public class ThongKeActivity extends AppCompatActivity {
     }
     private void setEvent() {
 
+
+        dbChiTietSD = new DBChiTietSD(this);
+        historyList = dbChiTietSD.layDSChiTietSD();
         btnChart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ThongKeActivity.this,ChartActivity.class);
+                Intent intent = new Intent(ThongKeActivity.this, PieChartActivity.class);
                 startActivity(intent);
+            }
+        });
+    btnLoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              fillter();
+              displayHistory();
             }
         });
 
@@ -59,22 +60,43 @@ public class ThongKeActivity extends AppCompatActivity {
         });
     }
     public void displayHistory(){
-        dbChiTietSD = new DBChiTietSD(this);
-        ArrayList<ChiTietSD>  historyList = new ArrayList<>();
-//        historyList.add(new ChiTietSD("1","2","3","4"));
-//        historyList.add(new ChiTietSD("44","44","455566","4"));
-//        historyList.add(new ChiTietSD("44","44","455566","4"));
-        historyList = dbChiTietSD.layDSChiTietSD();
         ListView lview = (ListView) findViewById(R.id.listviewhuyen);
         listviewAdapter adapter = new listviewAdapter(this, historyList);
         lview.setAdapter(adapter);
-
     }
+    public int getDateSS(String date){
+        date = date.replace("-","");
+        System.out.println(date);
+        return Integer.parseInt(date);
+    }
+    public void fillter(){
+        EditText tvNgayBD = findViewById(R.id.ngyBD);
+        EditText tvNgayKT = findViewById(R.id.ngyKT);
+        ngayBD = getDateSS(tvNgayBD.getText().toString());
+        ngayKT = getDateSS(tvNgayKT.getText().toString());
+        ArrayList<ChiTietSD>  newHistoryList = new ArrayList<>();
+        historyList = new DBChiTietSD(this).layDSChiTietSD();
+        if(historyList != null)
+        {
+            for (ChiTietSD ct: historyList  ) {
+                if(getDateSS(ct.getNgaySuDung().trim()) >= ngayBD && getDateSS(ct.getNgaySuDung().trim()) <= ngayKT){
+                    newHistoryList.add(ct);
+                    System.out.println(ngayBD + "-" + ngayKT + " ??? " + ct.getNgaySuDung());
+                }
+//                newHistoryList.add(new ChiTietSD(getDateSS(ct.getNgaySuDung().trim())+"",ngayKT+"",ngayBD+"","Aaaaa"));
+
+            }
+
+        }
+        historyList = newHistoryList;
+         }
+     public void reportExcel(){
+     }
     private void setControl() {
 
         imbBack = findViewById(R.id.imbBack);
-
         btnChart = findViewById(R.id.btnChart);
         btnOutExcel = findViewById(R.id.btnReport);
+        btnLoc = findViewById(R.id.btnFilter);
     }
 }

@@ -66,6 +66,12 @@ public class DBChiTietSD extends SQLiteOpenHelper {
         database.execSQL(sql, new String[]{sql,null});
         database.close();
     }*/
+    public void xoaCTSD(){
+        String sql = "Delete from chitietsudung";
+        SQLiteDatabase database = getWritableDatabase();
+        database.execSQL(sql);
+        database.close();
+    }
     public void xoaChiTietSD(String maphong,String matb) {
         String sql = "DELETE FROM chitietsudung WHERE maphong=? AND matb =?";
         SQLiteDatabase database = getWritableDatabase();

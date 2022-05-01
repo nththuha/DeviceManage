@@ -36,38 +36,28 @@
             android:textStyle="bold" />
 
     </androidx.appcompat.widget.Toolbar>
+
     <LinearLayout
         android:id="@+id/relativeLayout3"
         android:layout_width="fill_parent"
-        android:layout_height="57dp"
-        android:background="@color/blue_100">
+        android:layout_height="wrap_content"
+        android:background="#1D9C27B0">
 
-        <TextView
-            android:layout_width="30dp"
-            android:layout_height="57dp"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="Ngày bắt đầu"
-            android:textColor="#000" />
+
         <EditText
-            android:layout_width="104dp"
-            android:layout_height="50dp">
+            android:id="@+id/ngyBD"
+            android:layout_width="217dp"
+            android:layout_height="50dp"
+            android:text="2000-01-01">
 
         </EditText>
 
-        <TextView
-            android:layout_width="30dp"
-            android:layout_height="57dp"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="Ngày kết thúc"
-            android:textColor="#000" />
 
         <EditText
-            android:layout_width="97dp"
-            android:layout_height="50dp">
+            android:id="@+id/ngyKT"
+            android:layout_width="187dp"
+            android:layout_height="50dp"
+            android:text="2022-12-12">
 
         </EditText>
 
@@ -87,53 +77,55 @@
             android:id="@+id/btnFilter"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Lọc"></Button>
+            android:text="Lọc"
+            android:background="#A39C27B0"
+            ></Button>
 
     </LinearLayout>
+
 
     <LinearLayout
-        android:id = "@+id/relativeLayout1"
-        android:layout_width = "fill_parent"
-        android:layout_height = "wrap_content"
-        android:background = "@color/blue_200" >
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#519C27B0">
 
         <TextView
-            android:layout_width = "0dp"
-            android:layout_height = "wrap_content"
-            android:layout_weight = "1"
-            android:gravity = "center"
-            android:padding = "5dp"
-            android:text = "NGAY SD"
-            android:textColor = "#000" />
+            android:layout_width="124dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="NGAY SD"
+            android:textColor="#000" />
 
         <TextView
-            android:layout_width = "0dp"
-            android:layout_height = "wrap_content"
-            android:layout_weight = "2"
-            android:gravity = "center"
-            android:padding = "5dp"
-            android:text = "TEN TB"
-            android:textColor = "#000" />
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="TEN TB"
+            android:textColor="#000" />
 
         <TextView
-            android:layout_width = "0dp"
-            android:layout_height = "wrap_content"
-            android:layout_weight = "1.5"
-            android:gravity = "center"
-            android:padding = "5dp"
-            android:text = "MÃ PHÒNG"
-            android:textColor = "#000" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="MÃ PHÒNG"
+            android:textColor="#000" />
 
         <TextView
-            android:layout_width = "0dp"
-            android:layout_height = "wrap_content"
-            android:layout_weight = "1"
-            android:gravity = "center"
-            android:padding = "5dp"
-            android:text = "SỐ LƯỢNG"
-            android:textColor = "#000" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="SỐ LƯỢNG"
+            android:textColor="#000" />
     </LinearLayout>
-
 
     <ListView
         android:id="@+id/listviewhuyen"
@@ -145,7 +137,7 @@
         android:id="@+id/relativeLayout2"
         android:layout_width="fill_parent"
         android:layout_height="57dp"
-        android:background="@color/blue_200">
+        android:background="#0772AB9B">
 
         <Button
             android:id="@+id/btnChart"
