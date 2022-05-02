@@ -77,5 +77,13 @@ public class DBThietBi extends SQLiteOpenHelper {
             return cursor.getString(0);
         return null;
     }
+    public String layTenThietBi(String matb){
+        String sql = "SELECT tentb FROM thietbi WHERE matb='" + matb+"'";
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery(sql, null);
+        if (cursor.moveToFirst())
+            return cursor.getString(0);
+        return null;
+    }
 
 }

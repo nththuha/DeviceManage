@@ -36,6 +36,19 @@
                 android:id="@+id/tvMaPCTmuon"
                 style="@style/style_themltb_tentltb" />
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:text="Loại phòng mượn:"
+                style="@style/style_themltb_tieude" />
+            <TextView
+                android:id="@+id/tvLoaiPCTmuon"
+                android:textStyle="bold"
+                style="@style/style_themltb_tentltb" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,6 +60,19 @@
                 style="@style/style_themltb_tieude" />
             <TextView
                 android:id="@+id/tvMaTBCTmuon"
+                style="@style/style_themltb_tentltb" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:text="Tên thiết bị:"
+                style="@style/style_themltb_tieude" />
+            <TextView
+                android:id="@+id/tvTenTBCTmuon"
+                android:textStyle="bold"
                 style="@style/style_themltb_tentltb" />
         </LinearLayout>
 
