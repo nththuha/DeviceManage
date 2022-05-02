@@ -23,6 +23,7 @@ import com.example.devicemanagement.Controller.LoaiThietBiActivity;
 import com.example.devicemanagement.DBHelper.DBLoaiThietBi;
 import com.example.devicemanagement.DBHelper.DBNhanVien;
 import com.example.devicemanagement.Entity.NhanVien;
+import com.example.devicemanagement.Entity.PhongHoc;
 import com.example.devicemanagement.R;
 
 import java.util.ArrayList;
@@ -38,6 +39,11 @@ public class AdapterNhanVien extends ArrayAdapter<NhanVien> {
         this.context = context;
         this.resource = resource;
         this.data = data;
+    }
+
+    public void setFilterList(ArrayList<NhanVien> filter){
+        this.data = filter;
+        notifyDataSetChanged();
     }
 
     @Override
