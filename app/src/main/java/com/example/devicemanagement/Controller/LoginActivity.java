@@ -83,7 +83,6 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
                 nhanVienDangNhap = dbNhanVien.xetDangNhap(tenDangNhap, matKhau);
-                nhanVienDangNhap = new NhanVien("NV01","Thanh Huyen","123456","ffff@gmail.com","ggg");
                 if (nhanVienDangNhap != null) {
                     Toast.makeText(LoginActivity.this, "ĐĂNG NHẬP THÀNH CÔNG!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
