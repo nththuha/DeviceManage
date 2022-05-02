@@ -16,24 +16,13 @@
 
         <ImageButton
             android:id="@+id/imbBackTB"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_centerVertical="true"
-            android:background="?android:selectableItemBackground"
+            style="@style/style_img_btnback"
             android:src="@drawable/ic_arrow_back"
             tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-        <!--android:background="@color/blue_100"-->
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="30dp"
-            android:gravity="center"
-            android:layout_centerInParent="true"
             android:text="QUẢN LÝ THIẾT BỊ"
-            android:textColor="@color/black"
-            android:textSize="28sp"
-            android:textStyle="bold" />
+            style="@style/style_tieude_QuanLy" />
     </androidx.appcompat.widget.Toolbar>
 
     <SearchView
@@ -46,14 +35,8 @@
         android:background="@drawable/round_border_search" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
         android:text="DANH SÁCH THIẾT BỊ"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
+        style="@style/style_tieude_DanhSach" />
 
     <Spinner
         android:id="@+id/snTB"
