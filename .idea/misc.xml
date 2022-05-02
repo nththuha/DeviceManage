@@ -16,7 +16,7 @@
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_click_item.xml" value="0.1" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_combined_chart.xml" value="0.25" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_ct_sudung.xml" value="0.25" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_dialog_chitiet_sudung.xml" value="0.264" />
+        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_dialog_chitiet_sudung.xml" value="0.2" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_dialog_logout.xml" value="0.264" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_dialog_muon_thietbi.xml" value="0.264" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_dialog_muon_tra.xml" value="0.264" />
@@ -48,7 +48,6 @@
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/item_spinner_mathietbi.xml" value="0.1" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/item_thietbi_spinner.xml" value="0.25" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/layout_loai_thiet_bi.xml" value="0.1" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/layout_thiet_bi.xml" value="0.25" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/spinner_maphong.xml" value="0.1" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/spinner_mathietbi.xml" value="0.1" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/menu/activity_menu_home.xml" value="0.24947916666666667" />
@@ -75,6 +74,7 @@
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/activity_login.xml" value="0.12158054711246201" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/activity_nhan_vien.xml" value="0.12158054711246201" />
+        <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/activity_phong_hoc.xml" value="0.12158054711246201" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/activity_pie_chart.xml" value="0.2477355072463768" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/activity_thiet_bi.xml" value="0.2" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/layout_loai_thiet_bi.xml" value="0.11018518518518519" />
