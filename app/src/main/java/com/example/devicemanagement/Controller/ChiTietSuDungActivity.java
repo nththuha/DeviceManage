@@ -249,7 +249,6 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 maPhong = adapterMaPhong.getItem(i).getMaPhong().toString();
-
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -262,12 +261,9 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 maThietBi = adapterMaThietBi.getItem(i).getMaThietBi();
                 tongsl = Integer.parseInt(dbThietBi.laySLThietBi(maThietBi));
-                slmuon = Integer.parseInt(dbChiTietSD.layTongSLMuonMatb(maThietBi));
+                //slmuon = Integer.parseInt(dbChiTietSD.layTongSLMuonMatb(maThietBi));
                 sldu = tongsl - slmuon;
                 tvSoLuongDu.setText("/"+sldu);
-                /*if(sldu == 0)
-                    llSoLuongMuon.setVisibility(View.GONE);
-                else llSoLuongMuon.setVisibility(View.VISIBLE);*/
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {

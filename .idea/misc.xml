@@ -36,7 +36,7 @@
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_pie_chart.xml" value="0.25" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_test.xml" value="0.1" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_thiet_bi.xml" value="0.21481481481481482" />
-        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_thong_ke.xml" value="0.1" />
+        <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/activity_thong_ke.xml" value="0.16" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/dialog_thongbao.xml" value="0.25" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/fragment_home_activity.xml" value="0.24947916666666667" />
         <entry key="..\:/Android Studio/DeviceManage/app/src/main/res/layout/fragment_taikhoan_activity.xml" value="0.1" />
@@ -77,7 +77,6 @@
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/activity_thiet_bi.xml" value="0.2" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/layout_loai_thiet_bi.xml" value="0.11018518518518519" />
         <entry key="..\:/ThuHa/Android/DeviceManage/app/src/main/res/layout/layout_thiet_bi.xml" value="0.12158054711246201" />
-        <entry key="..\:/Users/NHAT/OneDrive/HK2 - NAM4/PhatTrienUngDungChoCacThietBiDiDong/DeviceManage/app/src/main/res/layout/activity_phong_hoc.xml" value="0.17074275362318841" />
         <entry key="app/src/main/res/layout/activity_chi_tiet_thiet_bi.xml" value="0.18432971014492755" />
         <entry key="app/src/main/res/layout/activity_chitiet_sudung.xml" value="0.18432971014492755" />
         <entry key="app/src/main/res/layout/activity_dialog_muon_thietbi.xml" value="0.18432971014492755" />

@@ -73,13 +73,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnFilter"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Lọc"
-            android:background="#A39C27B0"
-            ></Button>
+            android:textColor="@color/white"
+            android:background="@drawable/round_border_onclick"/>
 
     </LinearLayout>
 
@@ -130,31 +130,38 @@
     <ListView
         android:id="@+id/listviewhuyen"
         android:layout_width="match_parent"
-        android:layout_height="433dp"
+        android:layout_height="400dp"
         android:divider="@null" />
 
     <LinearLayout
         android:id="@+id/relativeLayout2"
         android:layout_width="fill_parent"
-        android:layout_height="57dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
         android:background="#0772AB9B">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnChart"
             android:layout_width="164dp"
             android:layout_height="57dp"
-            android:text="xem Chart"></Button>
+            android:layout_marginStart="10dp"
+            android:textColor="@color/white"
+            android:background="@drawable/round_border_onclick"
+            android:text="Xem Chart"/>
 
         <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnReport"
             android:layout_width="189dp"
             android:layout_height="match_parent"
-            android:text="xuất Báo Cáo"></Button>
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/white"
+            android:background="@drawable/round_border_onclick"
+            android:text="Xuất Báo Cáo"/>
 
     </LinearLayout>
 
