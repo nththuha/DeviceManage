@@ -67,4 +67,12 @@ public class DBPhongHoc extends SQLiteOpenHelper {
         }
         return data;
     }
+    public String layLoaiPhong(String maphong){
+        String sql = "SELECT loaiphong FROM phonghoc WHERE maphonghoc='" +maphong+"'";
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor = database.rawQuery(sql, null);
+        if (cursor.moveToFirst())
+            return cursor.getString(0);
+        return null;
+    }
 }

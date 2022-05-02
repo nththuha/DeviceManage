@@ -70,6 +70,7 @@
                 style="@style/style_themltb_tieude" />
             <EditText
                 android:id="@+id/txtSoluongTB"
+                android:inputType="number"
                 style="@style/style_themltb_tentltb" />
         </LinearLayout>
 
