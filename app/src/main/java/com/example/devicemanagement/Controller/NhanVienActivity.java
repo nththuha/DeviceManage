@@ -2,6 +2,7 @@ package com.example.devicemanagement.Controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -23,6 +24,7 @@ import com.example.devicemanagement.DBHelper.DBLoaiThietBi;
 import com.example.devicemanagement.DBHelper.DBNhanVien;
 import com.example.devicemanagement.Entity.LoaiThietBi;
 import com.example.devicemanagement.Entity.NhanVien;
+import com.example.devicemanagement.Entity.PhongHoc;
 import com.example.devicemanagement.R;
 
 import java.util.ArrayList;
@@ -34,6 +36,7 @@ public class NhanVienActivity extends AppCompatActivity {
     AdapterNhanVien adapterNhanVien;
     ArrayList<NhanVien> DSNV;
     DBNhanVien dbNhanVien;
+    ArrayList<NhanVien> filter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,38 @@ public class NhanVienActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        svNV.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                getFilter(s);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                getFilter(s);
+                return false;
+            }
+        });
+    }
+
+    private void getFilter(String s){
+        filter = new ArrayList<>();
+        for (NhanVien nv: DSNV) {
+            if(nv.getHoTen().toLowerCase().contains(s.toLowerCase())){
+                filter.add(nv);
+            }
+        }
+        adapterNhanVien.setFilterList(filter);
+        if(filter.isEmpty()){
+            // Toast.makeText(this, "Không có dữ liệu để hiển thị", Toast.LENGTH_SHORT).show();
+            new AlertDialog.Builder(this)
+                    .setTitle("Thông báo")
+                    .setMessage("Không có dữ liệu để hiển thị!")
+                    .setCancelable(true)
+                    .show();
+        }
     }
 
     private void setControl() {
