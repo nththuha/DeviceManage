@@ -18,15 +18,9 @@
             android:layout_marginStart="5dp"
             android:src="@drawable/ic_close"/>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
             android:layout_marginStart="98dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:gravity="center"
-            android:layout_gravity="center_vertical"
-            android:text="Thông báo"/>
+            android:text="Thông báo"
+            style="@style/textview_title_tb"/>
 
     </LinearLayout>
     <LinearLayout
@@ -36,16 +30,8 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:gravity="center"
-            android:textSize="24sp"
-            android:textColor="@color/black"
             android:text="Sử dụng thiết bị?"
-            android:layout_gravity="center"/>
+            style="@style/textview_title_tb"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,26 +41,12 @@
             android:layout_marginBottom="5dp">
             <Button
                 android:id="@+id/btnMuonTB"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/round_border_green20"
                 android:text="Mượn"
-                android:textColor="@color/black"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:textSize="14sp"/>
+                style="@style/style_themltb_btn"/>
             <Button
                 android:id="@+id/btnTraTB"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="20dp"
-                android:textColor="@color/black"
-                android:background="@drawable/round_border_green20"
                 android:text="Trả"
-                android:textSize="14sp"/>
+                style="@style/style_themltb_btn"/>
         </LinearLayout>
     </LinearLayout>
 

@@ -116,6 +116,7 @@ public class AdapterThietBi extends ArrayAdapter<ThietBi> {
         btnXoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                thongBaoThanhCong(Gravity.CENTER, "Xóa thành công thiết bị "+ maTB+"!");
                 dbThietBi.xoaThietBi(maTB);
                 dialog.dismiss();
                 ((ThietBiActivity)context).loadListView(dbThietBi);
@@ -127,6 +128,32 @@ public class AdapterThietBi extends ArrayAdapter<ThietBi> {
                 dialog.dismiss();
             }
         });
+        dialog.show();
+    }
+    private void thongBaoThanhCong(int gravity, String text) {
+        //xử lý vị trí của dialog
+        final Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.activity_dialog_tbthanhcong);
+
+        Window window = dialog.getWindow();
+        if (window == null)
+            return;
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams windowAttributes = window.getAttributes();
+        windowAttributes.gravity = gravity;
+        window.setAttributes(windowAttributes);
+
+        //click ra bên ngoài để tắt dialog
+        if (Gravity.CENTER == gravity) {
+            dialog.setCancelable(true);
+        } else {
+            dialog.setCancelable(true);
+        }
+        TextView tvThongBao = dialog.findViewById(R.id.tvThongBao);
+        tvThongBao.setText(text);
         dialog.show();
     }
 }

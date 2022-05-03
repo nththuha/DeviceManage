@@ -25,16 +25,8 @@
 
         <TextView
             android:id="@+id/tvThongBao"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:gravity="center"
-            android:textSize="22sp"
-            android:textColor="@color/black"
-            android:text="Mượn thiết bị thành công!"
-            android:layout_gravity="center"/>
+            style="@style/textview_title"
+            android:text="Mượn thiết bị thành công!"/>
 
     </LinearLayout>
 

@@ -30,7 +30,7 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <TextView
-                android:text="Mã phòng mượn:"
+                android:text="@string/maPM"
                 style="@style/style_themltb_tieude" />
             <TextView
                 android:id="@+id/tvMaPCTmuon"
@@ -42,7 +42,7 @@
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
             <TextView
-                android:text="Loại phòng mượn:"
+                android:text="@string/loaiPH"
                 style="@style/style_themltb_tieude" />
             <TextView
                 android:id="@+id/tvLoaiPCTmuon"
@@ -56,7 +56,7 @@
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
             <TextView
-                android:text="Mã thiết bị:"
+                android:text="@string/maTB"
                 style="@style/style_themltb_tieude" />
             <TextView
                 android:id="@+id/tvMaTBCTmuon"
@@ -68,7 +68,7 @@
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
             <TextView
-                android:text="Tên thiết bị:"
+                android:text="@string/tenTB"
                 style="@style/style_themltb_tieude" />
             <TextView
                 android:id="@+id/tvTenTBCTmuon"
@@ -82,7 +82,7 @@
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
             <TextView
-                android:text="Số lượng mượn:"
+                android:text="@string/slmuon"
                 style="@style/style_themltb_tieude" />
             <TextView
                 android:id="@+id/tvSoLuongCTmuon"
@@ -94,7 +94,7 @@
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
             <TextView
-                android:text="Số lượng còn lại:"
+                android:text="@string/soldu"
                 style="@style/style_themltb_tieude" />
             <TextView
                 android:id="@+id/tvSoLuongCTconlai"
@@ -106,7 +106,7 @@
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
             <TextView
-                android:text="Ngày mượn:"
+                android:text="@string/ngayMuon"
                 style="@style/style_themltb_tieude" />
             <TextView
                 android:id="@+id/tvNgayCTmuon"

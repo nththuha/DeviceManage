@@ -21,20 +21,17 @@
                 android:id="@+id/tvMaPhongSD"
                 style="@style/style_text_ctsd"
                 android:layout_width="107dp"
-                android:gravity="center"
-                android:text="Mã phòng" />
+                android:text="@string/maPhong" />
             <TextView
                 android:id="@+id/tvMaThietBiSD"
                 style="@style/style_text_ctsd"
                 android:layout_width="130dp"
-                android:gravity="center"
-                android:text="Mã thiết bị" />
+                android:text="@string/maTB" />
             <TextView
                 android:id="@+id/tvSoLuongMuon"
                 style="@style/style_text_ctsd"
-                android:gravity="center"
                 android:layout_width="match_parent"
-                android:text="Số lượng mượn" />
+                android:text="@string/slmuon" />
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

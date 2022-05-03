@@ -151,6 +151,7 @@ public class ThietBiActivity extends AppCompatActivity {
                     Toast.makeText(ThietBiActivity.this, "Số lượg không được để trống!", Toast.LENGTH_SHORT);
                     return;
                 }
+                thongBaoThanhCong(Gravity.CENTER,"Thêm thiết bị thành công!");
                 dbThietBi.themThietBi(new ThietBi(maTB, tenTB, xuatxu,soluong,maloaiTB));
                 loadListView(dbThietBi);
                 dialog.dismiss();
@@ -206,6 +207,33 @@ public class ThietBiActivity extends AppCompatActivity {
         svTB = findViewById(R.id.svTB);
         imbThemTB = findViewById(R.id.imbThemTB);
     }
+    private void thongBaoThanhCong(int gravity, String text) {
+        //xử lý vị trí của dialog
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.activity_dialog_tbthanhcong);
+
+        Window window = dialog.getWindow();
+        if (window == null)
+            return;
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams windowAttributes = window.getAttributes();
+        windowAttributes.gravity = gravity;
+        window.setAttributes(windowAttributes);
+
+        //click ra bên ngoài để tắt dialog
+        if (Gravity.CENTER == gravity) {
+            dialog.setCancelable(true);
+        } else {
+            dialog.setCancelable(true);
+        }
+        TextView tvThongBao = dialog.findViewById(R.id.tvThongBao);
+        tvThongBao.setText(text);
+        dialog.show();
+    }
+
 
     @Override
     protected void onResume() {

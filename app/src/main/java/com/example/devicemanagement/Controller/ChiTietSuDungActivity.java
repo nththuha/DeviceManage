@@ -284,7 +284,6 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 String SoLuong = txtSoLuongSD.getText().toString().trim();
-
                 /*if (TextUtils.isEmpty(SoLuong)){
                     txtSoLuongSD.requestFocus();
                     txtSoLuongSD.setError(context.getResources().getString(R.string.erorr_soLuongTrong));
@@ -293,8 +292,6 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
                     txtSoLuongSD.requestFocus();
                     txtSoLuongSD.setError(context.getResources().getString(R.string.erorr_soLuongMuon + sldu));
                 }*/
-
-                thongBaoThanhCong(Gravity.CENTER,"Mượn thiết bị thành công!");
                 /*for (ChiTietSD chiTietSD: chiTietSDs) {
                     if((maPhong == chiTietSD.getMaPhong()) && (maThietBi == chiTietSD.getMaThietBi()) && (date.toString() == chiTietSD.getNgaySuDung())){
                         int tongslmuon = Integer.parseInt(chiTietSD.getSoLuong().trim()) + Integer.parseInt(SoLuong);
@@ -308,6 +305,7 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
                         tvSoLuongDu.setText("/"+sldu);
                         dialog.show();
                 }*/
+                thongBaoThanhCong(Gravity.CENTER,"Mượn thiết bị thành công "+maThietBi+"!");
                 dbChiTietSD.themChiTietSD(new ChiTietSD(maPhong,maThietBi,tvNgay.getText().toString(),SoLuong));
                 int slmoi = Integer.parseInt(dbThietBi.laySLThietBi(maThietBi)) - Integer.parseInt(dbChiTietSD.layTongSLMuonMatb(maThietBi));
                 tvSoLuongDu.setText("/"+slmoi);
@@ -403,7 +401,6 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
         TextView tvThongBao = dialog.findViewById(R.id.tvThongBao);
         tvThongBao.setText(text);
         dialog.show();
-
     }
     private void hienThiYN(int gravity,int i, DBChiTietSD dbChiTietSD, DBThietBi dbThietBi) {
         //xử lý vị trí của dialog

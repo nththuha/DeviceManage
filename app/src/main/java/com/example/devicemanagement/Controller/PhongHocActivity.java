@@ -20,6 +20,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.devicemanagement.Adapter.AdapterLoaiPhong;
@@ -220,6 +221,7 @@ public class PhongHocActivity extends AppCompatActivity {
                     Toast.makeText(PhongHocActivity.this, "Tầng không được để trống!", Toast.LENGTH_SHORT);
                     return;
                 }
+                thongBaoThanhCong(Gravity.CENTER,"Thêm phòng học thành công!");
                 dbPhongHoc.themPhongHoc(new PhongHoc(maPhong, loaiPhong, tang));
                 loadListView(dbPhongHoc);
                 dialog.dismiss();
@@ -232,6 +234,32 @@ public class PhongHocActivity extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
+        dialog.show();
+    }
+    private void thongBaoThanhCong(int gravity, String text) {
+        //xử lý vị trí của dialog
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.activity_dialog_tbthanhcong);
+
+        Window window = dialog.getWindow();
+        if (window == null)
+            return;
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams windowAttributes = window.getAttributes();
+        windowAttributes.gravity = gravity;
+        window.setAttributes(windowAttributes);
+
+        //click ra bên ngoài để tắt dialog
+        if (Gravity.CENTER == gravity) {
+            dialog.setCancelable(true);
+        } else {
+            dialog.setCancelable(true);
+        }
+        TextView tvThongBao = dialog.findViewById(R.id.tvThongBao);
+        tvThongBao.setText(text);
         dialog.show();
     }
 }

@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.devicemanagement.Adapter.AdapterLoaiThietBi;
@@ -150,6 +151,7 @@ public class LoaiThietBiActivity extends AppCompatActivity {
                     Toast.makeText(LoaiThietBiActivity.this, "Tên loại thiết bị không được để trống!", Toast.LENGTH_SHORT);
                     return;
                 }
+                thongBaoThanhCong(Gravity.CENTER,"Thêm thiết bị "+tenLTB+" thành công!");
                 dbLoaiThietBi.themLTB(new LoaiThietBi(maLTB, tenLTB));
                 loadListView(dbLoaiThietBi);
                 dialog.dismiss();
@@ -171,4 +173,31 @@ public class LoaiThietBiActivity extends AppCompatActivity {
         svLTB = findViewById(R.id.svLTB);
         imbBack = findViewById(R.id.imbBack);
     }
+    private void thongBaoThanhCong(int gravity, String text) {
+        //xử lý vị trí của dialog
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.activity_dialog_tbthanhcong);
+
+        Window window = dialog.getWindow();
+        if (window == null)
+            return;
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams windowAttributes = window.getAttributes();
+        windowAttributes.gravity = gravity;
+        window.setAttributes(windowAttributes);
+
+        //click ra bên ngoài để tắt dialog
+        if (Gravity.CENTER == gravity) {
+            dialog.setCancelable(true);
+        } else {
+            dialog.setCancelable(true);
+        }
+        TextView tvThongBao = dialog.findViewById(R.id.tvThongBao);
+        tvThongBao.setText(text);
+        dialog.show();
+    }
+
 }

@@ -9,15 +9,8 @@
 
     <TextView
         android:id="@+id/tvTieuDe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:padding="5dp"
         android:text="THÔNG TIN"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
+        style="@style/textview_title_tb"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +23,7 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <TextView
-                android:text="Mã nhân viên:"
+                android:text="@string/maNV"
                 style="@style/style_themltb_tieude" />
             <TextView
                 android:id="@+id/tvMaNV"
@@ -43,7 +36,7 @@
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
             <TextView
-                android:text="Tên nhân viên:"
+                android:text="@string/tenNV"
                 style="@style/style_themltb_tieude" />
             <TextView
                 android:id="@+id/tvTenNV"
@@ -56,7 +49,7 @@
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
             <TextView
-                android:text="Email:"
+                android:text="@string/email"
                 style="@style/style_themltb_tieude" />
             <TextView
                 android:id="@+id/tvEmail"

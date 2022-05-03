@@ -27,12 +27,7 @@
 
     <SearchView
         android:id="@+id/svPH"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="15dp"
-        android:background="@drawable/round_border_search" />
+        style="@style/style_text_search" />
 
     <TextView
         android:text="DANH SÁCH PHÒNG HỌC"
@@ -51,36 +46,21 @@
         android:layout_height="40dp"
         android:orientation="horizontal">
         <TextView
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="20dp"
-            android:gravity="center"
-            android:layout_width="70dp"
-            android:layout_height="30dp"
-            android:textSize="20sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_width="75dp"
             android:text="Mã"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_marginBottom="10dp"/>
+            style="@style/style_text_lv_phonghoc" />
         <TextView
-            android:layout_marginTop="5dp"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:text="Loại"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:layout_width="120dp"
-            android:layout_height="30dp"/>
+            android:text="@string/loaiPH"
+            style="@style/style_text_lv_phonghoc"
+            android:layout_marginStart="5dp"
+            android:layout_width="120dp"/>
         <TextView
-            android:layout_marginTop="5dp"
             android:layout_marginStart="20dp"
-            android:layout_width="50dp"
-            android:text="Tầng"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_width="55dp"
+            android:text="@string/tang"
+            style="@style/style_text_lv_phonghoc"/>
     </LinearLayout>
 
     <ListView
@@ -90,13 +70,8 @@
 
     <ImageButton
         android:id="@+id/imbThemPH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        style="@style/button_add"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="20dp"
-        android:background="?android:selectableItemBackground"
-        android:src="@drawable/ic_circle_add"
         tools:ignore="SpeakableTextPresentCheck" />
 
 </LinearLayout>

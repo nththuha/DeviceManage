@@ -8,15 +8,8 @@
 
     <TextView
         android:id="@+id/tvTieuDe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:padding="5dp"
-        android:text="THÊM PHÒNG HỌC"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
+        style="@style/textview_title_tb"
+        android:text="THÊM PHÒNG HỌC"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +22,7 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <TextView
-                android:text="Mã phòng học:"
+                android:text="@string/maPH"
                 style="@style/style_themltb_tieude" />
             <EditText
                 android:id="@+id/txtMaPhong"
@@ -41,7 +34,7 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <TextView
-                android:text="Loại phòng học:"
+                android:text="@string/loaiPH"
                 style="@style/style_themltb_tieude" />
             <EditText
                 android:id="@+id/txtLoaiPhong"
@@ -53,10 +46,11 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <TextView
-                android:text="Tầng:"
+                android:text="@string/tang"
                 style="@style/style_themltb_tieude" />
             <EditText
                 android:id="@+id/txtTang"
+                android:inputType="number"
                 style="@style/style_themltb_tentltb" />
         </LinearLayout>
     </LinearLayout>
@@ -69,13 +63,11 @@
         <Button
             android:id="@+id/btnThoat"
             android:text="THOÁT"
-            android:layout_marginBottom="5dp"
             style="@style/style_themltb_btn" />
 
         <Button
             android:id="@+id/btnLuu"
             android:text="LƯU"
-            android:layout_marginBottom="5dp"
             style="@style/style_themltb_btn" />
 
     </LinearLayout>

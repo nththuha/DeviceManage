@@ -9,15 +9,8 @@
 
     <TextView
         android:id="@+id/tvTieuDeTB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:padding="5dp"
         android:text="THÊM THIẾT BỊ"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
+        style="@style/textview_title_tb" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +23,7 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <TextView
-                android:text="Mã thiết bị:"
+                android:text="@string/maTB"
                 style="@style/style_themltb_tieude" />
             <EditText
                 android:id="@+id/txtMaTB"
@@ -42,7 +35,7 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <TextView
-                android:text="Tên thiết bị:"
+                android:text="@string/tenTB"
                 style="@style/style_themltb_tieude" />
             <EditText
                 android:id="@+id/txtTenTB"
@@ -54,7 +47,7 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <TextView
-                android:text="Xuất xứ:"
+                android:text="@string/xuatXu"
                 style="@style/style_themltb_tieude" />
             <EditText
                 android:id="@+id/txtXuatxu"
@@ -66,7 +59,7 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <TextView
-                android:text="Số lượng:"
+                android:text="@string/sl"
                 style="@style/style_themltb_tieude" />
             <EditText
                 android:id="@+id/txtSoluongTB"
@@ -83,7 +76,9 @@
                 style="@style/style_themltb_tieude"
                 android:layout_width="115dp"
                 android:layout_height="57dp"
-                android:text="Tên loại thiết bị:" />
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:text="@string/loaiTB" />
 
             <Spinner
                 android:id="@+id/spTenloaiTB"
@@ -91,7 +86,7 @@
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
                 android:background="@android:color/transparent"
-                android:gravity="center" />
+                android:gravity="top" />
         </LinearLayout>
 
         <LinearLayout
@@ -102,13 +97,11 @@
             <Button
                 android:id="@+id/btnThoatTB"
                 android:text="THOÁT"
-                android:layout_marginBottom="5dp"
                 style="@style/style_themltb_btn" />
 
             <Button
                 android:id="@+id/btnLuuTB"
                 android:text="LƯU"
-                android:layout_marginBottom="5dp"
                 style="@style/style_themltb_btn" />
 
         </LinearLayout>

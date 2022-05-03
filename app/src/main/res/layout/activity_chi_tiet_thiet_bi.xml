@@ -38,16 +38,9 @@
 
     <TextView
         android:id="@+id/tvTieuDeTB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:padding="5dp"
         android:text="CHI TIẾT THIẾT BỊ"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        style="@style/textview_title_tb"
+        android:textSize="20sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -62,7 +55,7 @@
 
             <TextView
                 style="@style/style_themltb_tieude"
-                android:text="Mã thiết bị:" />
+                android:text="@string/maTB" />
 
             <EditText
                 android:id="@+id/txtMaTB"
@@ -76,7 +69,7 @@
 
             <TextView
                 style="@style/style_themltb_tieude"
-                android:text="Tên thiết bị:" />
+                android:text="@string/tenTB" />
 
             <EditText
                 android:id="@+id/txtTenTB"
@@ -90,7 +83,7 @@
 
             <TextView
                 style="@style/style_themltb_tieude"
-                android:text="Xuất xứ:" />
+                android:text="@string/xuatXu" />
 
             <EditText
                 android:id="@+id/txtXuatxu"
@@ -104,7 +97,7 @@
 
             <TextView
                 style="@style/style_themltb_tieude"
-                android:text="Số lượng:" />
+                android:text="@string/sl" />
 
             <EditText
                 android:id="@+id/txtSoluongTB"
@@ -119,7 +112,9 @@
             <TextView
                 style="@style/style_themltb_tieude"
                 android:layout_width="115dp"
-                android:text="Tên loại thiết bị:" />
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/loaiTB" />
 
             <Spinner
                 android:id="@+id/spTenloaiTB"
@@ -129,18 +124,13 @@
                 android:background="@android:color/transparent"
                 android:gravity="center" />
         </LinearLayout>
-
         <Button
             android:id="@+id/btnLuuTB"
             style="@style/style_themltb_btn"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="5dp"
             android:text="LƯU" />
-
-
     </LinearLayout>
 
 </LinearLayout>
