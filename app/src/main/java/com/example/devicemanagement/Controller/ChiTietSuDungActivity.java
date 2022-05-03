@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -269,7 +270,7 @@ public class ChiTietSuDungActivity extends AppCompatActivity{
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 maThietBi = adapterMaThietBi.getItem(i).getMaThietBi();
                 tongsl = Integer.parseInt(dbThietBi.laySLThietBi(maThietBi));
-                slmuon = Integer.parseInt(dbChiTietSD.layTongSLMuonMatb(maThietBi));
+//                slmuon = Integer.parseInt(dbChiTietSD.layTongSLMuonMatb(maThietBi));
                 sldu = tongsl - slmuon;
                 tvSoLuongDu.setText("/"+sldu);
             }

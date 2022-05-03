@@ -101,6 +101,6 @@ public class DBChiTietSD extends SQLiteOpenHelper {
         Cursor cursor = database.rawQuery(sql, null);
         if (cursor.moveToFirst())
             return cursor.getString(0);
-        return null;
+        return "0";
     }
 }

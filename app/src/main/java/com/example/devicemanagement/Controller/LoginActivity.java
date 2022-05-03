@@ -103,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(intent);
                 } else {
 //                    Toast.makeText(LoginActivity.this, "XEM LẠI TÊN ĐĂNG NHẬP VÀ MẬT KHẨU", Toast.LENGTH_SHORT).show();
-                    thongBao(Gravity.CENTER, "XEM LẠI TÊN ĐĂNG NHẬP VÀ MẬT KHẨU");
+                    thongBao(Gravity.CENTER, "Xem lại tên đăng nhập và mật khẩu");
                 }
             }
         });
@@ -129,7 +129,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     guiMail(nhanVien.getMail(), matKhauMoi);
                 } else
-                    thongBao(Gravity.CENTER, "TÊN ĐĂNG NHẬP KHÔNG TỒN TẠI!");
+                    thongBao(Gravity.CENTER, "Tên đăng nhập không tồn tại");
 //                    Toast.makeText(LoginActivity.this, "TÊN ĐĂNG NHẬP KHÔNG TỒN TẠI!", Toast.LENGTH_SHORT).show();
             }
         });
