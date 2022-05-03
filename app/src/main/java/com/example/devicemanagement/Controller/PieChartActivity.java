@@ -32,18 +32,31 @@ import java.util.List;
 import java.util.Map;
 
 public class PieChartActivity extends AppCompatActivity implements OnChartValueSelectedListener {
-
+    // ArrayList<ChiTietSD> historyList = null;
     ImageButton imbBack;
     private PieChart mChart;
     Switch next;
     private static ArrayList<ChiTietSD> listCTSD;
+
+    private static DBThietBi dbtbi;
+    private static int ngayBD=0, ngayKT=99999999;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        dbtbi = new DBThietBi(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pie_chart);
+        // get historyList to listCTSD
+        Intent intent =  getIntent();
+        Bundle bundle = intent.getExtras();
+        if(bundle!=null){
+            ngayBD = bundle.getInt("ngay_bd",0);
+            ngayKT = bundle.getInt("ngay_kt",0);
+        }
+        fillter();
+
+
         setControl();
         setEvent();
-        listCTSD  = new DBChiTietSD(this).layDSChiTietSD();
 //        listCTSD =new ArrayList<>();
 //        new DBThietBi(this).themThietBi(new ThietBi("11","MAY LANH","Trung Quoc","90","MICRO"));
 //        new DBThietBi(this).themThietBi(new ThietBi("21","Quat TRAN","Trung Quoc","90","MICRO"));
@@ -125,10 +138,10 @@ public class PieChartActivity extends AppCompatActivity implements OnChartValueS
 
     @Override
     public void onValueSelected(Entry e, Highlight h) {
-        Toast.makeText(this, "Value: "
+        Toast.makeText(this, "Tổng mượn: "
                 + e.getY()
-                + ", index: "
-                + h.getX()
+                + ", Thiết Bị: "
+                +  dbtbi.layTenThietBi(listCTSD.get((int)h.getX()).getMaThietBi())
                 + ", DataSet index: "
                 + h.getDataSetIndex(), Toast.LENGTH_SHORT).show();
     }
@@ -147,26 +160,44 @@ public class PieChartActivity extends AppCompatActivity implements OnChartValueS
 //                return false;
 //            }
 //        });
-//        imbBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(PieChartActivity.this, CombinedChartActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        imbBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PieChartActivity.this, CombinedChartActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     private void setControl() {
 
         imbBack = findViewById(R.id.imbBack);
-        next= findViewById(R.id.imbNext);
-
-        imbBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+//        imbBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                finish();
+//            }
+//        });
     }
 
+    public int getDateSS(String date) {
+        date = date.replace("-", "");
+        // System.out.println(date);
+        return Integer.parseInt(date);
+    }
+
+    public void fillter() {
+        ArrayList<ChiTietSD> newHistoryList = new ArrayList<>();
+        listCTSD = new DBChiTietSD(this).layDSChiTietSD();
+        if (listCTSD != null) {
+            for (ChiTietSD ct : listCTSD) {
+                if (getDateSS(ct.getNgaySuDung().trim()) >= ngayBD && getDateSS(ct.getNgaySuDung().trim()) <= ngayKT) {
+//                    ct.setMaThietBi(dbtbi.layTenThietBi(ct.getMaThietBi()));
+                    newHistoryList.add(ct);
+                }
+            }
+
+        }
+        listCTSD = newHistoryList;
+    }
 
 }

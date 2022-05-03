@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.devicemanagement.Adapter.listviewAdapter;
 import com.example.devicemanagement.DBHelper.DBChiTietSD;
+import com.example.devicemanagement.DBHelper.DBThietBi;
 import com.example.devicemanagement.Entity.ChiTietSD;
 import com.example.devicemanagement.R;
 
@@ -38,18 +39,20 @@ public class ThongKeActivity extends AppCompatActivity {
     ImageButton imbBack;
     Button btnChart, btnOutExcel, btnLoc, btnReport;
     DBChiTietSD dbChiTietSD;
-    ArrayList<ChiTietSD>  historyList = null;
+    ArrayList<ChiTietSD> historyList = null;
     int ngayBD, ngayKT;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thong_ke);
         setControl();
         setEvent();
+        fillter();
         displayHistory();
     }
-    private void setEvent() {
 
+    private void setEvent() {
 
         dbChiTietSD = new DBChiTietSD(this);
         historyList = dbChiTietSD.layDSChiTietSD();
@@ -57,14 +60,19 @@ public class ThongKeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ThongKeActivity.this, PieChartActivity.class);
+                Bundle bundle = new Bundle();
+
+                bundle.putInt("ngay_bd",ngayBD);
+                bundle.putInt("ngay_kt",ngayKT);
+                intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
-    btnLoc.setOnClickListener(new View.OnClickListener() {
+        btnLoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              fillter();
-              displayHistory();
+                fillter();
+                displayHistory();
             }
         });
 
@@ -80,92 +88,94 @@ public class ThongKeActivity extends AppCompatActivity {
 
                 try {
                     reportExcel();
-                    thongBaoThanhCong(Gravity.CENTER,"Xuất file Excel thành công!");
+                    thongBaoThanhCong(Gravity.CENTER, "Xuất file Excel thành công!");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         });
     }
-    public void displayHistory(){
+
+    public void displayHistory() {
         ListView lview = (ListView) findViewById(R.id.listviewhuyen);
         listviewAdapter adapter = new listviewAdapter(this, historyList);
         lview.setAdapter(adapter);
     }
-    public int getDateSS(String date){
-        date = date.replace("-","");
+
+    public int getDateSS(String date) {
+        date = date.replace("-", "");
         System.out.println(date);
         return Integer.parseInt(date);
     }
-    public void fillter(){
+
+    public void fillter() {
+
+        DBThietBi dbtbi = new DBThietBi(this);
         EditText tvNgayBD = findViewById(R.id.ngyBD);
         EditText tvNgayKT = findViewById(R.id.ngyKT);
         ngayBD = getDateSS(tvNgayBD.getText().toString());
         ngayKT = getDateSS(tvNgayKT.getText().toString());
-        ArrayList<ChiTietSD>  newHistoryList = new ArrayList<>();
+        ArrayList<ChiTietSD> newHistoryList = new ArrayList<>();
         historyList = new DBChiTietSD(this).layDSChiTietSD();
-        if(historyList != null)
-        {
-            for (ChiTietSD ct: historyList  ) {
-                if(getDateSS(ct.getNgaySuDung().trim()) >= ngayBD && getDateSS(ct.getNgaySuDung().trim()) <= ngayKT){
+        if (historyList != null) {
+            for (ChiTietSD ct : historyList) {
+                if (getDateSS(ct.getNgaySuDung().trim()) >= ngayBD && getDateSS(ct.getNgaySuDung().trim()) <= ngayKT) {
+                    ct.setMaThietBi(dbtbi.layTenThietBi(ct.getMaThietBi()));
                     newHistoryList.add(ct);
-                    System.out.println(ngayBD + "-" + ngayKT + " ??? " + ct.getNgaySuDung());
+
                 }
-//                newHistoryList.add(new ChiTietSD(getDateSS(ct.getNgaySuDung().trim())+"",ngayKT+"",ngayBD+"","Aaaaa"));
 
             }
 
         }
         historyList = newHistoryList;
-         }
-//     public void reportPDF(){
-//         //permission
-//         ActivityCompat.requestPermissions(this, new String[]{
-//                 Manifest.permission.WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
-//
-//
-//
-//     }
+    }
+    // public void reportPDF(){
+    // //permission
+    // ActivityCompat.requestPermissions(this, new String[]{
+    // Manifest.permission.WRITE_EXTERNAL_STORAGE},
+    // PackageManager.PERMISSION_GRANTED);
+    //
+    //
+    //
+    // }
 
     private void setControl() {
 
         imbBack = findViewById(R.id.imbBack);
         btnChart = findViewById(R.id.btnChart);
-        btnOutExcel  = findViewById(R.id.btnReport);
+        btnOutExcel = findViewById(R.id.btnReport);
         btnLoc = findViewById(R.id.btnFilter);
     }
+
     public void reportExcel() throws IOException {
-        //Creating the workbook
+        // Creating the workbook
 
         Workbook workbook = new XSSFWorkbook();
         CreationHelper creationHelper = workbook.getCreationHelper();
         Sheet sheet = workbook.createSheet("Report");
         Row row1 = sheet.createRow(0);
-//        Row row2 = sheet.createRow(1);
-        row1.createCell(0).setCellValue("Test");
-        row1.createCell(1).setCellValue("Test");
-        row1.createCell(2).setCellValue("Test");
-        row1.createCell(3).setCellValue("Test");
-//        row2.createCell(0).setCellValue("test");
+        // Row row2 = sheet.createRow(1);
+        row1.createCell(0).setCellValue("Mã Phòng");
+        row1.createCell(1).setCellValue("Tên Thiết Bị");
+        row1.createCell(2).setCellValue("Ngày Sử Dụng");
+        row1.createCell(3).setCellValue("Số Lượng Mượn");
+        // row2.createCell(0).setCellValue("test");
         fillter();
-        int col =  historyList.size();
-
-
-
+        int col = historyList.size();
 
         for (int i = 0; i < col; i++) {
-            Row row = sheet.createRow(i+1);
+            Row row = sheet.createRow(i + 1);
             row.createCell(0).setCellValue(historyList.get(i).getMaPhong());
             row.createCell(1).setCellValue(historyList.get(i).getMaThietBi());
             row.createCell(2).setCellValue(historyList.get(i).getNgaySuDung());
             row.createCell(3).setCellValue(historyList.get(i).getSoLuong());
         }
 
-
-        String namefile = "report-ctsd";
+        String namefile = "thongke-sudung-"+ngayBD+"-"+ngayKT;
         FileOutputStream file = null;
         try {
-            file = new FileOutputStream(Environment.getExternalStorageDirectory()+"/"+namefile+".xlsx");
+            file = new FileOutputStream(Environment.getExternalStorageDirectory() + "/" + namefile + ".xlsx");
             workbook.write(file);
             file.close();
         } catch (FileNotFoundException e) {
@@ -173,8 +183,9 @@ public class ThongKeActivity extends AppCompatActivity {
         }
 
     }
+
     private void thongBaoThanhCong(int gravity, String text) {
-        //xử lý vị trí của dialog
+        // xử lý vị trí của dialog
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.activity_dialog_tbthanhcong);
@@ -189,7 +200,7 @@ public class ThongKeActivity extends AppCompatActivity {
         windowAttributes.gravity = gravity;
         window.setAttributes(windowAttributes);
 
-        //click ra bên ngoài để tắt dialog
+        // click ra bên ngoài để tắt dialog
         if (Gravity.CENTER == gravity) {
             dialog.setCancelable(true);
         } else {
