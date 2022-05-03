@@ -1,11 +1,18 @@
 package com.example.devicemanagement.Controller;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -21,6 +28,7 @@ import com.example.devicemanagement.DBHelper.DBLoaiThietBi;
 import com.example.devicemanagement.DBHelper.DBNhanVien;
 import com.example.devicemanagement.DBHelper.DBPhongHoc;
 import com.example.devicemanagement.DBHelper.DBThietBi;
+import com.example.devicemanagement.Entity.LoaiThietBi;
 import com.example.devicemanagement.Entity.NhanVien;
 import com.example.devicemanagement.R;
 
@@ -75,11 +83,13 @@ public class LoginActivity extends AppCompatActivity {
                 String tenDangNhap = txtUser.getText().toString().trim();
                 String matKhau = txtPass.getText().toString().trim();
                 if (tenDangNhap.equals("")) {
-                    Toast.makeText(LoginActivity.this, "Tên đăng nhập không được để trống!", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(LoginActivity.this, "Tên đăng nhập không được để trống!", Toast.LENGTH_SHORT).show();
+                    thongBao(Gravity.CENTER, "Tên đăng nhập không được để trống!");
                     return;
                 }
                 if (matKhau.equals("")) {
-                    Toast.makeText(LoginActivity.this, "Mật khẩu không được để trống!", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(LoginActivity.this, "Mật khẩu không được để trống!", Toast.LENGTH_SHORT).show();
+                    thongBao(Gravity.CENTER, "Mật khẩu không được để trống!");
                     return;
                 }
                 nhanVienDangNhap = dbNhanVien.xetDangNhap(tenDangNhap, matKhau);
@@ -92,7 +102,8 @@ public class LoginActivity extends AppCompatActivity {
                     intent.putExtras(bundle);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(LoginActivity.this, "XEM LẠI TÊN ĐĂNG NHẬP VÀ MẬT KHẨU", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(LoginActivity.this, "XEM LẠI TÊN ĐĂNG NHẬP VÀ MẬT KHẨU", Toast.LENGTH_SHORT).show();
+                    thongBao(Gravity.CENTER, "XEM LẠI TÊN ĐĂNG NHẬP VÀ MẬT KHẨU");
                 }
             }
         });
@@ -103,23 +114,54 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String tenDangNhap = txtUser.getText().toString().trim();
                 if (tenDangNhap.equals("")) {
-                    Toast.makeText(LoginActivity.this, "Bạn cần nhập tên đăng nhập!", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(LoginActivity.this, "Bạn cần nhập tên đăng nhập!", Toast.LENGTH_SHORT).show();
+                    thongBao(Gravity.CENTER, "Bạn cần nhập tên đăng nhập!");
                     return;
                 }
                 NhanVien nhanVien = dbNhanVien.xetGuiMail(tenDangNhap);
 
                 if (nhanVien != null) {
+//                    thongBao(Gravity.CENTER, "VUI LÒNG ĐỢI, HỆ THỐNG ĐANG XỬ LÝ");
                     String matKhauMoi = taoMatKhau();
                     dbNhanVien.suaMatKhau(nhanVien.getTenDangNhap(), matKhauMoi);
                     tvForgotPass.setEnabled(false);
-                    Toast.makeText(LoginActivity.this, "VUI LÒNG ĐỢI, HỆ THỐNG ĐANG XỬ LÝ", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(LoginActivity.this, "VUI LÒNG ĐỢI, HỆ THỐNG ĐANG XỬ LÝ", Toast.LENGTH_SHORT).show();
+
                     guiMail(nhanVien.getMail(), matKhauMoi);
                 } else
-                    Toast.makeText(LoginActivity.this, "TÊN ĐĂNG NHẬP KHÔNG TỒN TẠI!", Toast.LENGTH_SHORT).show();
+                    thongBao(Gravity.CENTER, "TÊN ĐĂNG NHẬP KHÔNG TỒN TẠI!");
+//                    Toast.makeText(LoginActivity.this, "TÊN ĐĂNG NHẬP KHÔNG TỒN TẠI!", Toast.LENGTH_SHORT).show();
             }
         });
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+    }
+
+    private void thongBao(int gravity, String noiDung){
+        final Dialog dialog = new Dialog(LoginActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.activity_dialog_thongbao_dangnhap);
+
+        Window window = dialog.getWindow();
+        if (window == null)
+            return;
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams windowAttributes = window.getAttributes();
+        windowAttributes.gravity = gravity;
+        window.setAttributes(windowAttributes);
+
+        //click ra bên ngoài để tắt dialog
+        if (Gravity.CENTER == gravity) {
+            dialog.setCancelable(true);
+        } else {
+            dialog.setCancelable(true);
+        }
+
+        TextView tvThongBao = dialog.findViewById(R.id.tvThongbao_DangNhap);
+        tvThongBao.setText(noiDung);
+        dialog.show();
     }
 
     public String taoMatKhau() {
@@ -147,7 +189,8 @@ public class LoginActivity extends AppCompatActivity {
             message.setSubject("APP QUẢN LÝ THIẾT BỊ TRƯỜNG HỌC - LẤY LẠI MẬT KHẨU");
             message.setText("Mật khẩu mới của bạn là: " + matKhauMoi);
             Transport.send(message);
-            Toast.makeText(LoginActivity.this, "Mật khẩu mới đã được gửi vào mail!", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(LoginActivity.this, "Mật khẩu mới đã được gửi vào mail!", Toast.LENGTH_SHORT).show();
+            thongBao(Gravity.CENTER, "Mật khẩu mới đã được gửi vào mail!");
 
         } catch (MessagingException e) {
             Log.e("Lỗi", e.getMessage());
