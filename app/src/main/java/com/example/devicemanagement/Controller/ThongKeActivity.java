@@ -33,6 +33,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class ThongKeActivity extends AppCompatActivity {
@@ -104,6 +105,8 @@ public class ThongKeActivity extends AppCompatActivity {
 
     public int getDateSS(String date) {
         date = date.replace("-", "");
+        date = date.replace("/", "");
+        date = date.replace(":", "");
         System.out.println(date);
         return Integer.parseInt(date);
     }
@@ -146,6 +149,16 @@ public class ThongKeActivity extends AppCompatActivity {
         btnChart = findViewById(R.id.btnChart);
         btnOutExcel = findViewById(R.id.btnReport);
         btnLoc = findViewById(R.id.btnFilter);
+
+        long millis = System.currentTimeMillis();
+        Date date = new Date(millis);
+
+        EditText tvNgayBD = findViewById(R.id.ngyBD);
+        EditText tvNgayKT = findViewById(R.id.ngyKT);
+        ngayBD = getDateSS(tvNgayBD.getText().toString());
+        ngayKT = getDateSS(tvNgayKT.getText().toString());
+        tvNgayBD.setText(date.toString());
+        tvNgayKT.setText(date.toString());
     }
 
     public void reportExcel() throws IOException {

@@ -26,6 +26,7 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,7 +35,9 @@ import java.util.Map;
 public class PieChartActivity extends AppCompatActivity implements OnChartValueSelectedListener {
     // ArrayList<ChiTietSD> historyList = null;
     ImageButton imbBack;
+    Date date;
     private PieChart mChart;
+    long millis = System.currentTimeMillis();
     Switch next;
     private static ArrayList<ChiTietSD> listCTSD;
 
@@ -171,6 +174,7 @@ public class PieChartActivity extends AppCompatActivity implements OnChartValueS
     private void setControl() {
 
         imbBack = findViewById(R.id.imbBack);
+
 //        imbBack.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
